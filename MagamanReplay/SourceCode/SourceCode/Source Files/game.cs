@@ -30,6 +30,9 @@ public class Game
 
         // 在此使用API更改窗口标题
         CSystem.SetWindowTitle("Initalize");
+        //----------在这里启动玩家初始化----------
+        
+        //----------玩家初始化结束----------
 
         // 引擎主循环，处理屏幕图像刷新等工作
         while (CSystem.EngineMainLoop())
