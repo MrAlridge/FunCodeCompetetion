@@ -80,6 +80,7 @@ public class Game
     static void OnKeyDown(int iKey, int iAltPress, int iShiftPress, int iCtrlPress)
     {
         // 可以在此添加游戏需要的响应函数
+        
     }
 
     /// <summary>

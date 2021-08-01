@@ -21,7 +21,10 @@ public class	CGameMain
     static public  CGameMain    GetInstance()                       { return m_Instance; }
 	
 	// Set·½·¨
-	void			            SetGameState( int iState )			{ m_iGameState	=	iState; }
+	void SetGameState( int iState )	
+	{
+		m_iGameState = iState;
+	}
 
 
     /// <summary>
