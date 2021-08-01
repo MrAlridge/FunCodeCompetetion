@@ -37,40 +37,53 @@
       cameraPosition = "0 0";
       cameraSize = "100 75";
 
-   new t2dStaticSprite(Background_Far) {
-      imageMap = "backgroundImage";
+   new t2dStaticSprite(LevelBackground_1) {
+      imageMap = "a01ImageMap";
       frame = "0";
       useSourceRect = "0";
       sourceRect = "0 0 0 0";
       canSaveDynamicFields = "1";
-      Position = "0.000 -1.250";
-      size = "100.000 72.500";
+      Position = "17.500 -0.132";
+      size = "135.000 74.737";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
+      LinkPoints = "-0.991 0.556 0.982 0.970 0.998 0.504 -1.009 1.008";
          mountID = "2";
    };
-   new t2dStaticSprite(Background_Mideum) {
-      imageMap = "rocksfarImage";
+   new t2dStaticSprite(LevelBackground_2) {
+      imageMap = "a2ImageMap";
       frame = "0";
       useSourceRect = "0";
       sourceRect = "0 0 0 0";
       canSaveDynamicFields = "1";
-      Position = "-4.000 5.500";
-      size = "128.000 64.000";
+      Position = "146.261 -0.261";
+      size = "122.521 74.477";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
          mountID = "3";
    };
-   new t2dStaticSprite(Background_Near) {
-      imageMap = "rocksnearImage";
+   new t2dStaticSprite(LevelBackground_3) {
+      imageMap = "a3ImageMap";
       frame = "0";
       useSourceRect = "0";
       sourceRect = "0 0 0 0";
       canSaveDynamicFields = "1";
-      Position = "-4.000 5.500";
-      size = "128.000 64.000";
+      Position = "263.685 -0.117";
+      size = "112.630 74.766";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
          mountID = "4";
+   };
+   new t2dStaticSprite(LevelBackground_4) {
+      imageMap = "a4ImageMap";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "0 0 0 0";
+      canSaveDynamicFields = "1";
+      Position = "376.072 -0.118";
+      size = "112.145 74.763";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+         mountID = "5";
    };
 };
