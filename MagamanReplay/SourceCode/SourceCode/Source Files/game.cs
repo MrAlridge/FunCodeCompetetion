@@ -29,7 +29,7 @@ public class Game
 
 
         // 在此使用API更改窗口标题
-        CSystem.SetWindowTitle("Lesson");
+        CSystem.SetWindowTitle("Initalize");
 
         // 引擎主循环，处理屏幕图像刷新等工作
         while (CSystem.EngineMainLoop())
@@ -47,6 +47,7 @@ public class Game
 
     /// <summary>
     /// 引擎捕捉鼠标移动消息后，将调用到本函数
+    /// 这下面都是输入监听
     /// </summary>
     static void OnMouseMove(float fMouseX, float fMouseY)
     {
