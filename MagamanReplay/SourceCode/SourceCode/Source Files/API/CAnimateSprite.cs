@@ -6,67 +6,64 @@ using System.Text;
 //////////////////////////////////////////////////////////////////////////////
 //
 /////////////////////////////////////////////////////////////////////////////
-namespace GameNamespace
+
+/// <summary>
+/// ç±»ï¼šCAnimateSprite
+/// åŠ¨æ€ç²¾çµ(å¸¦å›¾ç‰‡åŠ¨ç”»)ï¼Œä»CSpriteç²¾çµåŸºç±»ç»§æ‰¿ä¸‹æ¥ï¼Œæ¯”åŸºç±»å¤šäº†å‡ ä¸ªæ§åˆ¶å›¾ç‰‡åŠ¨ç”»çš„å‡½æ•°
+/// </summary>
+public class CAnimateSprite : CSprite
 {
     /// <summary>
-    /// Àà£ºCAnimateSprite
-    /// ¶¯Ì¬¾«Áé(´øÍ¼Æ¬¶¯»­)£¬´ÓCSprite¾«Áé»ùÀà¼Ì³ĞÏÂÀ´£¬±È»ùÀà¶àÁË¼¸¸ö¿ØÖÆÍ¼Æ¬¶¯»­µÄº¯Êı
+    /// æ„é€ å‡½æ•° 
     /// </summary>
-    public class CAnimateSprite : CSprite
+    public CAnimateSprite(string szName) : base(szName)
     {
-        /// <summary>
-        /// ¹¹Ôìº¯Êı 
-        /// </summary>
-        public CAnimateSprite(string szName) : base(szName)
-        {
-        }
-        
-        /// <summary>
-        /// SetAnimateSpriteFrame£ºÉèÖÃ¶¯Ì¬¾«ÁéµÄ¶¯»­Ö¡Êı
-        /// ²ÎÊı iFrame£º¶¯»­Ö¡Êı
-        /// </summary>
-        public void		SetAnimateSpriteFrame( int iFrame )
-        {
-            CommonAPI.dSetAnimateSpriteFrame( GetName(), iFrame );
-        }
+    }
+    
+	/// <summary>
+	/// SetAnimateSpriteFrameï¼šè®¾ç½®åŠ¨æ€ç²¾çµçš„åŠ¨ç”»å¸§æ•°
+    /// å‚æ•° iFrameï¼šåŠ¨ç”»å¸§æ•°
+	/// </summary>
+	public void		SetAnimateSpriteFrame( int iFrame )
+	{
+		CommonAPI.dSetAnimateSpriteFrame( GetName(), iFrame );
+	}
 
-        /// <summary>
-        /// GetAnimateSpriteAnimationName£º»ñÈ¡¶¯Ì¬¾«Áéµ±Ç°¶¯»­Ãû×Ö
-        /// ·µ»ØÖµ£º¶¯»­Ãû×Ö
-        /// </summary>
-        public string GetAnimateSpriteAnimationName()
-        {
-            return CommonAPI.dGetAnimateSpriteAnimationName(GetName());
-        }
+	/// <summary>
+    /// GetAnimateSpriteAnimationNameï¼šè·å–åŠ¨æ€ç²¾çµå½“å‰åŠ¨ç”»åå­—
+    /// è¿”å›å€¼ï¼šåŠ¨ç”»åå­—
+	/// </summary>
+    public string GetAnimateSpriteAnimationName()
+	{
+        return CommonAPI.dGetAnimateSpriteAnimationName(GetName());
+	}
 
-        /// <summary>
-        /// GetAnimateSpriteAnimationTime£º»ñÈ¡¶¯»­¾«Áéµ±Ç°¶¯»­Ê±¼ä³¤¶È
-        /// ·µ»ØÖµ£º³¤¶È£¬µ¥Î»Ãë
-        /// </summary>
-        public float GetAnimateSpriteAnimationTime()
-        {
-            return CommonAPI.dGetAnimateSpriteAnimationTime(GetName());
-        }
+	/// <summary>
+    /// GetAnimateSpriteAnimationTimeï¼šè·å–åŠ¨ç”»ç²¾çµå½“å‰åŠ¨ç”»æ—¶é—´é•¿åº¦
+    /// è¿”å›å€¼ï¼šé•¿åº¦ï¼Œå•ä½ç§’
+	/// </summary>
+    public float GetAnimateSpriteAnimationTime()
+	{
+        return CommonAPI.dGetAnimateSpriteAnimationTime(GetName());
+	}
 
-        /// <summary>
-        /// IsAnimateSpriteAnimationFinished£ºÅĞ¶Ï¶¯Ì¬¾«Áéµ±Ç°¶¯»­ÊÇ·ñ²¥·ÅÍê±Ï£¬Ö»Õë¶Ô·ÇÑ­»·¶¯»­¶øÑÔ
-        /// ·µ»ØÖµ£ºtrue Íê±Ï false Î´Íê±Ï
-        /// </summary>
-        public bool IsAnimateSpriteAnimationFinished()
-        {
-            return (CommonAPI.dIsAnimateSpriteAnimationFinished(GetName()) == 0 ? false : true);
-        }
-        
-        /// <summary>
-        /// AnimateSpritePlayAnimation£º¶¯»­¾«Áé²¥·Å¶¯»­
-        /// ²ÎÊı szAnim£º¶¯»­Ãû×Ö
-        /// ²ÎÊı bRestore£º²¥·ÅÍê±ÏºóÊÇ·ñ»Ö¸´µ±Ç°¶¯»­
-        /// ·µ»ØÖµ£ºÊÇ·ñ²¥·Å³É¹¦
-        /// </summary>
-        public bool AnimateSpritePlayAnimation( string szAnim, bool bRestore)
-        {
-            return (CommonAPI.dAnimateSpritePlayAnimation(GetName(), szAnim, bRestore ? 1 : 0) == 0 ? false : true);
-        }
-    };
-
-}
+	/// <summary>
+    /// IsAnimateSpriteAnimationFinishedï¼šåˆ¤æ–­åŠ¨æ€ç²¾çµå½“å‰åŠ¨ç”»æ˜¯å¦æ’­æ”¾å®Œæ¯•ï¼Œåªé’ˆå¯¹éå¾ªç¯åŠ¨ç”»è€Œè¨€
+    /// è¿”å›å€¼ï¼štrue å®Œæ¯• false æœªå®Œæ¯•
+	/// </summary>
+    public bool IsAnimateSpriteAnimationFinished()
+	{
+        return (CommonAPI.dIsAnimateSpriteAnimationFinished(GetName()) == 0 ? false : true);
+	}
+    
+	/// <summary>
+    /// AnimateSpritePlayAnimationï¼šåŠ¨ç”»ç²¾çµæ’­æ”¾åŠ¨ç”»
+    /// å‚æ•° szAnimï¼šåŠ¨ç”»åå­—
+    /// å‚æ•° bRestoreï¼šæ’­æ”¾å®Œæ¯•åæ˜¯å¦æ¢å¤å½“å‰åŠ¨ç”»
+    /// è¿”å›å€¼ï¼šæ˜¯å¦æ’­æ”¾æˆåŠŸ
+	/// </summary>
+    public bool AnimateSpritePlayAnimation( string szAnim, bool bRestore)
+	{
+        return (CommonAPI.dAnimateSpritePlayAnimation(GetName(), szAnim, bRestore ? 1 : 0) == 0 ? false : true);
+	}
+};

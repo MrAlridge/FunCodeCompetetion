@@ -7,1046 +7,1042 @@ using System.Text;
 //
 //////////////////////////////////////////////////////////////////////////////
 
-namespace GameNamespace
+/// <summary>
+/// ç±»ï¼šCSprite
+/// æ‰€æœ‰ç²¾çµçš„åŸºç±»ã€‚åŒ…æ‹¬ä¸‹é¢çš„é™æ€ç²¾çµï¼ŒåŠ¨æ€ç²¾çµï¼Œæ–‡å­—ï¼Œç‰¹æ•ˆç­‰å‡ç”±æ­¤ç±»ç»§æ‰¿ä¸‹å»
+/// ä¸€èˆ¬çš„å›¾ç‰‡ç²¾çµä»æœ¬ç±»ç»§æ‰¿ä¸‹å»å³å¯ã€‚åªæœ‰ç‰¹æ®Šçš„ç²¾çµï¼Œæ¯”å¦‚å¸¦åŠ¨ç”»çš„ç²¾çµï¼Œæ‰éœ€è¦ä»åŠ¨æ€ç²¾çµç»§æ‰¿ä¸‹å»
+/// </summary>
+public class CSprite
 {
+    private string m_szName;		// ç²¾çµåå­—
+
 	/// <summary>
-	/// Àà£ºCSprite
-	/// ËùÓĞ¾«ÁéµÄ»ùÀà¡£°üÀ¨ÏÂÃæµÄ¾²Ì¬¾«Áé£¬¶¯Ì¬¾«Áé£¬ÎÄ×Ö£¬ÌØĞ§µÈ¾ùÓÉ´ËÀà¼Ì³ĞÏÂÈ¥
-	/// Ò»°ãµÄÍ¼Æ¬¾«Áé´Ó±¾Àà¼Ì³ĞÏÂÈ¥¼´¿É¡£Ö»ÓĞÌØÊâµÄ¾«Áé£¬±ÈÈç´ø¶¯»­µÄ¾«Áé£¬²ÅĞèÒª´Ó¶¯Ì¬¾«Áé¼Ì³ĞÏÂÈ¥
-	/// </summary>
-	public class CSprite
+    /// æ„é€ å‡½æ•°ï¼Œéœ€è¦ä¼ å…¥ä¸€ä¸ªéç©ºçš„ç²¾çµåå­—å­—ç¬¦ä¸²ã€‚å¦‚æœä¼ å…¥çš„æ˜¯åœ°å›¾é‡Œæ‘†æ”¾å¥½çš„ç²¾çµåå­—ï¼Œåˆ™æ­¤ç±»å³ä¸åœ°å›¾é‡Œçš„ç²¾çµç»‘å®š
+	/// å¦‚æœä¼ å…¥çš„æ˜¯ä¸€ä¸ªæ–°çš„ç²¾çµåå­—ï¼Œåˆ™éœ€è¦è°ƒç”¨æˆå‘˜å‡½æ•° CloneSpriteï¼Œå¤åˆ¶ä¸€ä»½ç²¾çµå¯¹è±¡å®ä¾‹ï¼Œæ‰ä¸å®é™…çš„åœ°å›¾ç²¾çµå…³è”èµ·æ¥
+    /// </summary>
+    public CSprite(string szName)
 	{
-		private string m_szName;		// ¾«ÁéÃû×Ö
-
-		/// <summary>
-		/// ¹¹Ôìº¯Êı£¬ĞèÒª´«ÈëÒ»¸ö·Ç¿ÕµÄ¾«ÁéÃû×Ö×Ö·û´®¡£Èç¹û´«ÈëµÄÊÇµØÍ¼Àï°Ú·ÅºÃµÄ¾«ÁéÃû×Ö£¬Ôò´ËÀà¼´ÓëµØÍ¼ÀïµÄ¾«Áé°ó¶¨
-		/// Èç¹û´«ÈëµÄÊÇÒ»¸öĞÂµÄ¾«ÁéÃû×Ö£¬ÔòĞèÒªµ÷ÓÃ³ÉÔ±º¯Êı CloneSprite£¬¸´ÖÆÒ»·İ¾«Áé¶ÔÏóÊµÀı£¬²ÅÓëÊµ¼ÊµÄµØÍ¼¾«Áé¹ØÁªÆğÀ´
-		/// </summary>
-		public CSprite(string szName)
-		{
-			m_szName = szName;
-		}
-
-		/// <summary>
-		/// GetName
-		/// ·µ»ØÖµ£º·µ»Ø¾«ÁéÃû×Ö
-		/// </summary>
-		public string GetName()
-		{
-			return m_szName;
-		}
-		
-		/// <summary>
-		/// CloneSprite£º¸´ÖÆ(´´½¨)Ò»¸ö¾«Áé¡£¾«ÁéµÄ´´½¨·½Ê½£ºÏÈÔÚµØÍ¼ÖĞ°Ú·ÅÒ»¸ö¾«Áé×öÎªÄ£°å£¬ÉèÖÃºÃ¸÷Ïî²ÎÊı£¬È»ºóÔÚ´úÂëÀïÊ¹ÓÃ´Ëº¯Êı¿ËÂ¡Ò»¸öÊµÀı
-		/// ·µ»ØÖµ£ºtrue±íÊ¾¿ËÂ¡³É¹¦£¬false¿ËÂ¡Ê§°Ü¡£Ê§°ÜµÄÔ­Òò¿ÉÄÜÊÇÔÚµØÍ¼ÖĞÎ´ÕÒµ½¶ÔÓ¦Ãû×ÖµÄ¾«Áé
-		/// ²ÎÊı szSrcName£ºµØÍ¼ÖĞÓÃ×öÄ£°åµÄ¾«ÁéÃû×Ö
-		/// </summary>
-		public bool CloneSprite(string szSrcName)
-		{
-			return CommonAPI.dCloneSprite( szSrcName, GetName() ) == 0 ? false : true;
-		}
-
-		/// <summary>
-		/// DeleteSprite£ºÔÚµØÍ¼ÖĞÉ¾³ıÓë±¾¶ÔÏóÊµÀı¹ØÁªµÄ¾«Áé
-		/// </summary>
-		public void		DeleteSprite()
-		{
-			CommonAPI.dDeleteSprite( GetName() );
-		}
-
-		/// <summary>
-		/// SetSpriteVisible£ºÉèÖÃ¾«ÁéÒş²Ø»òÕßÏÔÊ¾(¿É¼û²»¿É¼û)
-		/// ²ÎÊı bVisible£ºtrue ¿É¼û false²»¿É¼û
-		/// </summary>
-		public void SetSpriteVisible(bool bVisible)
-		{
-			CommonAPI.dSetSpriteVisible( GetName(), bVisible ? 1 : 0 );
-		}
-
-		/// <summary>
-		/// IsSpriteVisible£º»ñÈ¡¸Ã¾«Áéµ±Ç°ÊÇ·ñ¿É¼û
-		/// </summary>
-		public bool IsSpriteVisible()
-		{
-			return CommonAPI.dIsSpriteVisible( GetName() ) == 0 ? false : true;
-		}
-
-		/// <summary>
-		/// SetSpriteEnable£º½ûÖ¹»òÕßÆôÓÃ¸Ã¾«Áé¡£±»½ûÖ¹µÄ¾«Áé½«²»²ÎÓëÈÎºÎÏìÓ¦£¬°üÀ¨²»ÒÆ¶¯£¬Ã»ÓĞÅö×²µÈ£¬½ö½öÊÇÔÚµØÍ¼ÖĞÏÔÊ¾
-		/// ²ÎÊı bEnable£ºtrueÆôÓÃ false½ûÖ¹
-		/// </summary>
-		public void SetSpriteEnable(bool bEnable)
-		{
-			CommonAPI.dSetSpriteEnable( GetName(), bEnable ? 1 : 0 );
-		}
-
-		/// <summary>
-		/// SetSpriteScale£ºÉèÖÃ¾«ÁéµÄËõ·ÅÖµ
-		/// ²ÎÊı fScale£ºËõ·ÅÖµ¡£´óÓÚ0µÄÖµ
-		/// </summary>
-		public void		SetSpriteScale(  float fScale )
-		{
-			CommonAPI.dSetSpriteScale( GetName(), fScale );
-		}
-
-		/// <summary>
-		/// IsPointInSprite£ºÅĞ¶ÏÄ³¸ö×ø±êµãÊÇ·ñÎ»ÓÚ¾«ÁéÄÚ²¿
-		/// ²ÎÊı fPosX£ºX×ø±êµã
-		/// ²ÎÊı fPosY£ºY×ø±êµã
-		/// </summary>
-		public bool IsPointInSprite(float fPosX, float fPosY)
-		{
-			return CommonAPI.dIsPointInSprite( GetName(), fPosX, fPosY ) == 0 ? false : true;
-		}
-
-		/// <summary>
-		/// SetSpritePosition£ºÉèÖÃ¾«ÁéÎ»ÖÃ
-		/// ²ÎÊı fPosX£ºX×ø±ê
-		/// ²ÎÊı fPosY£ºY×ø±ê
-		/// </summary>
-		public void		SetSpritePosition(  float fPosX,  float fPosY )
-		{
-			CommonAPI.dSetSpritePosition( GetName(), fPosX, fPosY );
-		}
-
-		/// <summary>
-		/// SetSpritePositionX£ºÖ»ÉèÖÃ¾«ÁéX×ø±ê
-		/// ²ÎÊı fPosX£ºX×ø±ê
-		/// </summary>
-		public void		SetSpritePositionX(  float fPosX )
-		{
-			CommonAPI.dSetSpritePositionX( GetName(), fPosX );
-		}
-
-		/// <summary>
-		/// SetSpritePositionY£ºÖ»ÉèÖÃ¾«ÁéY×ø±ê
-		/// ²ÎÊı fPosY£ºY×ø±ê
-		/// </summary>
-		public void		SetSpritePositionY(  float fPosY )
-		{
-			CommonAPI.dSetSpritePositionY( GetName(), fPosY );
-		}
-
-		/// <summary>
-		/// GetSpritePositionX£º»ñÈ¡¾«ÁéX×ø±ê
-		/// ·µ»ØÖµ£º¾«ÁéµÄX×ø±ê
-		/// </summary>
-		public float		GetSpritePositionX()
-		{
-			return CommonAPI.dGetSpritePositionX( GetName() );
-		}
-
-		/// <summary>
-		/// GetSpritePositionY£º»ñÈ¡¾«ÁéY×ø±ê
-		/// ·µ»ØÖµ£º¾«ÁéµÄY×ø±ê
-		/// </summary>
-		public float		GetSpritePositionY()
-		{
-			return CommonAPI.dGetSpritePositionY( GetName() );
-		}
-
-		/// <summary>
-		/// GetSpriteLinkPointPosX£º»ñÈ¡¾«ÁéÁ´½ÓµãX×ø±ê¡£Á´½ÓµãÊÇÒÀ¸½ÓÚ¾«ÁéµÄÒ»¸ö×ø±êµã£¬¿ÉÒÔÔÚ±à¼­Æ÷ÀïÔö¼Ó»òÕßÉ¾³ı
-		/// ²ÎÊı iId£ºÁ´½ÓµãĞòºÅ£¬µÚÒ»¸öÎª1£¬ºóÃæÒÀ´Îµİ¼Ó
-		/// </summary>
-		public float		GetSpriteLinkPointPosX(  int iId )
-		{
-			return CommonAPI.dGetSpriteLinkPointPosX( GetName(), iId );
-		}
-
-		/// <summary>
-		/// GetSpriteLinkPointPosY£º»ñÈ¡¾«ÁéÁ´½ÓµãY×ø±ê¡£Á´½ÓµãÊÇÒÀ¸½ÓÚ¾«ÁéµÄÒ»¸ö×ø±êµã£¬¿ÉÒÔÔÚ±à¼­Æ÷ÀïÔö¼Ó»òÕßÉ¾³ı
-		/// ²ÎÊı iId£ºÁ´½ÓµãĞòºÅ£¬µÚÒ»¸öÎª1£¬ºóÃæÒÀ´Îµİ¼Ó
-		/// </summary>
-		public float		GetSpriteLinkPointPosY(  int iId )
-		{
-			return CommonAPI.dGetSpriteLinkPointPosY( GetName(), iId );
-		}
-
-		/// <summary>
-		/// SetSpriteRotation£ºÉèÖÃ¾«ÁéµÄĞı×ª½Ç¶È
-		/// ²ÎÊı fRot£ºĞı×ª½Ç¶È£¬·¶Î§0 - 360
-		/// </summary>
-		public void		SetSpriteRotation(  float fRot )
-		{
-			CommonAPI.dSetSpriteRotation( GetName(), fRot );
-		}
-
-		/// <summary>
-		/// GetSpriteRotation£º»ñÈ¡¾«ÁéµÄĞı×ª½Ç¶È
-		/// ·µ»ØÖµ£º¾«ÁéµÄĞı×ª½Ç¶È
-		/// </summary>
-		public float		GetSpriteRotation()
-		{
-			return CommonAPI.dGetSpriteRotation( GetName() );
-		}
-
-		/// <summary>
-		/// SetSpriteAutoRot£ºÉèÖÃ¾«Áé°´ÕÕÖ¸¶¨ËÙ¶È×Ô¶¯Ğı×ª
-		/// ²ÎÊı fRotSpeed£ºĞı×ªËÙ¶È
-		/// </summary>
-		public void 		SetSpriteAutoRot(  float fRotSpeed )
-		{
-			CommonAPI.dSetSpriteAutoRot( GetName(), fRotSpeed );
-		}
-
-		/// <summary>
-		/// SetSpriteWidth£ºÉèÖÃ¾«ÁéÍâĞÎ¿í¶È
-		/// ²ÎÊı fWidth£º¿í¶ÈÖµ£¬´óÓÚ0
-		/// </summary>
-		public void		SetSpriteWidth(  float fWidth )
-		{
-			CommonAPI.dSetSpriteWidth( GetName(), fWidth );
-		}
-
-		/// <summary>
-		/// GetSpriteWidth£º»ñÈ¡¾«ÁéÍâĞÎ¿í¶È
-		/// ·µ»ØÖµ£º¾«Áé¿í¶ÈÖµ
-		/// </summary>
-		public float		GetSpriteWidth()
-		{
-			return CommonAPI.dGetSpriteWidth( GetName() );
-		}
-
-		/// <summary>
-		/// SetSpriteHeight£ºÉèÖÃ¾«ÁéÍâĞÎ¸ß¶È
-		/// ²ÎÊı fHeight£º¾«Áé¸ß¶ÈÖµ
-		/// </summary>
-		public void		SetSpriteHeight(  float fHeight )
-		{
-			CommonAPI.dSetSpriteHeight( GetName(), fHeight );
-		}
-
-		/// <summary>
-		/// GetSpriteHeight£º»ñÈ¡¾«ÁéÍâĞÎ¸ß¶È
-		/// ·µ»ØÖµ£º¾«Áé¸ß¶ÈÖµ
-		/// </summary>
-		public float		GetSpriteHeight()
-		{
-			return CommonAPI.dGetSpriteHeight( GetName() );
-		}
-
-		/// <summary>
-		/// SetSpriteFlipX£ºÉèÖÃ¾«ÁéÍ¼Æ¬X·½Ïò·­×ªÏÔÊ¾
-		/// ²ÎÊı bFlipX£ºtrue ·­×ª false²»·­×ª(»Ö¸´Ô­À´³¯Ïò)
-		/// </summary>
-		public void		SetSpriteFlipX( bool bFlipX )
-		{
-			CommonAPI.dSetSpriteFlipX( GetName(), bFlipX ? 1 : 0 );
-		}
-
-		/// <summary>
-		/// GetSpriteFlipX£º»ñÈ¡µ±Ç°¾«ÁéÍ¼Æ¬X·½ÏòÊÇ·ñÊÇ·­×ªÏÔÊ¾
-		/// ·µ»ØÖµ£ºtrue ·­×ª false²»·­×ª
-		/// </summary>
-		public bool		GetSpriteFlipX()
-		{
-			return CommonAPI.dGetSpriteFlipX( GetName() ) == 0 ? false : true;
-		}
-		/// <summary>
-		/// SetSpriteFlipY£ºÉèÖÃ¾«ÁéÍ¼Æ¬Y·½Ïò·­×ªÏÔÊ¾
-		/// ²ÎÊı bFlipY£ºtrue ·­×ª false²»·­×ª(»Ö¸´Ô­À´³¯Ïò)
-		/// </summary>
-		public void		SetSpriteFlipY( bool bFlipY )
-		{
-			CommonAPI.dSetSpriteFlipY( GetName(), bFlipY ? 1 : 0 );
-		}
-
-		/// <summary>
-		/// GetSpriteFlipY£º»ñÈ¡µ±Ç°¾«ÁéÍ¼Æ¬Y·½ÏòÊÇ·ñÊÇ·­×ªÏÔÊ¾
-		/// ·µ»ØÖµ£ºtrue ·­×ª false²»·­×ª
-		/// </summary>
-		public bool		GetSpriteFlipY()
-		{
-			return CommonAPI.dGetSpriteFlipY(GetName()) == 0 ? false : true;
-		}
-
-		/// <summary>
-		/// SetSpriteFlip£ºÍ¬Ê±ÉèÖÃ¾«Áé·­×ªX¼°Y·½Ïò
-		/// ²ÎÊı bFlipX£ºtrue ·­×ª false²»·­×ª(»Ö¸´Ô­À´³¯Ïò)
-		/// ²ÎÊı bFlipY£ºtrue ·­×ª false²»·­×ª(»Ö¸´Ô­À´³¯Ïò)
-		/// </summary>
-		public void		SetSpriteFlip( bool bFlipX, bool bFlipY )
-		{
-			CommonAPI.dSetSpriteFlip(GetName(), bFlipX ? 1 : 0, bFlipY ? 1 : 0);
-		}
-
-		/// <summary>
-		/// SetSpriteLifeTime£ºÉèÖÃ¾«ÁéµÄÉúÃüÊ±³¤£¬Ê±¼äµ½ÁËÖ®ºó½«×Ô¶¯±»É¾³ı
-		/// ²ÎÊı fLifeTime£ºÉúÃüÊ±³¤£¬µ¥Î» Ãë
-		/// </summary>
-		public void		SetSpriteLifeTime(  float fLifeTime )
-		{
-			CommonAPI.dSetSpriteLifeTime( GetName(), fLifeTime );
-		}
-
-		/// <summary>
-		/// GetSpriteLifeTime£º»ñÈ¡¾«ÁéÉúÃüÊ±³¤
-		/// ·µ»ØÖµ£ºÉúÃüÊ±³¤£¬µ¥Î» Ãë
-		/// </summary>
-		public float		GetSpriteLifeTime()
-		{
-			return CommonAPI.dGetSpriteLifeTime( GetName() );
-		}
-		
-		/// <summary>
-		/// SpriteMoveTo£ºÈÃ¾«Áé°´ÕÕ¸ø¶¨ËÙ¶ÈÒÆ¶¯µ½¸ø¶¨×ø±êµã
-		/// ²ÎÊı fPosX£ºÒÆ¶¯µÄÄ¿±êX×ø±êÖµ
-		/// ²ÎÊı fPosY£ºÒÆ¶¯µÄÄ¿±êY×ø±êÖµ
-		/// ²ÎÊı fSpeed£ºÒÆ¶¯ËÙ¶È
-		/// ²ÎÊı bAutoStop£ºÒÆ¶¯µ½ÖÕµãÖ®ºóÊÇ·ñ×Ô¶¯Í£Ö¹
-		/// </summary>
-		public void		SpriteMoveTo(  float fPosX,  float fPosY,  float fSpeed, bool bAutoStop )
-		{
-			CommonAPI.dSpriteMoveTo(GetName(), fPosX, fPosY, fSpeed, bAutoStop ? 1 : 0);
-		}
-
-		/// <summary>
-		/// SpriteRotateTo£ºÈÃ¾«Áé°´ÕÕ¸ø¶¨ËÙ¶ÈĞı×ªµ½¸ø¶¨µÄ½Ç¶È
-		/// ²ÎÊı fRotation£º¸ø¶¨µÄÄ¿±êĞı×ªÖµ
-		/// ²ÎÊı fRotSpeed£ºĞı×ªËÙ¶È
-		/// ²ÎÊı bAutoStop£ºĞı×ªµ½ÖÕµãÖ®ºóÊÇ·ñ×Ô¶¯Í£Ö¹
-		/// </summary>
-		public void		SpriteRotateTo(  float fRotation,  float fRotSpeed, bool bAutoStop )
-		{
-			CommonAPI.dSpriteRotateTo(GetName(), fRotation, fRotSpeed, bAutoStop ? 1 : 0);
-		}
-
-		/// <summary>
-		/// SetSpriteWorldLimit£ºÉèÖÃ¾«ÁéµÄÊÀ½ç±ß½ç×ø±êÏŞÖÆ¼°Åö×²Ä£Ê½
-		/// ²ÎÊı Limit£ºÅö×²µ½ÊÀ½ç±ß½çÖ®ºóµÄÏìÓ¦Ä£Ê½£¬Èç¹ûÎªOFF£¬ÔòÊÇ¹Ø±ÕÊÀ½ç±ß½çÅö×²¡£ÆäËüÖµ¼û EWorldLimit
-		/// ²ÎÊı fLeft£º±ß½çµÄ×ó±ßX×ø±ê
-		/// ²ÎÊı fTop£º±ß½çµÄÉÏ±ßY×ø±ê
-		/// ²ÎÊı fRight£º±ß½çµÄÓÒ±ßX×ø±ê
-		/// ²ÎÊı fBottom£º±ß½çµÄÏÂ±ßY×ø±ê
-		/// </summary>
-		public void		SetSpriteWorldLimit(  EWorldLimit Limit,  float fLeft,  float fTop,  float fRight,  float fBottom )
-		{
-			CommonAPI.dSetSpriteWorldLimit( GetName(), Limit, fLeft, fTop, fRight, fBottom );
-		}
-
-		/// <summary>
-		/// SetSpriteWorldLimitMode£ºÉèÖÃ¾«ÁéµÄÊÀ½ç±ß½çÅö×²Ä£Ê½
-		/// ²ÎÊı Limit£ºÅö×²µ½ÊÀ½ç±ß½çÖ®ºóµÄÏìÓ¦Ä£Ê½£¬Èç¹ûÎªOFF£¬ÔòÊÇ¹Ø±ÕÊÀ½ç±ß½çÅö×²¡£ÆäËüÖµ¼û EWorldLimit
-		/// </summary>
-		public void		SetSpriteWorldLimitMode(  EWorldLimit Limit )
-		{
-			CommonAPI.dSetSpriteWorldLimitMode( GetName(), Limit );
-		}
-
-		/// <summary>
-		/// SetSpriteWorldLimitMin£ºÉèÖÃ¾«ÁéµÄÊÀ½ç±ß½çÉÏ±ß¼°×ó±ß×ø±êÏŞÖÆ
-		/// ²ÎÊı fLeft£º±ß½çµÄ×ó±ßX×ø±ê
-		/// ²ÎÊı fTop£º±ß½çµÄÉÏ±ßY×ø±ê
-		/// </summary>
-		public void		SetSpriteWorldLimitMin(  float fLeft,  float fTop )
-		{
-			CommonAPI.dSetSpriteWorldLimitMin( GetName(), fLeft, fTop );
-		}
-		
-		/// <summary>
-		/// SetSpriteWorldLimitMax£ºÉèÖÃ¾«ÁéµÄÊÀ½ç±ß½çÏÂ±ß¼°ÓÒ±ß×ø±êÏŞÖÆ
-		/// ²ÎÊı fRight£º±ß½çµÄÓÒ±ßX×ø±ê
-		/// ²ÎÊı fBottom£º±ß½çµÄÏÂ±ßY×ø±ê
-		/// </summary>
-		public void		SetSpriteWorldLimitMax(  float fRight,  float fBottom )
-		{
-			CommonAPI.dSetSpriteWorldLimitMax( GetName(), fRight, fBottom );
-		}
-
-		/// <summary>
-		/// GetSpriteWorldLimitLeft£º»ñÈ¡¾«ÁéÊÀ½ç±ß½ç×ó±ß½çÏŞÖÆ
-		/// </summary>
-		public float floatGetSpriteWorldLimitLeft()
-		{
-			return CommonAPI.dGetSpriteWorldLimitLeft(GetName());
-		}
-
-		/// <summary>
-		/// GetSpriteWorldLimitLeft£º»ñÈ¡¾«ÁéÊÀ½ç±ß½çÉÏ±ß½çÏŞÖÆ
-		/// </summary>
-		public float GetSpriteWorldLimitTop()
-		{
-			return CommonAPI.dGetSpriteWorldLimitTop(GetName());
-		}
-
-		/// <summary>
-		/// GetSpriteWorldLimitLeft£º»ñÈ¡¾«ÁéÊÀ½ç±ß½çÓÒ±ß½çÏŞÖÆ
-		/// </summary>
-		public float GetSpriteWorldLimitRight()
-		{
-			return CommonAPI.dGetSpriteWorldLimitRight(GetName());
-		}
-
-		/// <summary>
-		/// GetSpriteWorldLimitLeft£º»ñÈ¡¾«ÁéÊÀ½ç±ß½çÏÂ±ß½çÏŞÖÆ
-		/// </summary>
-		public float GetSpriteWorldLimitBottom()
-		{
-			return CommonAPI.dGetSpriteWorldLimitBottom(GetName());
-		}
-
-		/// <summary>
-		/// SetSpriteCollisionSend£ºÉèÖÃ¾«ÁéÊÇ·ñ¿ÉÒÔ·¢ËÍ(²úÉú)Åö×²
-		/// ¾«ÁéµÄÅö×²·½Ê½Îª£ºµ±AÒÆ¶¯ÖĞÅöÉÏBÊ±£¬Èç¹ûAÊÇ¿ÉÒÔ²úÉúÅö×²µÄ£¬BÊÇ¿ÉÒÔ½ÓÊÜÅö×²µÄ£¬ÔòÕâ2¸öÎïÌå»á²úÉúÅö×²£¬¾«ÁéÅö×²µÄAPI½«±»µ÷ÓÃ¡£·ñÔòÎŞÅö×²·¢Éú
-		/// ²ÎÊı bSend£ºtrue ¿ÉÒÔ²úÉú false ²»²úÉú
-		/// </summary>
-		public void 		SetSpriteCollisionSend( bool bSend )
-		{
-			CommonAPI.dSetSpriteCollisionSend(GetName(), bSend ? 1 : 0);
-		}
-
-		/// <summary>
-		/// SetSpriteCollisionReceive£ºÉèÖÃ¾«ÁéÊÇ·ñ¿ÉÒÔ½ÓÊÜÅö×²
-		/// ¾«ÁéµÄÅö×²·½Ê½Îª£ºµ±AÒÆ¶¯ÖĞÅöÉÏBÊ±£¬Èç¹ûAÊÇ¿ÉÒÔ²úÉúÅö×²µÄ£¬BÊÇ¿ÉÒÔ½ÓÊÜÅö×²µÄ£¬ÔòÕâ2¸öÎïÌå»á²úÉúÅö×²£¬¾«ÁéÅö×²µÄAPI½«±»µ÷ÓÃ¡£·ñÔòÎŞÅö×²·¢Éú
-		/// ²ÎÊı bReceive£ºtrue ¿ÉÒÔ½ÓÊÜ false ²»½ÓÊÜ
-		/// </summary>
-		public void 		SetSpriteCollisionReceive( bool bReceive )
-		{
-			CommonAPI.dSetSpriteCollisionReceive(GetName(), bReceive ? 1 : 0);
-		}
-
-		/// <summary>
-		/// SetSpriteCollisionActive£ºÍ¬Ê±ÉèÖÃ¾«ÁéÊÇ·ñ¿ÉÒÔ²úÉú¼°½ÓÊÜÅö×²
-		/// ¾«ÁéµÄÅö×²·½Ê½Îª£ºµ±AÒÆ¶¯ÖĞÅöÉÏBÊ±£¬Èç¹ûAÊÇ¿ÉÒÔ²úÉúÅö×²µÄ£¬BÊÇ¿ÉÒÔ½ÓÊÜÅö×²µÄ£¬ÔòÕâ2¸öÎïÌå»á²úÉúÅö×²£¬¾«ÁéÅö×²µÄAPI½«±»µ÷ÓÃ¡£·ñÔòÎŞÅö×²·¢Éú
-		/// ²ÎÊı bSend£ºtrue ¿ÉÒÔ²úÉú false ²»²úÉú
-		/// ²ÎÊı bReceive£ºtrue ¿ÉÒÔ½ÓÊÜ false ²»½ÓÊÜ
-		/// </summary>
-		public void 		SetSpriteCollisionActive( bool bSend, bool bReceive )
-		{
-			CommonAPI.dSetSpriteCollisionActive(GetName(), bSend ? 1 : 0, bReceive ? 1 : 0);
-		}
-
-		/// <summary>
-		/// SetSpriteCollisionPhysicsSend£ºÉèÖÃ¾«ÁéÊÇ·ñ¿ÉÒÔ·¢ËÍ(²úÉú)Åö×²
-		/// ²ÎÊı bSend£ºtrue ¿ÉÒÔ²úÉú false ²»²úÉú
-		/// </summary>
-		public void 		SetSpriteCollisionPhysicsSend( bool bSend )
-		{
-			CommonAPI.dSetSpriteCollisionPhysicsSend(GetName(), bSend ? 1 : 0);
-		}
-
-		/// <summary>
-		/// SetSpriteCollisionPhysicsReceive£ºÉèÖÃ¾«ÁéÊÇ·ñ¿ÉÒÔ½ÓÊÜÅö×²
-		/// ²ÎÊı bReceive£ºtrue ¿ÉÒÔ½ÓÊÜ false ²»½ÓÊÜ
-		/// </summary>
-		public void 		SetSpriteCollisionPhysicsReceive( bool bReceive )
-		{
-			CommonAPI.dSetSpriteCollisionPhysicsReceive(GetName(), bReceive ? 1 : 0);
-		}
-
-		/// <summary>
-		/// GetSpriteCollisionSend£º»ñÈ¡¾«Áéµ±Ç°ÊÇ·ñÊÇ¿ÉÒÔ²úÉúÅö×²
-		/// ·µ»ØÖµ£ºtrue ¿ÉÒÔ²úÉú false ²»²úÉú
-		/// </summary>
-		public bool 		GetSpriteCollisionSend()
-		{
-			return CommonAPI.dGetSpriteCollisionSend( GetName() ) == 0 ? false : true;
-		}
-
-		/// <summary>
-		/// GetSpriteCollisionReceive£º»ñÈ¡¾«Áéµ±Ç°ÊÇ·ñÊÇ¿ÉÒÔ½ÓÊÜÅö×²
-		/// ·µ»ØÖµ£ºtrue ¿ÉÒÔ½ÓÊÜ false ²»½ÓÊÜ
-		/// </summary>
-		public bool 		GetSpriteCollisionReceive()
-		{
-			return CommonAPI.dGetSpriteCollisionReceive(GetName()) == 0 ? false : true;
-		}
-
-		/// <summary>
-		/// SetSpriteCollisionResponse£ºÉèÖÃ¾«ÁéÓë¾«ÁéµÄÅö×²ÏìÓ¦Ä£Ê½
-		/// ²ÎÊı Response£ºÏìÓ¦Ä£Ê½£¬Èç¹ûÎªOFF£¬ÔòÎª¹Ø±ÕÅö×²ÏìÓ¦£¬Åö×²API½«²»»á±»µ÷ÓÃ¡£ÆäËüÖµ¼û ECollisionResponse
-		/// </summary>
-		public void		SetSpriteCollisionResponse(  ECollisionResponse Response )
-		{
-			CommonAPI.dSetSpriteCollisionResponse( GetName(), Response );
-		}
-
-		/// <summary>
-		/// SetSpriteCollisionMaxIterations£ºÉèÖÃ¾«ÁéÅö×²Ö®ºóµÄ×î´ó·´µ¯´ÎÊı
-		/// ²ÎÊı iTimes£º·´µ¯´ÎÊı
-		/// </summary>
-		/// <param name="iTimes"></param>
-		public void		SetSpriteCollisionMaxIterations(  int iTimes )
-		{
-			CommonAPI.dSetSpriteCollisionMaxIterations( GetName(), iTimes );
-		}
-
-		/// <summary>
-		/// SetSpriteForwardMovementOnly£ºÉèÖÃ¾«ÁéÊÇ·ñÖ»ÄÜ³¯Ç°ÒÆ¶¯
-		/// ²ÎÊı bForward£ºtrue Ö»ÄÜ³¯Ç°ÒÆ¶¯ false ¿ÉÒÔ³¯ÆäËû·½ÏòÒÆ¶¯
-		/// </summary>
-		/// <param name="bForward"></param>
-		public void		SetSpriteForwardMovementOnly( bool bForward )
-		{
-			CommonAPI.dSetSpriteForwardMovementOnly(GetName(), bForward ? 1 : 0);
-		}
-
-		/// <summary>
-		/// GetSpriteForwardMovementOnly£º»ñÈ¡¾«Áéµ±Ç°ÊÇ·ñÖ»ÄÜ³¯Ç°ÒÆ¶¯
-		/// ·µ»ØÖµ£ºtrue Ö»ÄÜ³¯Ç°ÒÆ¶¯ false ¿ÉÒÔ³¯ÆäËü·½ÏòÒÆ¶¯
-		/// </summary>
-		/// <returns></returns>
-		public bool		GetSpriteForwardMovementOnly()
-		{
-			return CommonAPI.dGetSpriteForwardMovementOnly(GetName()) == 0 ? false : true;
-		}
-
-		/// <summary>
-		/// SetSpriteForwardSpeed£ºÉèÖÃ¾«ÁéÏòÇ°µÄËÙ¶È
-		/// ²ÎÊı fSpeed£ºËÙ¶È
-		/// </summary>
-		/// <param name="fSpeed"></param>
-		public void		SetSpriteForwardSpeed(  float fSpeed )
-		{
-			CommonAPI.dSetSpriteForwardSpeed( GetName(), fSpeed );
-		}
-
-		/// <summary>
-		/// SetSpriteImpulseForce£ºÉèÖÃ¾«ÁéË²¼äÍÆÁ¦
-		/// ²ÎÊı fForceX£ºX·½ÏòÍÆÁ¦´óĞ¡
-		/// ²ÎÊı fForceY£ºY·½ÏòÍÆÁ¦´óĞ¡
-		/// ²ÎÊı bGravitic£ºÊÇ·ñ¼ÆËãÖØÁ¦
-		/// </summary>
-		/// <param name="fForceX"></param>
-		/// <param name="fForceY"></param>
-		/// <param name="bGravitic"></param>
-		public void 		SetSpriteImpulseForce(  float fForceX,  float fForceY, bool bGravitic )
-		{
-			CommonAPI.dSetSpriteImpulseForce(GetName(), fForceX, fForceY, bGravitic ? 1 : 0);
-		}
-
-		/// <summary>
-		/// SetSpriteImpulseForcePolar£º°´½Ç¶È³¯ÏòÉèÖÃ¾«ÁéË²¼äÍÆÁ¦
-		/// ²ÎÊı fPolar£º½Ç¶È³¯Ïò
-		/// ²ÎÊı fForce£ºÍÆÁ¦´óĞ¡
-		/// ²ÎÊı bGravitic£ºÊÇ·ñ¼ÆËãÖØÁ¦
-		/// </summary>
-		/// <param name="fPolar"></param>
-		/// <param name="fForce"></param>
-		/// <param name="bGravitic"></param>
-		public void 		SetSpriteImpulseForcePolar(  float fPolar,  float fForce, bool bGravitic )
-		{
-			CommonAPI.dSetSpriteImpulseForcePolar(GetName(), fPolar, fForce, bGravitic ? 1 : 0);
-		}
-
-		/// <summary>
-		/// SetSpriteConstantForceX£ºÉèÖÃ¾«ÁéX·½Ïò³£Á¿ÍÆÁ¦
-		/// ²ÎÊı fForceX£ºX·½ÏòÍÆÁ¦´óĞ¡
-		/// </summary>
-		/// <param name="fForceX"></param>
-		public void 		SetSpriteConstantForceX(  float fForceX )
-		{
-			CommonAPI.dSetSpriteConstantForceX( GetName(), fForceX );
-		}
-
-		/// <summary>
-		/// SetSpriteConstantForceY£ºÉèÖÃ¾«ÁéY·½Ïò³£Á¿ÍÆÁ¦
-		/// ²ÎÊı fForceY£ºY·½ÏòÍÆÁ¦´óĞ¡
-		/// </summary>
-		/// <param name="fForceY"></param>
-		public void 		SetSpriteConstantForceY(  float fForceY )
-		{
-			CommonAPI.dSetSpriteConstantForceY( GetName(), fForceY );
-		}
-
-		/// <summary>
-		/// SetSpriteConstantForceGravitic£º¾«ÁéÔÚ¼ÆËã³£Á¿ÍÆÁ¦µÄÊ±ºò£¬ÊÇ·ñ¼ÆËãÖØÁ¦
-		/// ²ÎÊı bGravitic£ºÊÇ·ñ¼ÆËãÖØÁ¦
-		/// </summary>
-		/// <param name="bGravitic"></param>
-		public void 		SetSpriteConstantForceGravitic( bool bGravitic )
-		{
-			CommonAPI.dSetSpriteConstantForceGravitic(GetName(), bGravitic ? 1 : 0);
-		}
-
-		/// <summary>
-		/// SetSpriteConstantForce£ºÉèÖÃ¾«Áé³£Á¿ÍÆÁ¦
-		/// ²ÎÊı fForceX£ºX·½ÏòÍÆÁ¦´óĞ¡
-		/// ²ÎÊı fForceY£ºY·½ÏòÍÆÁ¦´óĞ¡
-		/// ²ÎÊı bGravitic£ºÊÇ·ñ¼ÆËãÖØÁ¦
-		/// </summary>
-		/// <param name="fForceX"></param>
-		/// <param name="fForceY"></param>
-		/// <param name="bGravitic"></param>
-		public void 		SetSpriteConstantForce(  float fForceX,  float fForceY, bool bGravitic )
-		{
-			CommonAPI.dSetSpriteConstantForce(GetName(), fForceX, fForceY, bGravitic ? 1 : 0);
-		}
-
-		/// <summary>
-		/// SetSpriteConstantForcePolar£º°´½Ç¶È³¯ÏòÉèÖÃ¾«Áé³£Á¿ÍÆÁ¦
-		/// ²ÎÊı fPolar£º½Ç¶È³¯Ïò
-		/// ²ÎÊı fForce£ºÍÆÁ¦´óĞ¡
-		/// ²ÎÊı bGravitic£ºÊÇ·ñ¼ÆËãÖØÁ¦
-		/// </summary>
-		/// <param name="fPolar"></param>
-		/// <param name="fForce"></param>
-		/// <param name="bGravitic"></param>
-		public void 		SetSpriteConstantForcePolar(  float fPolar,  float fForce, bool bGravitic )
-		{
-			CommonAPI.dSetSpriteConstantForcePolar(GetName(), fPolar, fForce, bGravitic ? 1 : 0);
-		}
-
-		/// <summary>
-		/// StopSpriteConstantForce£ºÍ£Ö¹¾«Áé³£Á¿ÍÆÁ¦
-		/// </summary>
-		public void 		StopSpriteConstantForce()
-		{
-			CommonAPI.dStopSpriteConstantForce( GetName() );
-		}
-
-		/// <summary>
-		/// SetSpriteForceScale£º°´±¶ÊıËõ·Å¾«Áéµ±Ç°ÊÜµÄÍÆÁ¦
-		/// ²ÎÊı fScale£ºËõ·ÅÖµ
-		/// </summary>
-		/// <param name="fScale"></param>
-		public void 		SetSpriteForceScale(  float fScale )
-		{
-			CommonAPI.dSetSpriteForceScale( GetName(), fScale );
-		}
-
-		/// <summary>
-		/// SetSpriteAtRest£ºÔİÍ£/¼ÌĞø¾«ÁéµÄ¸÷ÖÖÊÜÁ¦¼ÆËã
-		/// ²ÎÊı bRest£ºtrue ÔİÍ£ false ¼ÌĞø
-		/// </summary>
-		/// <param name="bRest"></param>
-		public void 		SetSpriteAtRest( bool bRest )
-		{
-			CommonAPI.dSetSpriteAtRest(GetName(), bRest ? 1 : 0);
-		}
-
-		/// <summary>
-		/// GetSpriteAtRest£º»ñÈ¡¾«Áéµ±Ç°ÊÇ·ñÔÚÔİÍ£ÖĞ
-		/// ·µ»ØÖµ£ºtrue ÔİÍ£ÖĞ false Õı³£
-		/// </summary>
-		/// <returns></returns>
-		public bool 		GetSpriteAtRest( )
-		{
-			return CommonAPI.dGetSpriteAtRest(GetName()) == 0 ? false : true;
-		}
-
-		/// <summary>
-		/// SetSpriteFriction£ºÉèÖÃ¾«ÁéÄ¦²ÁÁ¦
-		/// ²ÎÊı fFriction£ºÄ¦²ÁÁ¦´óĞ¡
-		/// </summary>
-		/// <param name="fFriction"></param>
-		public void 		SetSpriteFriction(  float fFriction )
-		{
-			CommonAPI.dSetSpriteFriction( GetName(), fFriction );
-		}
-
-		/// <summary>
-		/// SetSpriteRestitution£ºÉèÖÃ¾«Áéµ¯Á¦
-		/// ²ÎÊı fRestitution£ºµ¯Á¦Öµ´óĞ¡
-		/// </summary>
-		/// <param name="fRestitution"></param>
-		public void 		SetSpriteRestitution(  float fRestitution )
-		{
-			CommonAPI.dSetSpriteRestitution( GetName(), fRestitution );
-		}
-
-		/// <summary>
-		/// SetSpriteMass£ºÉèÖÃ¾«ÁéÖÊÁ¿
-		/// ²ÎÊı fMass£ºÖÊÁ¿´óĞ¡
-		/// </summary>
-		/// <param name="fMass"></param>
-		public void 		SetSpriteMass(  float fMass )
-		{
-			CommonAPI.dSetSpriteMass( GetName(), fMass );
-		}
-
-		/// <summary>
-		/// GetSpriteMass£º»ñÈ¡¾«ÁéÖÊÁ¿
-		/// ·µ»ØÖµ £ºÖÊÁ¿´óĞ¡
-		/// </summary>
-		/// <returns></returns>
-		public float 		GetSpriteMass()
-		{
-			return CommonAPI.dGetSpriteMass( GetName() );
-		}
-
-		/// <summary>
-		/// SetSpriteAutoMassInertia£º¿ªÆô»òÕß¹Ø±Õ¾«Áé¹ßĞÔ
-		/// ²ÎÊı bStatus£ºtrue ¿ªÆô false ¹Ø±Õ
-		/// </summary>
-		/// <param name="bStatus"></param>
-		public void 		SetSpriteAutoMassInertia( bool bStatus )
-		{
-			CommonAPI.dSetSpriteAutoMassInertia(GetName(), bStatus ? 1 : 0);
-		}
-
-		/// <summary>
-		/// SetSpriteInertialMoment£ºÉèÖÃ¾«Áé¹ßĞÔ´óĞ¡
-		/// ²ÎÊı fInert£º¹ßĞÔ´óĞ¡
-		/// </summary>
-		/// <param name="fInert"></param>
-		public void 		SetSpriteInertialMoment(  float fInert )
-		{
-			CommonAPI.dSetSpriteInertialMoment( GetName(), fInert );
-		}
-
-		/// <summary>
-		/// SetSpriteDamping£ºÉèÖÃ¾«ÁéË¥¼õÖµ
-		/// ²ÎÊı fDamp£ºË¥¼õÖµ´óĞ¡
-		/// </summary>
-		/// <param name="fDamp"></param>
-		public void 		SetSpriteDamping(  float fDamp )
-		{
-			CommonAPI.dSetSpriteDamping( GetName(), fDamp );
-		}
-			
-		/// <summary>
-		/// SetSpriteImmovable£ºÉèÖÃ¾«ÁéÊÇ·ñ²»¿ÉÒÆ¶¯
-		/// ²ÎÊı bImmovable£ºtrue ²»¿ÉÒÔÒÆ¶¯ false ¿ÉÒÔÒÆ¶¯
-		/// </summary>
-		/// <param name="bImmovable"></param>
-		public void 		SetSpriteImmovable( bool bImmovable )
-		{
-			CommonAPI.dSetSpriteImmovable(GetName(), bImmovable ? 1 : 0);
-		}
-
-		/// <summary>
-		/// GetSpriteImmovable£º»ñÈ¡¾«Áéµ±Ç°ÊÇ·ñ²»¿ÉÒÔÒÆ¶¯
-		/// ·µ»ØÖµ£ºtrue ²»¿ÉÒÔÒÆ¶¯ false ¿ÉÒÔÒÆ¶¯
-		/// </summary>
-		/// <returns></returns>
-		public bool 		GetSpriteImmovable()
-		{
-			return CommonAPI.dGetSpriteImmovable(GetName()) == 0 ? false : true;
-		}
-
-		/// <summary>
-		/// SetSpriteLinearVelocity£ºÉèÖÃ¾«ÁéÒÆ¶¯ËÙ¶È
-		/// ²ÎÊı fVelX£ºX·½ÏòËÙ¶È
-		/// ²ÎÊı fVelY£ºY·½ÏòËÙ¶È
-		/// </summary>
-		/// <param name="fVelX"></param>
-		/// <param name="fVelY"></param>
-		public void 		SetSpriteLinearVelocity(  float fVelX,  float fVelY )
-		{
-			CommonAPI.dSetSpriteLinearVelocity( GetName(), fVelX, fVelY );
-		}
-
-		/// <summary>
-		/// SetSpriteLinearVelocityX£ºÉèÖÃ¾«ÁéX·½ÏòÒÆ¶¯ËÙ¶È
-		/// ²ÎÊı fVelX£ºX·½ÏòËÙ¶È
-		/// </summary>
-		/// <param name="fVelX"></param>
-		public void 		SetSpriteLinearVelocityX(  float fVelX )
-		{
-			CommonAPI.dSetSpriteLinearVelocityX( GetName(), fVelX );
-		}
-
-		/// <summary>
-		/// SetSpriteLinearVelocityY£ºÉèÖÃ¾«ÁéY·½ÏòÒÆ¶¯ËÙ¶È
-		/// ²ÎÊı fVelY£ºY·½ÏòËÙ¶È
-		/// </summary>
-		/// <param name="fVelY"></param>
-		public void 		SetSpriteLinearVelocityY(  float fVelY )
-		{
-			CommonAPI.dSetSpriteLinearVelocityY( GetName(), fVelY );
-		}
-
-		/// <summary>
-		/// SetSpriteLinearVelocityPolar£º°´½Ç¶È³¯ÏòÉèÖÃ¾«ÁéÒÆ¶¯ËÙ¶È
-		/// ²ÎÊı fSpeed£ºÒÆ¶¯ËÙ¶È
-		/// ²ÎÊı fPolar£º½Ç¶È³¯Ïò
-		/// </summary>
-		/// <param name="fSpeed"></param>
-		/// <param name="fPolar"></param>
-		public void 		SetSpriteLinearVelocityPolar(  float fSpeed,  float fPolar )
-		{
-			CommonAPI.dSetSpriteLinearVelocityPolar( GetName(), fSpeed, fPolar );
-		}
-	
-		/// <summary>
-		/// SetSpriteAngularVelocity£ºÉèÖÃ¾«Áé½Ç¶ÈĞı×ªËÙ¶È
-		/// ²ÎÊı fAngular£º½Ç¶ÈĞı×ªËÙ¶È
-		/// </summary>
-		/// <param name="fAngular"></param>
-		public void 		SetSpriteAngularVelocity(  float fAngular )
-		{
-			CommonAPI.dSetSpriteAngularVelocity( GetName(), fAngular );
-		}
-
-		/// <summary>
-		/// SetSpriteMinLinearVelocity£ºÉèÖÃ¾«Áé×îĞ¡ËÙ¶È
-		/// ²ÎÊı fMin£º×îĞ¡ËÙ¶ÈÖµ
-		/// </summary>
-		/// <param name="fMin"></param>
-		public void 		SetSpriteMinLinearVelocity(  float fMin )
-		{
-			CommonAPI.dSetSpriteMinLinearVelocity( GetName(), fMin );
-		}
-
-		/// <summary>
-		/// SetSpriteMaxLinearVelocity£ºÉèÖÃ¾«Áé×î´óËÙ¶È
-		/// ²ÎÊı fMax£º×î´óËÙ¶ÈÖµ
-		/// </summary>
-		/// <param name="fMax"></param>
-		public void 		SetSpriteMaxLinearVelocity(  float fMax )
-		{
-			CommonAPI.dSetSpriteMaxLinearVelocity( GetName(), fMax );
-		}
-
-		/// <summary>
-		/// SetSpriteMinAngularVelocity£ºÉèÖÃ¾«Áé×îĞ¡½ÇËÙ¶È
-		/// ²ÎÊı fMin£º×îĞ¡½ÇËÙ¶È
-		/// </summary>
-		/// <param name="fMin"></param>
-		public void 		SetSpriteMinAngularVelocity(  float fMin )
-		{
-			CommonAPI.dSetSpriteMinAngularVelocity( GetName(), fMin );
-		}
-
-		/// <summary>
-		/// SetSpriteMaxAngularVelocity£ºÉèÖÃ¾«Áé×î´ó½ÇËÙ¶È
-		/// ²ÎÊı fMax£º×î´ó½ÇËÙ¶È
-		/// </summary>
-		/// <param name="fMax"></param>
-		public void 		SetSpriteMaxAngularVelocity(  float fMax )
-		{
-			CommonAPI.dSetSpriteMaxAngularVelocity( GetName(), fMax );
-		}
-			
-		/// <summary>
-		/// GetSpriteLinearVelocityX£º»ñÈ¡¾«ÁéX·½ÏòËÙ¶È
-		/// ·µ»ØÖµ£ºX·½ÏòËÙ¶È
-		/// </summary>
-		/// <returns></returns>
-		public float 		GetSpriteLinearVelocityX()
-		{
-			return CommonAPI.dGetSpriteLinearVelocityX( GetName() );
-		}
-
-		/// <summary>
-		/// GetSpriteLinearVelocityY£º»ñÈ¡¾«ÁéY·½ÏòËÙ¶È
-		/// ·µ»ØÖµ£ºY·½ÏòËÙ¶È
-		/// </summary>
-		/// <returns></returns>
-		public float 		GetSpriteLinearVelocityY()
-		{
-			return CommonAPI.dGetSpriteLinearVelocityY( GetName() );
-		}
-		
-		/// <summary>
-		/// SpriteMountToSprite£º½«Ò»¸ö¾«Áé°ó¶¨µ½ÁíÒ»¸ö¾«ÁéÉÏ£¬ÔİÊ±µÄ³ÉÎªÁíÒ»¸ö¾«ÁéµÄÒ»²¿·Ö£¬¸úËæÆäÔË¶¯µÈ
-		/// ²ÎÊı szDstName£º³ĞÔØ°ó¶¨µÄÄ¸Ìå¾«ÁéÃû×Ö
-		/// ²ÎÊı fOffSetX£º°ó¶¨Æ«ÒÆX
-		/// ²ÎÊı fOffsetY£º°ó¶¨Æ«ÒÆY
-		/// ·µ»ØÖµ£º·µ»ØÒ»¸ö°ó¶¨ID
-		/// </summary>
-		/// <param name="szDstName"></param>
-		/// <param name="fOffSetX"></param>
-		/// <param name="fOffsetY"></param>
-		/// <returns></returns>
-		public int SpriteMountToSprite(string szDstName, float fOffSetX, float fOffsetY)
-		{
-			return CommonAPI.dSpriteMountToSprite( GetName(), szDstName, fOffSetX, fOffsetY );
-		}
-
-		/// <summary>
-		/// SpriteMountToSpriteLinkPoint£º½«Ò»¸ö¾«Áé°ó¶¨µ½ÁíÒ»¸ö¾«ÁéÉÏ£¬°ó¶¨Î»ÖÃÎªÖ¸¶¨µÄÁ´½Óµã£¬ÔİÊ±µÄ³ÉÎªÁíÒ»¸ö¾«ÁéµÄÒ»²¿·Ö£¬¸úËæÆäÔË¶¯µÈ
-		/// ²ÎÊı szDstName£º³ĞÔØ°ó¶¨µÄÄ¸Ìå¾«ÁéÃû×Ö
-		/// ²ÎÊı iPointId£ºÁ´½ÓµãĞòºÅ
-		/// ·µ»ØÖµ£º·µ»ØÒ»¸ö°ó¶¨ID
-		/// </summary>
-		/// <param name="szDstName"></param>
-		/// <param name="iPointId"></param>
-		/// <returns></returns>
-		public int SpriteMountToSpriteLinkPoint(string szDstName, int iPointId)
-		{
-			return CommonAPI.dSpriteMountToSpriteLinkPoint( GetName(), szDstName, iPointId );
-		}
-
-		/// <summary>
-		/// SetSpriteMountRotation£ºÉèÖÃ¾«ÁéµÄ°ó¶¨³¯Ïò£¬¼´Ïà¶ÔÓÚÄ¸ÌåµÄ³¯Ïò
-		/// ²ÎÊı fRot£º½Ç¶È³¯Ïò£¬0 - 360
-		/// </summary>
-		/// <param name="fRot"></param>
-		public void		SetSpriteMountRotation(  float fRot )
-		{
-			CommonAPI.dSetSpriteMountRotation( GetName(), fRot );
-		}
-
-		/// <summary>
-		/// GetSpriteMountRotation£º»ñÈ¡¾«ÁéµÄ°ó¶¨³¯Ïò£¬¼´Ïà¶ÔÓÚÄ¸ÌåµÄ³¯Ïò
-		/// ·µ»ØÖµ£º½Ç¶È³¯Ïò
-		/// </summary>
-		/// <returns></returns>
-		public float		GetSpriteMountRotation()
-		{
-			return CommonAPI.dGetSpriteMountRotation( GetName() );
-		}
-
-		/// <summary>
-		/// SetSpriteAutoMountRotation£ºÉèÖÃ¾«Áé°ó¶¨Ö®ºó×Ô¶¯Ğı×ª
-		/// ²ÎÊı fRot£ºĞı×ªËÙ¶È
-		/// </summary>
-		/// <param name="fRot"></param>
-		public void		SetSpriteAutoMountRotation(  float fRot )
-		{
-			CommonAPI.dSetSpriteAutoMountRotation( GetName(), fRot );
-		}
-
-		/// <summary>
-		/// GetSpriteAutoMountRotation£º»ñÈ¡¾«Áé°ó¶¨Ö®ºóµÄ×Ô¶¯Ğı×ªÖµ
-		/// ·µ»ØÖµ£ºĞı×ªËÙ¶È
-		/// </summary>
-		/// <returns></returns>
-		public float		GetSpriteAutoMountRotation()
-		{
-			return CommonAPI.dGetSpriteAutoMountRotation( GetName() );
-		}
-
-		/// <summary>
-		/// SetSpriteMountForce£º°ó¶¨ÖÁÁíÒ»¸ö¾«ÁéÊ±£¬¸½¼ÓµÄ×÷ÓÃÁ¦
-		/// ²ÎÊı fFroce£º×÷ÓÃÁ¦
-		/// </summary>
-		/// <param name="fForce"></param>
-		public void		SetSpriteMountForce(  float fForce )
-		{
-			CommonAPI.dSetSpriteMountForce( GetName(), fForce );
-		}
-
-		/// <summary>
-		/// SetSpriteMountTrackRotation£º°ó¶¨µÄ¾«ÁéÊÇ·ñ¸úËæÄ¸ÌåĞı×ª
-		/// ²ÎÊı bTrackRotation£ºtrue ¸úËæ false ²»¸úËæ
-		/// </summary>
-		/// <param name="bTrackRotation"></param>
-		public void		SetSpriteMountTrackRotation( bool bTrackRotation )
-		{
-			CommonAPI.dSetSpriteMountTrackRotation(GetName(), bTrackRotation ? 1 : 0);
-		}
-
-		/// <summary>
-		/// SetSpriteMountOwned£ºÄ¸Ìå±»É¾³ıµÄÊ±ºò£¬°ó¶¨µÄ¾«ÁéÊÇ·ñÒ²¸ú×Å±»É¾³ı
-		/// ²ÎÊı bMountOwned£ºtrue ¸ú×Å false ²»¸ú×Å
-		/// </summary>
-		/// <param name="bMountOwned"></param>
-		public void		SetSpriteMountOwned( bool bMountOwned )
-		{
-			CommonAPI.dSetSpriteMountOwned(GetName(), bMountOwned ? 1 : 0);
-		}
-
-		/// <summary>
-		/// SetSpriteMountInheritAttributes£º°ó¶¨µÄÊ±ºò£¬ÊÇ·ñ¼Ì³ĞÄ¸ÌåµÄÊôĞÔ
-		/// ²ÎÊı bInherAttr£ºtrue ¼Ì³Ğ false ²»¼Ì³Ğ
-		/// </summary>
-		/// <param name="bInherAttr"></param>
-		public void		SetSpriteMountInheritAttributes( bool bInherAttr )
-		{
-			CommonAPI.dSetSpriteMountInheritAttributes(GetName(), bInherAttr ? 1 : 0);
-		}
-
-		/// <summary>
-		/// SpriteDismount£º½«ÒÑ¾­°ó¶¨µÄ¾«Áé½øĞĞ½â°ó
-		/// </summary>
-		public void		SpriteDismount()
-		{
-			CommonAPI.dSpriteDismount( GetName() );
-		}
-
-		/// <summary>
-		/// GetSpriteIsMounted£ºÅĞ¶Ï¾«ÁéÊÇ·ñ°ó¶¨ÔÚÁíÒ»¸ö¾«ÁéÉÏ
-		/// ·µ»ØÖµ£ºtrue °ó¶¨ false ²»°ó¶¨
-		/// </summary>
-		/// <returns></returns>
-		public bool		GetSpriteIsMounted()
-		{
-			return CommonAPI.dGetSpriteIsMounted(GetName()) == 0 ? false : true;
-		}
-
-		/// <summary>
-		/// GetSpriteMountedParent£º»ñÈ¡°ó¶¨µÄÄ¸Ìå¾«ÁéµÄÃû×Ö
-		/// ·µ»ØÖµ£ºÄ¸Ìå¾«ÁéÃû×Ö£¬Èç¹ûÎ´°ó¶¨£¬Ôò·µ»Ø¿Õ×Ö·û´®
-		/// </summary>
-		/// <returns></returns>
-		public string GetSpriteMountedParent()
-		{
-			return CommonAPI.dGetSpriteMountedParent( GetName() );
-		}
-
-		/// <summary>
-		/// SetSpriteColorRed£º¸ü¸Ä¾«ÁéÏÔÊ¾ÑÕÉ«ÖĞµÄºìÉ«¡£Ä¬ÈÏ¾«ÁéµÄºìÂÌÀ¶ÈıÑÕÉ«µÄÖµ¾ùÎª255£¬ĞŞ¸ÄÆäÖĞÒ»Ïî½«¿ÉÒÔ¸Ä±äÆäÑÕÉ«
-		/// ²ÎÊı iCol£ºÑÕÉ«·¶Î§ 0 - 255
-		/// </summary>
-		/// <param name="iCol"></param>
-		public void		SetSpriteColorRed(  int iCol )
-		{
-			CommonAPI.dSetSpriteColorRed( GetName(), iCol );
-		}
-
-		/// <summary>
-		/// SetSpriteColorGreen£º¸ü¸Ä¾«ÁéÏÔÊ¾ÑÕÉ«ÖĞµÄÂÌÉ«¡£Ä¬ÈÏ¾«ÁéµÄºìÂÌÀ¶ÈıÑÕÉ«µÄÖµ¾ùÎª255£¬ĞŞ¸ÄÆäÖĞÒ»Ïî½«¿ÉÒÔ¸Ä±äÆäÑÕÉ«
-		/// ²ÎÊı iCol£ºÑÕÉ«·¶Î§ 0 - 255
-		/// </summary>
-		/// <param name="iCol"></param>
-		public void		SetSpriteColorGreen(  int iCol )
-		{
-			CommonAPI.dSetSpriteColorGreen( GetName(), iCol );
-		}
-
-		/// <summary>
-		/// SetSpriteColorBlue£º¸ü¸Ä¾«ÁéÏÔÊ¾ÑÕÉ«ÖĞµÄÀ¶É«¡£Ä¬ÈÏ¾«ÁéµÄºìÂÌÀ¶ÈıÑÕÉ«µÄÖµ¾ùÎª255£¬ĞŞ¸ÄÆäÖĞÒ»Ïî½«¿ÉÒÔ¸Ä±äÆäÑÕÉ«
-		/// ²ÎÊı iCol£ºÑÕÉ«·¶Î§ 0 - 255
-		/// </summary>
-		/// <param name="iCol"></param>
-		public void		SetSpriteColorBlue(  int iCol )
-		{
-			CommonAPI.dSetSpriteColorBlue( GetName(), iCol );
-		}
-
-		/// <summary>
-		/// SetSpriteColorAlpha£ºÉèÖÃ¾«ÁéÍ¸Ã÷¶È
-		/// ²ÎÊı iCol£ºÍ¸Ã÷¶È£¬Öµ0 - 255£¬´ÓÍêÈ«Í¸Ã÷ÖÁÍêÈ«²»Í¸Ã÷
-		/// </summary>
-		/// <param name="iCol"></param>
-		public void		SetSpriteColorAlpha(  int iCol )
-		{
-			CommonAPI.dSetSpriteColorAlpha(  GetName(), iCol );
-		}
-
-		/// <summary>
-		/// GetSpriteColorRed£º»ñÈ¡¾«ÁéÏÔÊ¾ÑÕÉ«ÖĞµÄºìÉ«Öµ
-		/// ·µ»ØÖµ£ºÑÕÉ«Öµ
-		/// </summary>
-		/// <returns></returns>
-		public int			GetSpriteColorRed()
-		{
-			return CommonAPI.dGetSpriteColorRed( GetName() );
-		}
-
-		/// <summary>
-		/// GetSpriteColorGreen£º»ñÈ¡¾«ÁéÏÔÊ¾ÑÕÉ«ÖĞµÄÂÌÉ«Öµ
-		/// ·µ»ØÖµ£ºÑÕÉ«Öµ
-		/// </summary>
-		/// <returns></returns>
-		public int			GetSpriteColorGreen()
-		{
-			return CommonAPI.dGetSpriteColorGreen( GetName() );
-		}
-
-		/// <summary>
-		/// GetSpriteColorBlue£º»ñÈ¡¾«ÁéÏÔÊ¾ÑÕÉ«ÖĞµÄÀ¶É«Öµ
-		/// ·µ»ØÖµ£ºÑÕÉ«Öµ
-		/// </summary>
-		/// <returns></returns>
-		public int			GetSpriteColorBlue()
-		{
-			return CommonAPI.dGetSpriteColorBlue( GetName() );
-		}
-
-		/// <summary>
-		/// GetSpriteColorAlpha£º»ñÈ¡¾«ÁéÍ¸Ã÷¶È
-		/// ·µ»ØÖµ£ºÍ¸Ã÷¶È
-		/// </summary>
-		/// <returns></returns>
-		public int			GetSpriteColorAlpha()
-		{
-			return CommonAPI.dGetSpriteColorAlpha( GetName() );
-		}
-	};
-	
-}
+		m_szName = szName;
+	}
+
+    /// <summary>
+    /// GetName
+	/// è¿”å›å€¼ï¼šè¿”å›ç²¾çµåå­—
+    /// </summary>
+    public string GetName()
+	{
+		return m_szName;
+	}
+    
+	/// <summary>
+	/// CloneSpriteï¼šå¤åˆ¶(åˆ›å»º)ä¸€ä¸ªç²¾çµã€‚ç²¾çµçš„åˆ›å»ºæ–¹å¼ï¼šå…ˆåœ¨åœ°å›¾ä¸­æ‘†æ”¾ä¸€ä¸ªç²¾çµåšä¸ºæ¨¡æ¿ï¼Œè®¾ç½®å¥½å„é¡¹å‚æ•°ï¼Œç„¶ååœ¨ä»£ç é‡Œä½¿ç”¨æ­¤å‡½æ•°å…‹éš†ä¸€ä¸ªå®ä¾‹
+	/// è¿”å›å€¼ï¼štrueè¡¨ç¤ºå…‹éš†æˆåŠŸï¼Œfalseå…‹éš†å¤±è´¥ã€‚å¤±è´¥çš„åŸå› å¯èƒ½æ˜¯åœ¨åœ°å›¾ä¸­æœªæ‰¾åˆ°å¯¹åº”åå­—çš„ç²¾çµ
+	/// å‚æ•° szSrcNameï¼šåœ°å›¾ä¸­ç”¨åšæ¨¡æ¿çš„ç²¾çµåå­—
+	/// </summary>
+    public bool CloneSprite(string szSrcName)
+	{
+		return CommonAPI.dCloneSprite( szSrcName, GetName() ) == 0 ? false : true;
+	}
+
+	/// <summary>
+	/// DeleteSpriteï¼šåœ¨åœ°å›¾ä¸­åˆ é™¤ä¸æœ¬å¯¹è±¡å®ä¾‹å…³è”çš„ç²¾çµ
+	/// </summary>
+	public void		DeleteSprite()
+	{
+		CommonAPI.dDeleteSprite( GetName() );
+	}
+
+	/// <summary>
+	/// SetSpriteVisibleï¼šè®¾ç½®ç²¾çµéšè—æˆ–è€…æ˜¾ç¤º(å¯è§ä¸å¯è§)
+    /// å‚æ•° bVisibleï¼štrue å¯è§ falseä¸å¯è§
+	/// </summary>
+    public void SetSpriteVisible(bool bVisible)
+	{
+		CommonAPI.dSetSpriteVisible( GetName(), bVisible ? 1 : 0 );
+	}
+
+	/// <summary>
+	/// IsSpriteVisibleï¼šè·å–è¯¥ç²¾çµå½“å‰æ˜¯å¦å¯è§
+	/// </summary>
+    public bool IsSpriteVisible()
+	{
+		return CommonAPI.dIsSpriteVisible( GetName() ) == 0 ? false : true;
+	}
+
+	/// <summary>
+	/// SetSpriteEnableï¼šç¦æ­¢æˆ–è€…å¯ç”¨è¯¥ç²¾çµã€‚è¢«ç¦æ­¢çš„ç²¾çµå°†ä¸å‚ä¸ä»»ä½•å“åº”ï¼ŒåŒ…æ‹¬ä¸ç§»åŠ¨ï¼Œæ²¡æœ‰ç¢°æ’ç­‰ï¼Œä»…ä»…æ˜¯åœ¨åœ°å›¾ä¸­æ˜¾ç¤º
+	/// å‚æ•° bEnableï¼štrueå¯ç”¨ falseç¦æ­¢
+	/// </summary>
+    public void SetSpriteEnable(bool bEnable)
+	{
+		CommonAPI.dSetSpriteEnable( GetName(), bEnable ? 1 : 0 );
+	}
+
+	/// <summary>
+	/// SetSpriteScaleï¼šè®¾ç½®ç²¾çµçš„ç¼©æ”¾å€¼
+	/// å‚æ•° fScaleï¼šç¼©æ”¾å€¼ã€‚å¤§äº0çš„å€¼
+	/// </summary>
+	public void		SetSpriteScale(  float fScale )
+	{
+		CommonAPI.dSetSpriteScale( GetName(), fScale );
+	}
+
+	/// <summary>
+	/// IsPointInSpriteï¼šåˆ¤æ–­æŸä¸ªåæ ‡ç‚¹æ˜¯å¦ä½äºç²¾çµå†…éƒ¨
+	/// å‚æ•° fPosXï¼šXåæ ‡ç‚¹
+	/// å‚æ•° fPosYï¼šYåæ ‡ç‚¹
+	/// </summary>
+    public bool IsPointInSprite(float fPosX, float fPosY)
+	{
+		return CommonAPI.dIsPointInSprite( GetName(), fPosX, fPosY ) == 0 ? false : true;
+	}
+
+	/// <summary>
+	/// SetSpritePositionï¼šè®¾ç½®ç²¾çµä½ç½®
+	/// å‚æ•° fPosXï¼šXåæ ‡
+	/// å‚æ•° fPosYï¼šYåæ ‡
+	/// </summary>
+	public void		SetSpritePosition(  float fPosX,  float fPosY )
+	{
+		CommonAPI.dSetSpritePosition( GetName(), fPosX, fPosY );
+	}
+
+	/// <summary>
+	/// SetSpritePositionXï¼šåªè®¾ç½®ç²¾çµXåæ ‡
+	/// å‚æ•° fPosXï¼šXåæ ‡
+	/// </summary>
+	public void		SetSpritePositionX(  float fPosX )
+	{
+		CommonAPI.dSetSpritePositionX( GetName(), fPosX );
+	}
+
+	/// <summary>
+	/// SetSpritePositionYï¼šåªè®¾ç½®ç²¾çµYåæ ‡
+	/// å‚æ•° fPosYï¼šYåæ ‡
+	/// </summary>
+	public void		SetSpritePositionY(  float fPosY )
+	{
+		CommonAPI.dSetSpritePositionY( GetName(), fPosY );
+	}
+
+	/// <summary>
+	/// GetSpritePositionXï¼šè·å–ç²¾çµXåæ ‡
+	/// è¿”å›å€¼ï¼šç²¾çµçš„Xåæ ‡
+	/// </summary>
+	public float		GetSpritePositionX()
+	{
+		return CommonAPI.dGetSpritePositionX( GetName() );
+	}
+
+	/// <summary>
+	/// GetSpritePositionYï¼šè·å–ç²¾çµYåæ ‡
+	/// è¿”å›å€¼ï¼šç²¾çµçš„Yåæ ‡
+	/// </summary>
+	public float		GetSpritePositionY()
+	{
+		return CommonAPI.dGetSpritePositionY( GetName() );
+	}
+
+	/// <summary>
+	/// GetSpriteLinkPointPosXï¼šè·å–ç²¾çµé“¾æ¥ç‚¹Xåæ ‡ã€‚é“¾æ¥ç‚¹æ˜¯ä¾é™„äºç²¾çµçš„ä¸€ä¸ªåæ ‡ç‚¹ï¼Œå¯ä»¥åœ¨ç¼–è¾‘å™¨é‡Œå¢åŠ æˆ–è€…åˆ é™¤
+	/// å‚æ•° iIdï¼šé“¾æ¥ç‚¹åºå·ï¼Œç¬¬ä¸€ä¸ªä¸º1ï¼Œåé¢ä¾æ¬¡é€’åŠ 
+	/// </summary>
+	public float		GetSpriteLinkPointPosX(  int iId )
+	{
+		return CommonAPI.dGetSpriteLinkPointPosX( GetName(), iId );
+	}
+
+	/// <summary>
+	/// GetSpriteLinkPointPosYï¼šè·å–ç²¾çµé“¾æ¥ç‚¹Yåæ ‡ã€‚é“¾æ¥ç‚¹æ˜¯ä¾é™„äºç²¾çµçš„ä¸€ä¸ªåæ ‡ç‚¹ï¼Œå¯ä»¥åœ¨ç¼–è¾‘å™¨é‡Œå¢åŠ æˆ–è€…åˆ é™¤
+	/// å‚æ•° iIdï¼šé“¾æ¥ç‚¹åºå·ï¼Œç¬¬ä¸€ä¸ªä¸º1ï¼Œåé¢ä¾æ¬¡é€’åŠ 
+	/// </summary>
+	public float		GetSpriteLinkPointPosY(  int iId )
+	{
+		return CommonAPI.dGetSpriteLinkPointPosY( GetName(), iId );
+	}
+
+	/// <summary>
+	/// SetSpriteRotationï¼šè®¾ç½®ç²¾çµçš„æ—‹è½¬è§’åº¦
+	/// å‚æ•° fRotï¼šæ—‹è½¬è§’åº¦ï¼ŒèŒƒå›´0 - 360
+	/// </summary>
+	public void		SetSpriteRotation(  float fRot )
+	{
+		CommonAPI.dSetSpriteRotation( GetName(), fRot );
+	}
+
+	/// <summary>
+	/// GetSpriteRotationï¼šè·å–ç²¾çµçš„æ—‹è½¬è§’åº¦
+	/// è¿”å›å€¼ï¼šç²¾çµçš„æ—‹è½¬è§’åº¦
+	/// </summary>
+	public float		GetSpriteRotation()
+	{
+		return CommonAPI.dGetSpriteRotation( GetName() );
+	}
+
+	/// <summary>
+	/// SetSpriteAutoRotï¼šè®¾ç½®ç²¾çµæŒ‰ç…§æŒ‡å®šé€Ÿåº¦è‡ªåŠ¨æ—‹è½¬
+	/// å‚æ•° fRotSpeedï¼šæ—‹è½¬é€Ÿåº¦
+	/// </summary>
+	public void 		SetSpriteAutoRot(  float fRotSpeed )
+	{
+		CommonAPI.dSetSpriteAutoRot( GetName(), fRotSpeed );
+	}
+
+	/// <summary>
+	/// SetSpriteWidthï¼šè®¾ç½®ç²¾çµå¤–å½¢å®½åº¦
+	/// å‚æ•° fWidthï¼šå®½åº¦å€¼ï¼Œå¤§äº0
+	/// </summary>
+	public void		SetSpriteWidth(  float fWidth )
+	{
+		CommonAPI.dSetSpriteWidth( GetName(), fWidth );
+	}
+
+	/// <summary>
+	/// GetSpriteWidthï¼šè·å–ç²¾çµå¤–å½¢å®½åº¦
+	/// è¿”å›å€¼ï¼šç²¾çµå®½åº¦å€¼
+	/// </summary>
+	public float		GetSpriteWidth()
+	{
+		return CommonAPI.dGetSpriteWidth( GetName() );
+	}
+
+	/// <summary>
+	/// SetSpriteHeightï¼šè®¾ç½®ç²¾çµå¤–å½¢é«˜åº¦
+	/// å‚æ•° fHeightï¼šç²¾çµé«˜åº¦å€¼
+	/// </summary>
+	public void		SetSpriteHeight(  float fHeight )
+	{
+		CommonAPI.dSetSpriteHeight( GetName(), fHeight );
+	}
+
+	/// <summary>
+	/// GetSpriteHeightï¼šè·å–ç²¾çµå¤–å½¢é«˜åº¦
+	/// è¿”å›å€¼ï¼šç²¾çµé«˜åº¦å€¼
+	/// </summary>
+	public float		GetSpriteHeight()
+	{
+		return CommonAPI.dGetSpriteHeight( GetName() );
+	}
+
+	/// <summary>
+	/// SetSpriteFlipXï¼šè®¾ç½®ç²¾çµå›¾ç‰‡Xæ–¹å‘ç¿»è½¬æ˜¾ç¤º
+	/// å‚æ•° bFlipXï¼štrue ç¿»è½¬ falseä¸ç¿»è½¬(æ¢å¤åŸæ¥æœå‘)
+	/// </summary>
+	public void		SetSpriteFlipX( bool bFlipX )
+	{
+		CommonAPI.dSetSpriteFlipX( GetName(), bFlipX ? 1 : 0 );
+	}
+
+	/// <summary>
+	/// GetSpriteFlipXï¼šè·å–å½“å‰ç²¾çµå›¾ç‰‡Xæ–¹å‘æ˜¯å¦æ˜¯ç¿»è½¬æ˜¾ç¤º
+	/// è¿”å›å€¼ï¼štrue ç¿»è½¬ falseä¸ç¿»è½¬
+	/// </summary>
+	public bool		GetSpriteFlipX()
+	{
+		return CommonAPI.dGetSpriteFlipX( GetName() ) == 0 ? false : true;
+	}
+	/// <summary>
+	/// SetSpriteFlipYï¼šè®¾ç½®ç²¾çµå›¾ç‰‡Yæ–¹å‘ç¿»è½¬æ˜¾ç¤º
+	/// å‚æ•° bFlipYï¼štrue ç¿»è½¬ falseä¸ç¿»è½¬(æ¢å¤åŸæ¥æœå‘)
+	/// </summary>
+	public void		SetSpriteFlipY( bool bFlipY )
+	{
+		CommonAPI.dSetSpriteFlipY( GetName(), bFlipY ? 1 : 0 );
+	}
+
+	/// <summary>
+	/// GetSpriteFlipYï¼šè·å–å½“å‰ç²¾çµå›¾ç‰‡Yæ–¹å‘æ˜¯å¦æ˜¯ç¿»è½¬æ˜¾ç¤º
+	/// è¿”å›å€¼ï¼štrue ç¿»è½¬ falseä¸ç¿»è½¬
+	/// </summary>
+	public bool		GetSpriteFlipY()
+	{
+        return CommonAPI.dGetSpriteFlipY(GetName()) == 0 ? false : true;
+	}
+
+	/// <summary>
+	/// SetSpriteFlipï¼šåŒæ—¶è®¾ç½®ç²¾çµç¿»è½¬XåŠYæ–¹å‘
+	/// å‚æ•° bFlipXï¼štrue ç¿»è½¬ falseä¸ç¿»è½¬(æ¢å¤åŸæ¥æœå‘)
+	/// å‚æ•° bFlipYï¼štrue ç¿»è½¬ falseä¸ç¿»è½¬(æ¢å¤åŸæ¥æœå‘)
+	/// </summary>
+	public void		SetSpriteFlip( bool bFlipX, bool bFlipY )
+	{
+        CommonAPI.dSetSpriteFlip(GetName(), bFlipX ? 1 : 0, bFlipY ? 1 : 0);
+	}
+
+	/// <summary>
+	/// SetSpriteLifeTimeï¼šè®¾ç½®ç²¾çµçš„ç”Ÿå‘½æ—¶é•¿ï¼Œæ—¶é—´åˆ°äº†ä¹‹åå°†è‡ªåŠ¨è¢«åˆ é™¤
+	/// å‚æ•° fLifeTimeï¼šç”Ÿå‘½æ—¶é•¿ï¼Œå•ä½ ç§’
+	/// </summary>
+	public void		SetSpriteLifeTime(  float fLifeTime )
+	{
+		CommonAPI.dSetSpriteLifeTime( GetName(), fLifeTime );
+	}
+
+	/// <summary>
+	/// GetSpriteLifeTimeï¼šè·å–ç²¾çµç”Ÿå‘½æ—¶é•¿
+	/// è¿”å›å€¼ï¼šç”Ÿå‘½æ—¶é•¿ï¼Œå•ä½ ç§’
+	/// </summary>
+	public float		GetSpriteLifeTime()
+	{
+		return CommonAPI.dGetSpriteLifeTime( GetName() );
+	}
+    
+	/// <summary>
+	/// SpriteMoveToï¼šè®©ç²¾çµæŒ‰ç…§ç»™å®šé€Ÿåº¦ç§»åŠ¨åˆ°ç»™å®šåæ ‡ç‚¹
+	/// å‚æ•° fPosXï¼šç§»åŠ¨çš„ç›®æ ‡Xåæ ‡å€¼
+	/// å‚æ•° fPosYï¼šç§»åŠ¨çš„ç›®æ ‡Yåæ ‡å€¼
+	/// å‚æ•° fSpeedï¼šç§»åŠ¨é€Ÿåº¦
+	/// å‚æ•° bAutoStopï¼šç§»åŠ¨åˆ°ç»ˆç‚¹ä¹‹åæ˜¯å¦è‡ªåŠ¨åœæ­¢
+	/// </summary>
+	public void		SpriteMoveTo(  float fPosX,  float fPosY,  float fSpeed, bool bAutoStop )
+	{
+        CommonAPI.dSpriteMoveTo(GetName(), fPosX, fPosY, fSpeed, bAutoStop ? 1 : 0);
+	}
+
+	/// <summary>
+	/// SpriteRotateToï¼šè®©ç²¾çµæŒ‰ç…§ç»™å®šé€Ÿåº¦æ—‹è½¬åˆ°ç»™å®šçš„è§’åº¦
+	/// å‚æ•° fRotationï¼šç»™å®šçš„ç›®æ ‡æ—‹è½¬å€¼
+	/// å‚æ•° fRotSpeedï¼šæ—‹è½¬é€Ÿåº¦
+	/// å‚æ•° bAutoStopï¼šæ—‹è½¬åˆ°ç»ˆç‚¹ä¹‹åæ˜¯å¦è‡ªåŠ¨åœæ­¢
+	/// </summary>
+	public void		SpriteRotateTo(  float fRotation,  float fRotSpeed, bool bAutoStop )
+	{
+        CommonAPI.dSpriteRotateTo(GetName(), fRotation, fRotSpeed, bAutoStop ? 1 : 0);
+	}
+
+	/// <summary>
+	/// SetSpriteWorldLimitï¼šè®¾ç½®ç²¾çµçš„ä¸–ç•Œè¾¹ç•Œåæ ‡é™åˆ¶åŠç¢°æ’æ¨¡å¼
+	/// å‚æ•° Limitï¼šç¢°æ’åˆ°ä¸–ç•Œè¾¹ç•Œä¹‹åçš„å“åº”æ¨¡å¼ï¼Œå¦‚æœä¸ºOFFï¼Œåˆ™æ˜¯å…³é—­ä¸–ç•Œè¾¹ç•Œç¢°æ’ã€‚å…¶å®ƒå€¼è§ EWorldLimit
+	/// å‚æ•° fLeftï¼šè¾¹ç•Œçš„å·¦è¾¹Xåæ ‡
+	/// å‚æ•° fTopï¼šè¾¹ç•Œçš„ä¸Šè¾¹Yåæ ‡
+	/// å‚æ•° fRightï¼šè¾¹ç•Œçš„å³è¾¹Xåæ ‡
+	/// å‚æ•° fBottomï¼šè¾¹ç•Œçš„ä¸‹è¾¹Yåæ ‡
+	/// </summary>
+	public void		SetSpriteWorldLimit(  EWorldLimit Limit,  float fLeft,  float fTop,  float fRight,  float fBottom )
+	{
+		CommonAPI.dSetSpriteWorldLimit( GetName(), Limit, fLeft, fTop, fRight, fBottom );
+	}
+
+	/// <summary>
+	/// SetSpriteWorldLimitModeï¼šè®¾ç½®ç²¾çµçš„ä¸–ç•Œè¾¹ç•Œç¢°æ’æ¨¡å¼
+	/// å‚æ•° Limitï¼šç¢°æ’åˆ°ä¸–ç•Œè¾¹ç•Œä¹‹åçš„å“åº”æ¨¡å¼ï¼Œå¦‚æœä¸ºOFFï¼Œåˆ™æ˜¯å…³é—­ä¸–ç•Œè¾¹ç•Œç¢°æ’ã€‚å…¶å®ƒå€¼è§ EWorldLimit
+	/// </summary>
+	public void		SetSpriteWorldLimitMode(  EWorldLimit Limit )
+	{
+		CommonAPI.dSetSpriteWorldLimitMode( GetName(), Limit );
+	}
+
+	/// <summary>
+	/// SetSpriteWorldLimitMinï¼šè®¾ç½®ç²¾çµçš„ä¸–ç•Œè¾¹ç•Œä¸Šè¾¹åŠå·¦è¾¹åæ ‡é™åˆ¶
+	/// å‚æ•° fLeftï¼šè¾¹ç•Œçš„å·¦è¾¹Xåæ ‡
+	/// å‚æ•° fTopï¼šè¾¹ç•Œçš„ä¸Šè¾¹Yåæ ‡
+	/// </summary>
+	public void		SetSpriteWorldLimitMin(  float fLeft,  float fTop )
+	{
+		CommonAPI.dSetSpriteWorldLimitMin( GetName(), fLeft, fTop );
+	}
+    
+	/// <summary>
+	/// SetSpriteWorldLimitMaxï¼šè®¾ç½®ç²¾çµçš„ä¸–ç•Œè¾¹ç•Œä¸‹è¾¹åŠå³è¾¹åæ ‡é™åˆ¶
+	/// å‚æ•° fRightï¼šè¾¹ç•Œçš„å³è¾¹Xåæ ‡
+	/// å‚æ•° fBottomï¼šè¾¹ç•Œçš„ä¸‹è¾¹Yåæ ‡
+	/// </summary>
+	public void		SetSpriteWorldLimitMax(  float fRight,  float fBottom )
+	{
+		CommonAPI.dSetSpriteWorldLimitMax( GetName(), fRight, fBottom );
+	}
+
+	/// <summary>
+	/// GetSpriteWorldLimitLeftï¼šè·å–ç²¾çµä¸–ç•Œè¾¹ç•Œå·¦è¾¹ç•Œé™åˆ¶
+	/// </summary>
+	public float floatGetSpriteWorldLimitLeft()
+	{
+		return CommonAPI.dGetSpriteWorldLimitLeft(GetName());
+	}
+
+	/// <summary>
+	/// GetSpriteWorldLimitLeftï¼šè·å–ç²¾çµä¸–ç•Œè¾¹ç•Œä¸Šè¾¹ç•Œé™åˆ¶
+	/// </summary>
+	public float GetSpriteWorldLimitTop()
+	{
+		return CommonAPI.dGetSpriteWorldLimitTop(GetName());
+	}
+
+	/// <summary>
+	/// GetSpriteWorldLimitLeftï¼šè·å–ç²¾çµä¸–ç•Œè¾¹ç•Œå³è¾¹ç•Œé™åˆ¶
+	/// </summary>
+	public float GetSpriteWorldLimitRight()
+	{
+		return CommonAPI.dGetSpriteWorldLimitRight(GetName());
+	}
+
+	/// <summary>
+	/// GetSpriteWorldLimitLeftï¼šè·å–ç²¾çµä¸–ç•Œè¾¹ç•Œä¸‹è¾¹ç•Œé™åˆ¶
+	/// </summary>
+	public float GetSpriteWorldLimitBottom()
+	{
+		return CommonAPI.dGetSpriteWorldLimitBottom(GetName());
+	}
+
+	/// <summary>
+	/// SetSpriteCollisionSendï¼šè®¾ç½®ç²¾çµæ˜¯å¦å¯ä»¥å‘é€(äº§ç”Ÿ)ç¢°æ’
+	/// ç²¾çµçš„ç¢°æ’æ–¹å¼ä¸ºï¼šå½“Aç§»åŠ¨ä¸­ç¢°ä¸ŠBæ—¶ï¼Œå¦‚æœAæ˜¯å¯ä»¥äº§ç”Ÿç¢°æ’çš„ï¼ŒBæ˜¯å¯ä»¥æ¥å—ç¢°æ’çš„ï¼Œåˆ™è¿™2ä¸ªç‰©ä½“ä¼šäº§ç”Ÿç¢°æ’ï¼Œç²¾çµç¢°æ’çš„APIå°†è¢«è°ƒç”¨ã€‚å¦åˆ™æ— ç¢°æ’å‘ç”Ÿ
+	/// å‚æ•° bSendï¼štrue å¯ä»¥äº§ç”Ÿ false ä¸äº§ç”Ÿ
+	/// </summary>
+	public void 		SetSpriteCollisionSend( bool bSend )
+	{
+        CommonAPI.dSetSpriteCollisionSend(GetName(), bSend ? 1 : 0);
+	}
+
+	/// <summary>
+	/// SetSpriteCollisionReceiveï¼šè®¾ç½®ç²¾çµæ˜¯å¦å¯ä»¥æ¥å—ç¢°æ’
+	/// ç²¾çµçš„ç¢°æ’æ–¹å¼ä¸ºï¼šå½“Aç§»åŠ¨ä¸­ç¢°ä¸ŠBæ—¶ï¼Œå¦‚æœAæ˜¯å¯ä»¥äº§ç”Ÿç¢°æ’çš„ï¼ŒBæ˜¯å¯ä»¥æ¥å—ç¢°æ’çš„ï¼Œåˆ™è¿™2ä¸ªç‰©ä½“ä¼šäº§ç”Ÿç¢°æ’ï¼Œç²¾çµç¢°æ’çš„APIå°†è¢«è°ƒç”¨ã€‚å¦åˆ™æ— ç¢°æ’å‘ç”Ÿ
+	/// å‚æ•° bReceiveï¼štrue å¯ä»¥æ¥å— false ä¸æ¥å—
+	/// </summary>
+	public void 		SetSpriteCollisionReceive( bool bReceive )
+	{
+        CommonAPI.dSetSpriteCollisionReceive(GetName(), bReceive ? 1 : 0);
+	}
+
+	/// <summary>
+	/// SetSpriteCollisionActiveï¼šåŒæ—¶è®¾ç½®ç²¾çµæ˜¯å¦å¯ä»¥äº§ç”ŸåŠæ¥å—ç¢°æ’
+	/// ç²¾çµçš„ç¢°æ’æ–¹å¼ä¸ºï¼šå½“Aç§»åŠ¨ä¸­ç¢°ä¸ŠBæ—¶ï¼Œå¦‚æœAæ˜¯å¯ä»¥äº§ç”Ÿç¢°æ’çš„ï¼ŒBæ˜¯å¯ä»¥æ¥å—ç¢°æ’çš„ï¼Œåˆ™è¿™2ä¸ªç‰©ä½“ä¼šäº§ç”Ÿç¢°æ’ï¼Œç²¾çµç¢°æ’çš„APIå°†è¢«è°ƒç”¨ã€‚å¦åˆ™æ— ç¢°æ’å‘ç”Ÿ
+	/// å‚æ•° bSendï¼štrue å¯ä»¥äº§ç”Ÿ false ä¸äº§ç”Ÿ
+	/// å‚æ•° bReceiveï¼štrue å¯ä»¥æ¥å— false ä¸æ¥å—
+	/// </summary>
+	public void 		SetSpriteCollisionActive( bool bSend, bool bReceive )
+	{
+        CommonAPI.dSetSpriteCollisionActive(GetName(), bSend ? 1 : 0, bReceive ? 1 : 0);
+	}
+
+	/// <summary>
+	/// SetSpriteCollisionPhysicsSendï¼šè®¾ç½®ç²¾çµæ˜¯å¦å¯ä»¥å‘é€(äº§ç”Ÿ)ç¢°æ’
+	/// å‚æ•° bSendï¼štrue å¯ä»¥äº§ç”Ÿ false ä¸äº§ç”Ÿ
+	/// </summary>
+	public void 		SetSpriteCollisionPhysicsSend( bool bSend )
+	{
+        CommonAPI.dSetSpriteCollisionPhysicsSend(GetName(), bSend ? 1 : 0);
+	}
+
+	/// <summary>
+	/// SetSpriteCollisionPhysicsReceiveï¼šè®¾ç½®ç²¾çµæ˜¯å¦å¯ä»¥æ¥å—ç¢°æ’
+	/// å‚æ•° bReceiveï¼štrue å¯ä»¥æ¥å— false ä¸æ¥å—
+	/// </summary>
+	public void 		SetSpriteCollisionPhysicsReceive( bool bReceive )
+	{
+        CommonAPI.dSetSpriteCollisionPhysicsReceive(GetName(), bReceive ? 1 : 0);
+	}
+
+	/// <summary>
+	/// GetSpriteCollisionSendï¼šè·å–ç²¾çµå½“å‰æ˜¯å¦æ˜¯å¯ä»¥äº§ç”Ÿç¢°æ’
+	/// è¿”å›å€¼ï¼štrue å¯ä»¥äº§ç”Ÿ false ä¸äº§ç”Ÿ
+	/// </summary>
+	public bool 		GetSpriteCollisionSend()
+	{
+		return CommonAPI.dGetSpriteCollisionSend( GetName() ) == 0 ? false : true;
+	}
+
+	/// <summary>
+	/// GetSpriteCollisionReceiveï¼šè·å–ç²¾çµå½“å‰æ˜¯å¦æ˜¯å¯ä»¥æ¥å—ç¢°æ’
+	/// è¿”å›å€¼ï¼štrue å¯ä»¥æ¥å— false ä¸æ¥å—
+	/// </summary>
+	public bool 		GetSpriteCollisionReceive()
+	{
+        return CommonAPI.dGetSpriteCollisionReceive(GetName()) == 0 ? false : true;
+	}
+
+	/// <summary>
+	/// SetSpriteCollisionResponseï¼šè®¾ç½®ç²¾çµä¸ç²¾çµçš„ç¢°æ’å“åº”æ¨¡å¼
+	/// å‚æ•° Responseï¼šå“åº”æ¨¡å¼ï¼Œå¦‚æœä¸ºOFFï¼Œåˆ™ä¸ºå…³é—­ç¢°æ’å“åº”ï¼Œç¢°æ’APIå°†ä¸ä¼šè¢«è°ƒç”¨ã€‚å…¶å®ƒå€¼è§ ECollisionResponse
+	/// </summary>
+	public void		SetSpriteCollisionResponse(  ECollisionResponse Response )
+	{
+		CommonAPI.dSetSpriteCollisionResponse( GetName(), Response );
+	}
+
+	/// <summary>
+	/// SetSpriteCollisionMaxIterationsï¼šè®¾ç½®ç²¾çµç¢°æ’ä¹‹åçš„æœ€å¤§åå¼¹æ¬¡æ•°
+	/// å‚æ•° iTimesï¼šåå¼¹æ¬¡æ•°
+	/// </summary>
+	/// <param name="iTimes"></param>
+	public void		SetSpriteCollisionMaxIterations(  int iTimes )
+	{
+		CommonAPI.dSetSpriteCollisionMaxIterations( GetName(), iTimes );
+	}
+
+	/// <summary>
+	/// SetSpriteForwardMovementOnlyï¼šè®¾ç½®ç²¾çµæ˜¯å¦åªèƒ½æœå‰ç§»åŠ¨
+	/// å‚æ•° bForwardï¼štrue åªèƒ½æœå‰ç§»åŠ¨ false å¯ä»¥æœå…¶ä»–æ–¹å‘ç§»åŠ¨
+	/// </summary>
+	/// <param name="bForward"></param>
+	public void		SetSpriteForwardMovementOnly( bool bForward )
+	{
+        CommonAPI.dSetSpriteForwardMovementOnly(GetName(), bForward ? 1 : 0);
+	}
+
+	/// <summary>
+	/// GetSpriteForwardMovementOnlyï¼šè·å–ç²¾çµå½“å‰æ˜¯å¦åªèƒ½æœå‰ç§»åŠ¨
+	/// è¿”å›å€¼ï¼štrue åªèƒ½æœå‰ç§»åŠ¨ false å¯ä»¥æœå…¶å®ƒæ–¹å‘ç§»åŠ¨
+	/// </summary>
+	/// <returns></returns>
+	public bool		GetSpriteForwardMovementOnly()
+	{
+        return CommonAPI.dGetSpriteForwardMovementOnly(GetName()) == 0 ? false : true;
+	}
+
+	/// <summary>
+	/// SetSpriteForwardSpeedï¼šè®¾ç½®ç²¾çµå‘å‰çš„é€Ÿåº¦
+	/// å‚æ•° fSpeedï¼šé€Ÿåº¦
+	/// </summary>
+	/// <param name="fSpeed"></param>
+	public void		SetSpriteForwardSpeed(  float fSpeed )
+	{
+		CommonAPI.dSetSpriteForwardSpeed( GetName(), fSpeed );
+	}
+
+	/// <summary>
+	/// SetSpriteImpulseForceï¼šè®¾ç½®ç²¾çµç¬é—´æ¨åŠ›
+	/// å‚æ•° fForceXï¼šXæ–¹å‘æ¨åŠ›å¤§å°
+	/// å‚æ•° fForceYï¼šYæ–¹å‘æ¨åŠ›å¤§å°
+	/// å‚æ•° bGraviticï¼šæ˜¯å¦è®¡ç®—é‡åŠ›
+	/// </summary>
+	/// <param name="fForceX"></param>
+	/// <param name="fForceY"></param>
+	/// <param name="bGravitic"></param>
+	public void 		SetSpriteImpulseForce(  float fForceX,  float fForceY, bool bGravitic )
+	{
+        CommonAPI.dSetSpriteImpulseForce(GetName(), fForceX, fForceY, bGravitic ? 1 : 0);
+	}
+
+	/// <summary>
+	/// SetSpriteImpulseForcePolarï¼šæŒ‰è§’åº¦æœå‘è®¾ç½®ç²¾çµç¬é—´æ¨åŠ›
+	/// å‚æ•° fPolarï¼šè§’åº¦æœå‘
+	/// å‚æ•° fForceï¼šæ¨åŠ›å¤§å°
+	/// å‚æ•° bGraviticï¼šæ˜¯å¦è®¡ç®—é‡åŠ›
+	/// </summary>
+	/// <param name="fPolar"></param>
+	/// <param name="fForce"></param>
+	/// <param name="bGravitic"></param>
+	public void 		SetSpriteImpulseForcePolar(  float fPolar,  float fForce, bool bGravitic )
+	{
+        CommonAPI.dSetSpriteImpulseForcePolar(GetName(), fPolar, fForce, bGravitic ? 1 : 0);
+	}
+
+	/// <summary>
+	/// SetSpriteConstantForceXï¼šè®¾ç½®ç²¾çµXæ–¹å‘å¸¸é‡æ¨åŠ›
+	/// å‚æ•° fForceXï¼šXæ–¹å‘æ¨åŠ›å¤§å°
+	/// </summary>
+	/// <param name="fForceX"></param>
+	public void 		SetSpriteConstantForceX(  float fForceX )
+	{
+		CommonAPI.dSetSpriteConstantForceX( GetName(), fForceX );
+	}
+
+	/// <summary>
+	/// SetSpriteConstantForceYï¼šè®¾ç½®ç²¾çµYæ–¹å‘å¸¸é‡æ¨åŠ›
+	/// å‚æ•° fForceYï¼šYæ–¹å‘æ¨åŠ›å¤§å°
+	/// </summary>
+	/// <param name="fForceY"></param>
+	public void 		SetSpriteConstantForceY(  float fForceY )
+	{
+		CommonAPI.dSetSpriteConstantForceY( GetName(), fForceY );
+	}
+
+	/// <summary>
+	/// SetSpriteConstantForceGraviticï¼šç²¾çµåœ¨è®¡ç®—å¸¸é‡æ¨åŠ›çš„æ—¶å€™ï¼Œæ˜¯å¦è®¡ç®—é‡åŠ›
+	/// å‚æ•° bGraviticï¼šæ˜¯å¦è®¡ç®—é‡åŠ›
+	/// </summary>
+	/// <param name="bGravitic"></param>
+	public void 		SetSpriteConstantForceGravitic( bool bGravitic )
+	{
+        CommonAPI.dSetSpriteConstantForceGravitic(GetName(), bGravitic ? 1 : 0);
+	}
+
+	/// <summary>
+	/// SetSpriteConstantForceï¼šè®¾ç½®ç²¾çµå¸¸é‡æ¨åŠ›
+	/// å‚æ•° fForceXï¼šXæ–¹å‘æ¨åŠ›å¤§å°
+	/// å‚æ•° fForceYï¼šYæ–¹å‘æ¨åŠ›å¤§å°
+	/// å‚æ•° bGraviticï¼šæ˜¯å¦è®¡ç®—é‡åŠ›
+	/// </summary>
+	/// <param name="fForceX"></param>
+	/// <param name="fForceY"></param>
+	/// <param name="bGravitic"></param>
+	public void 		SetSpriteConstantForce(  float fForceX,  float fForceY, bool bGravitic )
+	{
+        CommonAPI.dSetSpriteConstantForce(GetName(), fForceX, fForceY, bGravitic ? 1 : 0);
+	}
+
+	/// <summary>
+	/// SetSpriteConstantForcePolarï¼šæŒ‰è§’åº¦æœå‘è®¾ç½®ç²¾çµå¸¸é‡æ¨åŠ›
+	/// å‚æ•° fPolarï¼šè§’åº¦æœå‘
+	/// å‚æ•° fForceï¼šæ¨åŠ›å¤§å°
+	/// å‚æ•° bGraviticï¼šæ˜¯å¦è®¡ç®—é‡åŠ›
+	/// </summary>
+	/// <param name="fPolar"></param>
+	/// <param name="fForce"></param>
+	/// <param name="bGravitic"></param>
+	public void 		SetSpriteConstantForcePolar(  float fPolar,  float fForce, bool bGravitic )
+	{
+        CommonAPI.dSetSpriteConstantForcePolar(GetName(), fPolar, fForce, bGravitic ? 1 : 0);
+	}
+
+	/// <summary>
+	/// StopSpriteConstantForceï¼šåœæ­¢ç²¾çµå¸¸é‡æ¨åŠ›
+	/// </summary>
+	public void 		StopSpriteConstantForce()
+	{
+		CommonAPI.dStopSpriteConstantForce( GetName() );
+	}
+
+	/// <summary>
+	/// SetSpriteForceScaleï¼šæŒ‰å€æ•°ç¼©æ”¾ç²¾çµå½“å‰å—çš„æ¨åŠ›
+	/// å‚æ•° fScaleï¼šç¼©æ”¾å€¼
+	/// </summary>
+	/// <param name="fScale"></param>
+	public void 		SetSpriteForceScale(  float fScale )
+	{
+		CommonAPI.dSetSpriteForceScale( GetName(), fScale );
+	}
+
+	/// <summary>
+	/// SetSpriteAtRestï¼šæš‚åœ/ç»§ç»­ç²¾çµçš„å„ç§å—åŠ›è®¡ç®—
+	/// å‚æ•° bRestï¼štrue æš‚åœ false ç»§ç»­
+	/// </summary>
+	/// <param name="bRest"></param>
+	public void 		SetSpriteAtRest( bool bRest )
+	{
+        CommonAPI.dSetSpriteAtRest(GetName(), bRest ? 1 : 0);
+	}
+
+	/// <summary>
+	/// GetSpriteAtRestï¼šè·å–ç²¾çµå½“å‰æ˜¯å¦åœ¨æš‚åœä¸­
+	/// è¿”å›å€¼ï¼štrue æš‚åœä¸­ false æ­£å¸¸
+	/// </summary>
+	/// <returns></returns>
+	public bool 		GetSpriteAtRest( )
+	{
+        return CommonAPI.dGetSpriteAtRest(GetName()) == 0 ? false : true;
+	}
+
+	/// <summary>
+	/// SetSpriteFrictionï¼šè®¾ç½®ç²¾çµæ‘©æ“¦åŠ›
+	/// å‚æ•° fFrictionï¼šæ‘©æ“¦åŠ›å¤§å°
+	/// </summary>
+	/// <param name="fFriction"></param>
+	public void 		SetSpriteFriction(  float fFriction )
+	{
+		CommonAPI.dSetSpriteFriction( GetName(), fFriction );
+	}
+
+	/// <summary>
+	/// SetSpriteRestitutionï¼šè®¾ç½®ç²¾çµå¼¹åŠ›
+	/// å‚æ•° fRestitutionï¼šå¼¹åŠ›å€¼å¤§å°
+	/// </summary>
+	/// <param name="fRestitution"></param>
+	public void 		SetSpriteRestitution(  float fRestitution )
+	{
+		CommonAPI.dSetSpriteRestitution( GetName(), fRestitution );
+	}
+
+	/// <summary>
+	/// SetSpriteMassï¼šè®¾ç½®ç²¾çµè´¨é‡
+	/// å‚æ•° fMassï¼šè´¨é‡å¤§å°
+	/// </summary>
+	/// <param name="fMass"></param>
+	public void 		SetSpriteMass(  float fMass )
+	{
+		CommonAPI.dSetSpriteMass( GetName(), fMass );
+	}
+
+	/// <summary>
+	/// GetSpriteMassï¼šè·å–ç²¾çµè´¨é‡
+	/// è¿”å›å€¼ ï¼šè´¨é‡å¤§å°
+	/// </summary>
+	/// <returns></returns>
+	public float 		GetSpriteMass()
+	{
+		return CommonAPI.dGetSpriteMass( GetName() );
+	}
+
+	/// <summary>
+	/// SetSpriteAutoMassInertiaï¼šå¼€å¯æˆ–è€…å…³é—­ç²¾çµæƒ¯æ€§
+	/// å‚æ•° bStatusï¼štrue å¼€å¯ false å…³é—­
+	/// </summary>
+	/// <param name="bStatus"></param>
+	public void 		SetSpriteAutoMassInertia( bool bStatus )
+	{
+        CommonAPI.dSetSpriteAutoMassInertia(GetName(), bStatus ? 1 : 0);
+	}
+
+	/// <summary>
+	/// SetSpriteInertialMomentï¼šè®¾ç½®ç²¾çµæƒ¯æ€§å¤§å°
+	/// å‚æ•° fInertï¼šæƒ¯æ€§å¤§å°
+	/// </summary>
+	/// <param name="fInert"></param>
+	public void 		SetSpriteInertialMoment(  float fInert )
+	{
+		CommonAPI.dSetSpriteInertialMoment( GetName(), fInert );
+	}
+
+	/// <summary>
+	/// SetSpriteDampingï¼šè®¾ç½®ç²¾çµè¡°å‡å€¼
+	/// å‚æ•° fDampï¼šè¡°å‡å€¼å¤§å°
+	/// </summary>
+	/// <param name="fDamp"></param>
+	public void 		SetSpriteDamping(  float fDamp )
+	{
+		CommonAPI.dSetSpriteDamping( GetName(), fDamp );
+	}
+    	
+	/// <summary>
+	/// SetSpriteImmovableï¼šè®¾ç½®ç²¾çµæ˜¯å¦ä¸å¯ç§»åŠ¨
+	/// å‚æ•° bImmovableï¼štrue ä¸å¯ä»¥ç§»åŠ¨ false å¯ä»¥ç§»åŠ¨
+	/// </summary>
+	/// <param name="bImmovable"></param>
+	public void 		SetSpriteImmovable( bool bImmovable )
+	{
+        CommonAPI.dSetSpriteImmovable(GetName(), bImmovable ? 1 : 0);
+	}
+
+	/// <summary>
+	/// GetSpriteImmovableï¼šè·å–ç²¾çµå½“å‰æ˜¯å¦ä¸å¯ä»¥ç§»åŠ¨
+	/// è¿”å›å€¼ï¼štrue ä¸å¯ä»¥ç§»åŠ¨ false å¯ä»¥ç§»åŠ¨
+	/// </summary>
+	/// <returns></returns>
+	public bool 		GetSpriteImmovable()
+	{
+        return CommonAPI.dGetSpriteImmovable(GetName()) == 0 ? false : true;
+	}
+
+	/// <summary>
+	/// SetSpriteLinearVelocityï¼šè®¾ç½®ç²¾çµç§»åŠ¨é€Ÿåº¦
+	/// å‚æ•° fVelXï¼šXæ–¹å‘é€Ÿåº¦
+	/// å‚æ•° fVelYï¼šYæ–¹å‘é€Ÿåº¦
+	/// </summary>
+	/// <param name="fVelX"></param>
+	/// <param name="fVelY"></param>
+	public void 		SetSpriteLinearVelocity(  float fVelX,  float fVelY )
+	{
+		CommonAPI.dSetSpriteLinearVelocity( GetName(), fVelX, fVelY );
+	}
+
+	/// <summary>
+	/// SetSpriteLinearVelocityXï¼šè®¾ç½®ç²¾çµXæ–¹å‘ç§»åŠ¨é€Ÿåº¦
+	/// å‚æ•° fVelXï¼šXæ–¹å‘é€Ÿåº¦
+	/// </summary>
+	/// <param name="fVelX"></param>
+	public void 		SetSpriteLinearVelocityX(  float fVelX )
+	{
+		CommonAPI.dSetSpriteLinearVelocityX( GetName(), fVelX );
+	}
+
+	/// <summary>
+	/// SetSpriteLinearVelocityYï¼šè®¾ç½®ç²¾çµYæ–¹å‘ç§»åŠ¨é€Ÿåº¦
+	/// å‚æ•° fVelYï¼šYæ–¹å‘é€Ÿåº¦
+	/// </summary>
+	/// <param name="fVelY"></param>
+	public void 		SetSpriteLinearVelocityY(  float fVelY )
+	{
+		CommonAPI.dSetSpriteLinearVelocityY( GetName(), fVelY );
+	}
+
+	/// <summary>
+	/// SetSpriteLinearVelocityPolarï¼šæŒ‰è§’åº¦æœå‘è®¾ç½®ç²¾çµç§»åŠ¨é€Ÿåº¦
+	/// å‚æ•° fSpeedï¼šç§»åŠ¨é€Ÿåº¦
+	/// å‚æ•° fPolarï¼šè§’åº¦æœå‘
+	/// </summary>
+	/// <param name="fSpeed"></param>
+	/// <param name="fPolar"></param>
+	public void 		SetSpriteLinearVelocityPolar(  float fSpeed,  float fPolar )
+	{
+		CommonAPI.dSetSpriteLinearVelocityPolar( GetName(), fSpeed, fPolar );
+	}
+ 
+	/// <summary>
+	/// SetSpriteAngularVelocityï¼šè®¾ç½®ç²¾çµè§’åº¦æ—‹è½¬é€Ÿåº¦
+	/// å‚æ•° fAngularï¼šè§’åº¦æ—‹è½¬é€Ÿåº¦
+	/// </summary>
+	/// <param name="fAngular"></param>
+	public void 		SetSpriteAngularVelocity(  float fAngular )
+	{
+		CommonAPI.dSetSpriteAngularVelocity( GetName(), fAngular );
+	}
+
+	/// <summary>
+	/// SetSpriteMinLinearVelocityï¼šè®¾ç½®ç²¾çµæœ€å°é€Ÿåº¦
+	/// å‚æ•° fMinï¼šæœ€å°é€Ÿåº¦å€¼
+	/// </summary>
+	/// <param name="fMin"></param>
+	public void 		SetSpriteMinLinearVelocity(  float fMin )
+	{
+		CommonAPI.dSetSpriteMinLinearVelocity( GetName(), fMin );
+	}
+
+	/// <summary>
+	/// SetSpriteMaxLinearVelocityï¼šè®¾ç½®ç²¾çµæœ€å¤§é€Ÿåº¦
+	/// å‚æ•° fMaxï¼šæœ€å¤§é€Ÿåº¦å€¼
+	/// </summary>
+	/// <param name="fMax"></param>
+	public void 		SetSpriteMaxLinearVelocity(  float fMax )
+	{
+		CommonAPI.dSetSpriteMaxLinearVelocity( GetName(), fMax );
+	}
+
+	/// <summary>
+	/// SetSpriteMinAngularVelocityï¼šè®¾ç½®ç²¾çµæœ€å°è§’é€Ÿåº¦
+	/// å‚æ•° fMinï¼šæœ€å°è§’é€Ÿåº¦
+	/// </summary>
+	/// <param name="fMin"></param>
+	public void 		SetSpriteMinAngularVelocity(  float fMin )
+	{
+		CommonAPI.dSetSpriteMinAngularVelocity( GetName(), fMin );
+	}
+
+	/// <summary>
+	/// SetSpriteMaxAngularVelocityï¼šè®¾ç½®ç²¾çµæœ€å¤§è§’é€Ÿåº¦
+	/// å‚æ•° fMaxï¼šæœ€å¤§è§’é€Ÿåº¦
+	/// </summary>
+	/// <param name="fMax"></param>
+	public void 		SetSpriteMaxAngularVelocity(  float fMax )
+	{
+		CommonAPI.dSetSpriteMaxAngularVelocity( GetName(), fMax );
+	}
+    	
+	/// <summary>
+	/// GetSpriteLinearVelocityXï¼šè·å–ç²¾çµXæ–¹å‘é€Ÿåº¦
+	/// è¿”å›å€¼ï¼šXæ–¹å‘é€Ÿåº¦
+	/// </summary>
+	/// <returns></returns>
+	public float 		GetSpriteLinearVelocityX()
+	{
+		return CommonAPI.dGetSpriteLinearVelocityX( GetName() );
+	}
+
+	/// <summary>
+	/// GetSpriteLinearVelocityYï¼šè·å–ç²¾çµYæ–¹å‘é€Ÿåº¦
+	/// è¿”å›å€¼ï¼šYæ–¹å‘é€Ÿåº¦
+	/// </summary>
+	/// <returns></returns>
+	public float 		GetSpriteLinearVelocityY()
+	{
+		return CommonAPI.dGetSpriteLinearVelocityY( GetName() );
+	}
+    
+	/// <summary>
+	/// SpriteMountToSpriteï¼šå°†ä¸€ä¸ªç²¾çµç»‘å®šåˆ°å¦ä¸€ä¸ªç²¾çµä¸Šï¼Œæš‚æ—¶çš„æˆä¸ºå¦ä¸€ä¸ªç²¾çµçš„ä¸€éƒ¨åˆ†ï¼Œè·Ÿéšå…¶è¿åŠ¨ç­‰
+	/// å‚æ•° szDstNameï¼šæ‰¿è½½ç»‘å®šçš„æ¯ä½“ç²¾çµåå­—
+	/// å‚æ•° fOffSetXï¼šç»‘å®šåç§»X
+	/// å‚æ•° fOffsetYï¼šç»‘å®šåç§»Y
+	/// è¿”å›å€¼ï¼šè¿”å›ä¸€ä¸ªç»‘å®šID
+	/// </summary>
+	/// <param name="szDstName"></param>
+	/// <param name="fOffSetX"></param>
+	/// <param name="fOffsetY"></param>
+	/// <returns></returns>
+    public int SpriteMountToSprite(string szDstName, float fOffSetX, float fOffsetY)
+	{
+		return CommonAPI.dSpriteMountToSprite( GetName(), szDstName, fOffSetX, fOffsetY );
+	}
+
+	/// <summary>
+	/// SpriteMountToSpriteLinkPointï¼šå°†ä¸€ä¸ªç²¾çµç»‘å®šåˆ°å¦ä¸€ä¸ªç²¾çµä¸Šï¼Œç»‘å®šä½ç½®ä¸ºæŒ‡å®šçš„é“¾æ¥ç‚¹ï¼Œæš‚æ—¶çš„æˆä¸ºå¦ä¸€ä¸ªç²¾çµçš„ä¸€éƒ¨åˆ†ï¼Œè·Ÿéšå…¶è¿åŠ¨ç­‰
+	/// å‚æ•° szDstNameï¼šæ‰¿è½½ç»‘å®šçš„æ¯ä½“ç²¾çµåå­—
+	/// å‚æ•° iPointIdï¼šé“¾æ¥ç‚¹åºå·
+	/// è¿”å›å€¼ï¼šè¿”å›ä¸€ä¸ªç»‘å®šID
+	/// </summary>
+	/// <param name="szDstName"></param>
+	/// <param name="iPointId"></param>
+	/// <returns></returns>
+    public int SpriteMountToSpriteLinkPoint(string szDstName, int iPointId)
+	{
+		return CommonAPI.dSpriteMountToSpriteLinkPoint( GetName(), szDstName, iPointId );
+	}
+
+	/// <summary>
+	/// SetSpriteMountRotationï¼šè®¾ç½®ç²¾çµçš„ç»‘å®šæœå‘ï¼Œå³ç›¸å¯¹äºæ¯ä½“çš„æœå‘
+	/// å‚æ•° fRotï¼šè§’åº¦æœå‘ï¼Œ0 - 360
+	/// </summary>
+	/// <param name="fRot"></param>
+	public void		SetSpriteMountRotation(  float fRot )
+	{
+		CommonAPI.dSetSpriteMountRotation( GetName(), fRot );
+	}
+
+	/// <summary>
+	/// GetSpriteMountRotationï¼šè·å–ç²¾çµçš„ç»‘å®šæœå‘ï¼Œå³ç›¸å¯¹äºæ¯ä½“çš„æœå‘
+	/// è¿”å›å€¼ï¼šè§’åº¦æœå‘
+	/// </summary>
+	/// <returns></returns>
+	public float		GetSpriteMountRotation()
+	{
+		return CommonAPI.dGetSpriteMountRotation( GetName() );
+	}
+
+	/// <summary>
+	/// SetSpriteAutoMountRotationï¼šè®¾ç½®ç²¾çµç»‘å®šä¹‹åè‡ªåŠ¨æ—‹è½¬
+	/// å‚æ•° fRotï¼šæ—‹è½¬é€Ÿåº¦
+	/// </summary>
+	/// <param name="fRot"></param>
+	public void		SetSpriteAutoMountRotation(  float fRot )
+	{
+		CommonAPI.dSetSpriteAutoMountRotation( GetName(), fRot );
+	}
+
+	/// <summary>
+	/// GetSpriteAutoMountRotationï¼šè·å–ç²¾çµç»‘å®šä¹‹åçš„è‡ªåŠ¨æ—‹è½¬å€¼
+	/// è¿”å›å€¼ï¼šæ—‹è½¬é€Ÿåº¦
+	/// </summary>
+	/// <returns></returns>
+	public float		GetSpriteAutoMountRotation()
+	{
+		return CommonAPI.dGetSpriteAutoMountRotation( GetName() );
+	}
+
+	/// <summary>
+	/// SetSpriteMountForceï¼šç»‘å®šè‡³å¦ä¸€ä¸ªç²¾çµæ—¶ï¼Œé™„åŠ çš„ä½œç”¨åŠ›
+	/// å‚æ•° fFroceï¼šä½œç”¨åŠ›
+	/// </summary>
+	/// <param name="fForce"></param>
+	public void		SetSpriteMountForce(  float fForce )
+	{
+		CommonAPI.dSetSpriteMountForce( GetName(), fForce );
+	}
+
+	/// <summary>
+	/// SetSpriteMountTrackRotationï¼šç»‘å®šçš„ç²¾çµæ˜¯å¦è·Ÿéšæ¯ä½“æ—‹è½¬
+	/// å‚æ•° bTrackRotationï¼štrue è·Ÿéš false ä¸è·Ÿéš
+	/// </summary>
+	/// <param name="bTrackRotation"></param>
+	public void		SetSpriteMountTrackRotation( bool bTrackRotation )
+	{
+        CommonAPI.dSetSpriteMountTrackRotation(GetName(), bTrackRotation ? 1 : 0);
+	}
+
+	/// <summary>
+	/// SetSpriteMountOwnedï¼šæ¯ä½“è¢«åˆ é™¤çš„æ—¶å€™ï¼Œç»‘å®šçš„ç²¾çµæ˜¯å¦ä¹Ÿè·Ÿç€è¢«åˆ é™¤
+	/// å‚æ•° bMountOwnedï¼štrue è·Ÿç€ false ä¸è·Ÿç€
+	/// </summary>
+	/// <param name="bMountOwned"></param>
+	public void		SetSpriteMountOwned( bool bMountOwned )
+	{
+        CommonAPI.dSetSpriteMountOwned(GetName(), bMountOwned ? 1 : 0);
+	}
+
+	/// <summary>
+	/// SetSpriteMountInheritAttributesï¼šç»‘å®šçš„æ—¶å€™ï¼Œæ˜¯å¦ç»§æ‰¿æ¯ä½“çš„å±æ€§
+	/// å‚æ•° bInherAttrï¼štrue ç»§æ‰¿ false ä¸ç»§æ‰¿
+	/// </summary>
+	/// <param name="bInherAttr"></param>
+	public void		SetSpriteMountInheritAttributes( bool bInherAttr )
+	{
+        CommonAPI.dSetSpriteMountInheritAttributes(GetName(), bInherAttr ? 1 : 0);
+	}
+
+	/// <summary>
+	/// SpriteDismountï¼šå°†å·²ç»ç»‘å®šçš„ç²¾çµè¿›è¡Œè§£ç»‘
+	/// </summary>
+	public void		SpriteDismount()
+	{
+		CommonAPI.dSpriteDismount( GetName() );
+	}
+
+	/// <summary>
+	/// GetSpriteIsMountedï¼šåˆ¤æ–­ç²¾çµæ˜¯å¦ç»‘å®šåœ¨å¦ä¸€ä¸ªç²¾çµä¸Š
+	/// è¿”å›å€¼ï¼štrue ç»‘å®š false ä¸ç»‘å®š
+	/// </summary>
+	/// <returns></returns>
+	public bool		GetSpriteIsMounted()
+	{
+        return CommonAPI.dGetSpriteIsMounted(GetName()) == 0 ? false : true;
+	}
+
+	/// <summary>
+	/// GetSpriteMountedParentï¼šè·å–ç»‘å®šçš„æ¯ä½“ç²¾çµçš„åå­—
+	/// è¿”å›å€¼ï¼šæ¯ä½“ç²¾çµåå­—ï¼Œå¦‚æœæœªç»‘å®šï¼Œåˆ™è¿”å›ç©ºå­—ç¬¦ä¸²
+	/// </summary>
+	/// <returns></returns>
+    public string GetSpriteMountedParent()
+	{
+		return CommonAPI.dGetSpriteMountedParent( GetName() );
+	}
+
+	/// <summary>
+	/// SetSpriteColorRedï¼šæ›´æ”¹ç²¾çµæ˜¾ç¤ºé¢œè‰²ä¸­çš„çº¢è‰²ã€‚é»˜è®¤ç²¾çµçš„çº¢ç»¿è“ä¸‰é¢œè‰²çš„å€¼å‡ä¸º255ï¼Œä¿®æ”¹å…¶ä¸­ä¸€é¡¹å°†å¯ä»¥æ”¹å˜å…¶é¢œè‰²
+	/// å‚æ•° iColï¼šé¢œè‰²èŒƒå›´ 0 - 255
+	/// </summary>
+	/// <param name="iCol"></param>
+	public void		SetSpriteColorRed(  int iCol )
+	{
+		CommonAPI.dSetSpriteColorRed( GetName(), iCol );
+	}
+
+	/// <summary>
+	/// SetSpriteColorGreenï¼šæ›´æ”¹ç²¾çµæ˜¾ç¤ºé¢œè‰²ä¸­çš„ç»¿è‰²ã€‚é»˜è®¤ç²¾çµçš„çº¢ç»¿è“ä¸‰é¢œè‰²çš„å€¼å‡ä¸º255ï¼Œä¿®æ”¹å…¶ä¸­ä¸€é¡¹å°†å¯ä»¥æ”¹å˜å…¶é¢œè‰²
+	/// å‚æ•° iColï¼šé¢œè‰²èŒƒå›´ 0 - 255
+	/// </summary>
+	/// <param name="iCol"></param>
+	public void		SetSpriteColorGreen(  int iCol )
+	{
+		CommonAPI.dSetSpriteColorGreen( GetName(), iCol );
+	}
+
+	/// <summary>
+	/// SetSpriteColorBlueï¼šæ›´æ”¹ç²¾çµæ˜¾ç¤ºé¢œè‰²ä¸­çš„è“è‰²ã€‚é»˜è®¤ç²¾çµçš„çº¢ç»¿è“ä¸‰é¢œè‰²çš„å€¼å‡ä¸º255ï¼Œä¿®æ”¹å…¶ä¸­ä¸€é¡¹å°†å¯ä»¥æ”¹å˜å…¶é¢œè‰²
+	/// å‚æ•° iColï¼šé¢œè‰²èŒƒå›´ 0 - 255
+	/// </summary>
+	/// <param name="iCol"></param>
+	public void		SetSpriteColorBlue(  int iCol )
+	{
+		CommonAPI.dSetSpriteColorBlue( GetName(), iCol );
+	}
+
+	/// <summary>
+	/// SetSpriteColorAlphaï¼šè®¾ç½®ç²¾çµé€æ˜åº¦
+	/// å‚æ•° iColï¼šé€æ˜åº¦ï¼Œå€¼0 - 255ï¼Œä»å®Œå…¨é€æ˜è‡³å®Œå…¨ä¸é€æ˜
+	/// </summary>
+	/// <param name="iCol"></param>
+	public void		SetSpriteColorAlpha(  int iCol )
+	{
+		CommonAPI.dSetSpriteColorAlpha(  GetName(), iCol );
+	}
+
+	/// <summary>
+	/// GetSpriteColorRedï¼šè·å–ç²¾çµæ˜¾ç¤ºé¢œè‰²ä¸­çš„çº¢è‰²å€¼
+	/// è¿”å›å€¼ï¼šé¢œè‰²å€¼
+	/// </summary>
+	/// <returns></returns>
+	public int			GetSpriteColorRed()
+	{
+		return CommonAPI.dGetSpriteColorRed( GetName() );
+	}
+
+	/// <summary>
+	/// GetSpriteColorGreenï¼šè·å–ç²¾çµæ˜¾ç¤ºé¢œè‰²ä¸­çš„ç»¿è‰²å€¼
+	/// è¿”å›å€¼ï¼šé¢œè‰²å€¼
+	/// </summary>
+	/// <returns></returns>
+	public int			GetSpriteColorGreen()
+	{
+		return CommonAPI.dGetSpriteColorGreen( GetName() );
+	}
+
+	/// <summary>
+	/// GetSpriteColorBlueï¼šè·å–ç²¾çµæ˜¾ç¤ºé¢œè‰²ä¸­çš„è“è‰²å€¼
+	/// è¿”å›å€¼ï¼šé¢œè‰²å€¼
+	/// </summary>
+	/// <returns></returns>
+	public int			GetSpriteColorBlue()
+	{
+		return CommonAPI.dGetSpriteColorBlue( GetName() );
+	}
+
+	/// <summary>
+	/// GetSpriteColorAlphaï¼šè·å–ç²¾çµé€æ˜åº¦
+	/// è¿”å›å€¼ï¼šé€æ˜åº¦
+	/// </summary>
+	/// <returns></returns>
+	public int			GetSpriteColorAlpha()
+	{
+		return CommonAPI.dGetSpriteColorAlpha( GetName() );
+	}
+};

@@ -33,7 +33,7 @@ namespace GameNamespace
 
 
             // 在此使用API更改窗口标题
-            CSystem.SetWindowTitle("Initalize");
+            CSystem.SetWindowTitle("ABC");
             //----------在这里启动玩家初始化----------
             
             //----------玩家初始化结束----------
@@ -46,6 +46,7 @@ namespace GameNamespace
 
                 // 执行游戏主循环
                 CGameMain.GetInstance().GameMainLoop(fTimeDelta);
+                TaskManager.Update();
             };
 
             // 关闭游戏引擎

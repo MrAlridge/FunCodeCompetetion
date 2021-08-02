@@ -99,4 +99,28 @@
       CollisionPolyList = "-0.500 -0.750 0.500 -0.750 0.481 0.900 -0.500 0.900";
          mountID = "6";
    };
+   new t2dTextObject(DEBUG_CurrentPostion) {
+      canSaveDynamicFields = "1";
+      Position = "-13.861 -22.226";
+      size = "24.375 10.000";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+      text = "debug";
+      font = "Arial";
+      wordWrap = "0";
+      hideOverflow = "1";
+      textAlign = "Left";
+      lineHeight = "10";
+      aspectRatio = "1";
+      lineSpacing = "0";
+      characterSpacing = "0";
+      autoSize = "1";
+      fontSizes = "80";
+      textColor = "1 1 1 1";
+      bilinearFilter = "0";
+      snapToInteger = "0";
+      noUnicode = "0";
+         hideOverlap = "0";
+         mountID = "7";
+   };
 };

@@ -1,7 +1,7 @@
-//-------------------------- 8/2/2021 -- 20:30:24 -----
+//-------------------------- 8/3/2021 -- 00:20:36 -----
 Processor Init:
    Intel (unknown, Pentium Pro/II/III family), ~1.20 Ghz
-     (timed at roughly 1.18 Ghz)
+     (timed at roughly 1.19 Ghz)
    FPU detected
    MMX detected
    SSE detected
@@ -108,10 +108,8 @@ Loading compiled script D:/FunCodeProj/FunCodeCompetetion/MagamanReplay/Bin/comm
 Loading compiled script D:/FunCodeProj/FunCodeCompetetion/MagamanReplay/Bin/common/gameScripts/align.cs.
 
 FunCode (v1.7.5) initialized...
-Compiling D:/FunCodeProj/FunCodeCompetetion/MagamanReplay/Bin/game/managed/datablocks.cs...
 Loading compiled script D:/FunCodeProj/FunCodeCompetetion/MagamanReplay/Bin/game/managed/datablocks.cs.
 Loading compiled script D:/FunCodeProj/FunCodeCompetetion/MagamanReplay/Bin/game/managed/persistent.cs.
-Compiling D:/FunCodeProj/FunCodeCompetetion/MagamanReplay/Bin/game/managed/brushes.cs...
 Loading compiled script D:/FunCodeProj/FunCodeCompetetion/MagamanReplay/Bin/game/managed/brushes.cs.
 Loading compiled script D:/FunCodeProj/FunCodeCompetetion/MagamanReplay/Bin/game/gui/mainScreen.gui.
 Loading compiled script D:/FunCodeProj/FunCodeCompetetion/MagamanReplay/Bin/game/gameScripts/game.cs.

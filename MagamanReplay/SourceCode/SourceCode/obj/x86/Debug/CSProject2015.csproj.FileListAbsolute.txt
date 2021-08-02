@@ -1,0 +1,2 @@
+D:\FunCodeProj\FunCodeCompetetion\MagamanReplay\SourceCode\SourceCode\obj\x86\Debug\CSProject2015.csprojAssemblyReference.cache
+D:\FunCodeProj\FunCodeCompetetion\MagamanReplay\SourceCode\SourceCode\obj\x86\Debug\CSProject2015.csproj.CoreCompileInputs.cache

@@ -6,7 +6,8 @@ namespace GameNamespace
 {
     public class playerBaseClass
     {
-        public CSprite playerSprite = new CSprite("player_idle");
+        public CAnimateSprite playerSprite = new CAnimateSprite("player_idle");
+        public float[] playerPosition = new float[2];
 
         public void Walk(string dir)
         {
@@ -14,11 +15,11 @@ namespace GameNamespace
             {
                 case "Left":
                 {
-                    
+                    break;
                 }
                 case "Right":
                 {
-
+                    break;
                 }
             }
         }
