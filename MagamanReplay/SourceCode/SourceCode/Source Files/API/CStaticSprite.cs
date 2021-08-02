@@ -7,55 +7,58 @@ using System.Text;
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-/// <summary>
-/// CStaticSprite
-/// ¾²Ì¬¾«Áé(¾²Ì¬Í¼Æ¬ÏÔÊ¾)£¬´ÓCSprite¾«Áé»ùÀà¼Ì³ÐÏÂÀ´£¬±È»ùÀà¶àÁË¼¸¸ö¿ØÖÆ¾«ÁéÍ¼Æ¬ÏÔÊ¾µÄº¯Êý
-/// </summary>
-public class CStaticSprite : CSprite
+namespace GameNamespace
 {
-	public	CStaticSprite( string szName ) : base(szName)
-	{
-	}
-
 	/// <summary>
-	/// SetStaticSpriteImage£ºÉèÖÃ/¸ü¸Ä¾²Ì¬¾«ÁéµÄÏÔÊ¾Í¼Æ¬
-	/// ²ÎÊý szImageName£ºÍ¼Æ¬Ãû×Ö
-	/// ²ÎÊý iFrame£º¸ÃÍ¼Æ¬µÄÏÔÊ¾Ö¡Êý¡£Îª±à¼­Æ÷Ô¤ÀÀÍ¼ÀïÏÔÊ¾µÄ1/N£¬·¶Î§Îª 0 µ½ N - 1
+	/// CStaticSprite
+	/// ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½Ì¬Í¼Æ¬ï¿½ï¿½Ê¾)ï¿½ï¿½ï¿½ï¿½CSpriteï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È»ï¿½ï¿½ï¿½ï¿½ï¿½Ë¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¾ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½Ê¾ï¿½Äºï¿½ï¿½ï¿½
 	/// </summary>
-	/// <param name="szImageName"></param>
-	/// <param name="iFrame"></param>
-	public	void		SetStaticSpriteImage( string szImageName,  int iFrame )
+	public class CStaticSprite : CSprite
 	{
-		CommonAPI.dSetStaticSpriteImage( GetName(), szImageName, iFrame );
-	}
+		public	CStaticSprite( string szName ) : base(szName)
+		{
+		}
 
-	/// <summary>
-	/// SetStaticSpriteFrame£ºÉèÖÃ¾²Ì¬¾«Áéµ±Ç°Í¼Æ¬µÄÏÔÊ¾Ö¡Êý
-	/// ²ÎÊý iFrame£º¸ÃÍ¼Æ¬µÄÏÔÊ¾Ö¡Êý¡£Îª±à¼­Æ÷Ô¤ÀÀÍ¼ÀïÏÔÊ¾µÄ1/N£¬·¶Î§Îª 0 µ½ N - 1
-	/// </summary>
-	/// <param name="iFrame"></param>
-	public	void		SetStaticSpriteFrame(  int iFrame )
-	{
-		CommonAPI.dSetStaticSpriteFrame( GetName(), iFrame );
-	}
+		/// <summary>
+		/// SetStaticSpriteImageï¿½ï¿½ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½Ä¾ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Í¼Æ¬
+		/// ï¿½ï¿½ï¿½ï¿½ szImageNameï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½ iFrameï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Ê¾Ö¡ï¿½ï¿½ï¿½ï¿½Îªï¿½à¼­ï¿½ï¿½Ô¤ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½1/Nï¿½ï¿½ï¿½ï¿½Î§Îª 0 ï¿½ï¿½ N - 1
+		/// </summary>
+		/// <param name="szImageName"></param>
+		/// <param name="iFrame"></param>
+		public	void		SetStaticSpriteImage( string szImageName,  int iFrame )
+		{
+			CommonAPI.dSetStaticSpriteImage( GetName(), szImageName, iFrame );
+		}
+
+		/// <summary>
+		/// SetStaticSpriteFrameï¿½ï¿½ï¿½ï¿½ï¿½Ã¾ï¿½Ì¬ï¿½ï¿½ï¿½éµ±Ç°Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Ê¾Ö¡ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½ iFrameï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Ê¾Ö¡ï¿½ï¿½ï¿½ï¿½Îªï¿½à¼­ï¿½ï¿½Ô¤ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½1/Nï¿½ï¿½ï¿½ï¿½Î§Îª 0 ï¿½ï¿½ N - 1
+		/// </summary>
+		/// <param name="iFrame"></param>
+		public	void		SetStaticSpriteFrame(  int iFrame )
+		{
+			CommonAPI.dSetStaticSpriteFrame( GetName(), iFrame );
+		}
+		
+		/// <summary>
+		/// GetStaticSpriteImageï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½éµ±Ç°ï¿½ï¿½Ê¾ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
+		/// </summary>
+		/// <returns></returns>
+		public	string  GetStaticSpriteImage()
+		{
+			return CommonAPI.dGetStaticSpriteImage( GetName() );
+		}
 	
-	/// <summary>
-	/// GetStaticSpriteImage£º»ñÈ¡¾«Áéµ±Ç°ÏÔÊ¾µÄÍ¼Æ¬Ãû×Ö
-	/// ·µ»ØÖµ£ºÍ¼Æ¬Ãû×Ö
-	/// </summary>
-	/// <returns></returns>
-	public	string  GetStaticSpriteImage()
-	{
-		return CommonAPI.dGetStaticSpriteImage( GetName() );
-	}
- 
-	/// <summary>
-	/// GetStaticSpriteFrame£º»ñÈ¡¾«Áéµ±Ç°ÏÔÊ¾µÄÍ¼Æ¬Ö¡Êý
-	/// ·µ»ØÖµ£ºÖ¡Êý
-	/// </summary>
-	/// <returns></returns>
-	public	int			GetStaticSpriteFrame()
-	{
-		return CommonAPI.dGetStaticSpriteFrame( GetName() );
-	}
-};
+		/// <summary>
+		/// GetStaticSpriteFrameï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½éµ±Ç°ï¿½ï¿½Ê¾ï¿½ï¿½Í¼Æ¬Ö¡ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½Ö¡ï¿½ï¿½
+		/// </summary>
+		/// <returns></returns>
+		public	int			GetStaticSpriteFrame()
+		{
+			return CommonAPI.dGetStaticSpriteFrame( GetName() );
+		}
+	};
+}

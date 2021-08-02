@@ -58,6 +58,7 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="obj\x86\Debug\.NETFramework,Version=v4.0,Profile=Client.AssemblyAttributes.cs" />
     <Compile Include="Source Files\API\CommonAPI.cs" />
     <Compile Include="Source Files\API\CAnimateSprite.cs" />
     <Compile Include="Source Files\API\CEffect.cs" />
@@ -68,6 +69,11 @@
     <Compile Include="Source Files\API\CTextSprite.cs" />
     <Compile Include="Source Files\Game.cs" />
     <Compile Include="Source Files\LessonX.cs" />
+    <Compile Include="Source Files\Scripts\Animation\AnimatorManager.cs" />
+    <Compile Include="Source Files\Scripts\Animation\BaseAnimator.cs" />
+    <Compile Include="Source Files\Scripts\Animation\PlayerAnimator.cs" />
+    <Compile Include="Source Files\Scripts\EngineTools\TaskManager.cs" />
+    <Compile Include="Source Files\Scripts\playerBaseClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
@@ -94,7 +100,16 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="obj\Debug\CSProject2015.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\CSProject2015.csprojAssemblyReference.cache" />
+    <None Include="obj\x86\Debug\CSProject2015.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\x86\Debug\CSProject2015.csprojAssemblyReference.cache" />
+    <None Include="Source Files\Scripts\Animation\状态机说明.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\x86\Debug\TempPE\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -7,44 +7,47 @@ using System.Text;
 //
 //////////////////////////////////////////////////////////////////////////////
 
-/// <summary>
-/// 类：CSTextSprite
-/// 文字精灵，亦属于精灵中的一种。基本用法：在地图里摆放一个“文字”物体，起个名字
-/// 然后在代码里定义一个文字精灵的对象实例，将此名字做为构造函数的参数，然后调用对应的成员函数更新文字显示即可
-/// </summary>
-public class CTextSprite : CSprite
+namespace GameNamespace
 {
-	public	CTextSprite( string szName ) : base(szName)
-	{
-	}
-
 	/// <summary>
-	/// SetTextValue：文字精灵显示某个数值
-	/// 参数 iValue：要显示的数值
+	/// 锟洁：CSTextSprite
+	/// 锟斤拷锟街撅拷锟介，锟斤拷锟斤拷锟节撅拷锟斤拷锟叫碉拷一锟街★拷锟斤拷锟斤拷锟矫凤拷锟斤拷锟节碉拷图锟斤拷诜锟揭伙拷锟斤拷锟斤拷锟斤拷帧锟斤拷锟斤拷澹拷锟斤拷锟斤拷锟斤拷
+	/// 然锟斤拷锟节达拷锟斤拷锟斤定锟斤拷一锟斤拷锟斤拷锟街撅拷锟斤拷亩锟斤拷锟绞碉拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟轿拷锟斤拷旌拷锟斤拷牟锟斤拷锟斤拷锟饺伙拷锟斤拷锟矫讹拷应锟侥筹拷员锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷示锟斤拷锟斤拷
 	/// </summary>
-	/// <param name="iValue"></param>
-	public	void		SetTextValue( int iValue )
+	public class CTextSprite : CSprite
 	{
-		CommonAPI.dSetTextValue( GetName(),  iValue );
-	}
+		public	CTextSprite( string szName ) : base(szName)
+		{
+		}
 
-    /// <summary>
-	/// SetTextValueFloat：文字精灵显示某个浮点数值
-	/// 参数 fValue：要显示的数值
-	/// </summary>
-	/// <param name="fValue"></param>
-	public	void		SetTextValueFloat( float fValue )
-	{
-		CommonAPI.dSetTextValueFloat( GetName(),  fValue );
-	}
+		/// <summary>
+		/// SetTextValue锟斤拷锟斤拷锟街撅拷锟斤拷锟斤拷示某锟斤拷锟斤拷值
+		/// 锟斤拷锟斤拷 iValue锟斤拷要锟斤拷示锟斤拷锟斤拷值
+		/// </summary>
+		/// <param name="iValue"></param>
+		public	void		SetTextValue( int iValue )
+		{
+			CommonAPI.dSetTextValue( GetName(),  iValue );
+		}
 
-	/// <summary>
-	/// SetTextstring：文字精灵显示某个字符串文字
-	/// 参数 szStr：要显示的字符串
-	/// </summary>
-	/// <param name="szStr"></param>
-	public	void		SetTextstring( string szStr )
-	{
-		CommonAPI.dSetTextstring(  GetName(), szStr );
-	}
-};
+		/// <summary>
+		/// SetTextValueFloat锟斤拷锟斤拷锟街撅拷锟斤拷锟斤拷示某锟斤拷锟斤拷锟斤拷锟斤拷值
+		/// 锟斤拷锟斤拷 fValue锟斤拷要锟斤拷示锟斤拷锟斤拷值
+		/// </summary>
+		/// <param name="fValue"></param>
+		public	void		SetTextValueFloat( float fValue )
+		{
+			CommonAPI.dSetTextValueFloat( GetName(),  fValue );
+		}
+
+		/// <summary>
+		/// SetTextstring锟斤拷锟斤拷锟街撅拷锟斤拷锟斤拷示某锟斤拷锟街凤拷锟斤拷锟斤拷锟斤拷
+		/// 锟斤拷锟斤拷 szStr锟斤拷要锟斤拷示锟斤拷锟街凤拷锟斤拷
+		/// </summary>
+		/// <param name="szStr"></param>
+		public	void		SetTextstring( string szStr )
+		{
+			CommonAPI.dSetTextstring(  GetName(), szStr );
+		}
+	};
+}

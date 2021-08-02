@@ -285,8 +285,8 @@ $managedDatablockSet = new SimSet() {
       allowUnload = "0";
       force16Bit = "0";
    };
-   new t2dImageMapDatablock(Player_MovementsImageMap) {
-      imageName = "~/data/images/Player_Movements.png";
+   new t2dImageMapDatablock(a2ImageMap1) {
+      imageName = "~/data/images/a2.png";
       imageMode = "FULL";
       frameCount = "-1";
       filterMode = "SMOOTH";
@@ -305,8 +305,88 @@ $managedDatablockSet = new SimSet() {
       allowUnload = "0";
       force16Bit = "0";
    };
-   new t2dImageMapDatablock(PlayerPic03ImageMap) {
-      imageName = "~/data/images/PlayerPic03.dds";
+   new t2dImageMapDatablock(a3ImageMap1) {
+      imageName = "~/data/images/a3.png";
+      imageMode = "FULL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "1";
+      preferPerf = "1";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "-1";
+      cellCountY = "-1";
+      cellWidth = "0";
+      cellHeight = "0";
+      preload = "1";
+      allowUnload = "0";
+      force16Bit = "0";
+   };
+   new t2dImageMapDatablock(a4ImageMap1) {
+      imageName = "~/data/images/a4.png";
+      imageMode = "FULL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "1";
+      preferPerf = "1";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "-1";
+      cellCountY = "-1";
+      cellWidth = "0";
+      cellHeight = "0";
+      preload = "1";
+      allowUnload = "0";
+      force16Bit = "0";
+   };
+   new t2dImageMapDatablock(a5ImageMap1) {
+      imageName = "~/data/images/a5.png";
+      imageMode = "FULL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "1";
+      preferPerf = "1";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "-1";
+      cellCountY = "-1";
+      cellWidth = "0";
+      cellHeight = "0";
+      preload = "1";
+      allowUnload = "0";
+      force16Bit = "0";
+   };
+   new t2dImageMapDatablock(a6ImageMap1) {
+      imageName = "~/data/images/a6.png";
+      imageMode = "FULL";
+      frameCount = "-1";
+      filterMode = "SMOOTH";
+      filterPad = "1";
+      preferPerf = "1";
+      cellRowOrder = "1";
+      cellOffsetX = "0";
+      cellOffsetY = "0";
+      cellStrideX = "0";
+      cellStrideY = "0";
+      cellCountX = "-1";
+      cellCountY = "-1";
+      cellWidth = "0";
+      cellHeight = "0";
+      preload = "1";
+      allowUnload = "0";
+      force16Bit = "0";
+   };
+   new t2dImageMapDatablock(player_idleImageMap1) {
+      imageName = "~/data/images/player_idle.png";
       imageMode = "CELL";
       frameCount = "-1";
       filterMode = "SMOOTH";
@@ -317,38 +397,18 @@ $managedDatablockSet = new SimSet() {
       cellOffsetY = "0";
       cellStrideX = "0";
       cellStrideY = "0";
-      cellCountX = "-1";
-      cellCountY = "-1";
-      cellWidth = "42";
-      cellHeight = "93";
+      cellCountX = "1";
+      cellCountY = "6";
+      cellWidth = "41";
+      cellHeight = "41";
       preload = "0";
       allowUnload = "0";
       force16Bit = "0";
    };
-   new t2dAnimationDatablock(PlayerPic03Animation1) {
-      imageMap = "PlayerPic03ImageMap";
-      animationFrames = "0 1 2 3";
-      animationTime = "0.666656";
-      animationCycle = "1";
-      randomStart = "0";
-      startFrame = "0";
-      animationPingPong = "0";
-      animationReverse = "0";
-   };
-   new t2dAnimationDatablock(PlayerPic03Animation3) {
-      imageMap = "PlayerPic03ImageMap";
-      animationFrames = "12 13 14 15";
-      animationTime = "0.666667";
-      animationCycle = "1";
-      randomStart = "0";
-      startFrame = "0";
-      animationPingPong = "0";
-      animationReverse = "0";
-   };
-   new t2dAnimationDatablock(PlayerPic03Animation2) {
-      imageMap = "PlayerPic03ImageMap";
-      animationFrames = "6 7 8 9";
-      animationTime = "0.666656";
+   new t2dAnimationDatablock(player_idleAnimation) {
+      imageMap = "player_idleImageMap1";
+      animationFrames = "0 1 2 3 4 5";
+      animationTime = "1.2";
       animationCycle = "1";
       randomStart = "0";
       startFrame = "0";

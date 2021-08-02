@@ -6,74 +6,76 @@ using System.Text;
 /////////////////////////////////////////////////////////////////////////////
 //
 /////////////////////////////////////////////////////////////////////////////
-
-/// <summary>
-/// Àà£ºCEffect
-/// ÌØÐ§¾«Áé£¬ÊôÓÚ¾«ÁéÖÐµÄÒ»ÖÖ¡£ÓÃ·¨ºÍÎÄ×Ö¾«ÁéÒ»Ñù£¬ÏÈÔÚµØÍ¼Àï°Ú·ÅÒ»¸öÌØÐ§×öÎªÄ£°å£¬²¢ÃüÃû
-/// È»ºóÔÚ´úÂëÀï¶¨ÒåÒ»¸öÌØÐ§¾«ÁéµÄ¶ÔÏóÊµÀý¼´¿ÉÊ¹ÓÃ
-/// </summary>
-public class CEffect : CSprite
+namespace GameNamespace
 {
-	private string		m_szCloneName;		// ÔÚµØÍ¼ÖÐÔ¤ÏÈ°Ú·ÅºÃµÄÓÃ×ö¿ËÂ¡µÄÌØÐ§Ãû×Ö
-	private float		m_fTime;			// ·ÇÑ­»·ÌØÐ§£ºÉúÃüÊ±³¤£»Ñ­»·ÌØÐ§£ºÑ­»·Ê±³¤
-
 	/// <summary>
-    /// ¹¹Ôìº¯Êý
-    /// ²ÎÊý szCloneName£ºµØÍ¼Àï°Ú·ÅºÃµÄÌØÐ§Ãû×Ö
-    /// ²ÎÊý szMyName£ºÐÂµÄÌØÐ§Ãû×Ö¡£×¢Òâ£ºÈç¹ûÊÇÑ­»·ÌØÐ§£¬ÄÇÃ´±ØÐëÒ»¸öÑ­»·ÌØÐ§¾Í¶¨ÒåÒ»¸ö¶ÔÏóÊµÀý£¬ÓÃ²»Í¬µÄÃû×Ö
-    ///                ·ñÔòÈç¹ûÒ»¸öÍ¬ÃûµÄÑ­»·ÌØÐ§±»²¥·Å¶à´Î£¬ÔÚÉ¾³ýµÄÊ±ºò»á³öÎÊÌâ¡£·ÇÑ­»·ÌØÐ§Ôò¿ÉÒÔÓÃÒ»¸öÊµÀý¶à´Î²¥·Å
-    /// ²ÎÊý fTime£º·ÇÑ­»·ÌØÐ§£ºÉúÃüÊ±³¤£»Ñ­»·ÌØÐ§£ºÑ­»·Ê±³¤
+	/// ï¿½à£ºCEffect
+	/// ï¿½ï¿½Ð§ï¿½ï¿½ï¿½é£¬ï¿½ï¿½ï¿½Ú¾ï¿½ï¿½ï¿½ï¿½Ðµï¿½Ò»ï¿½Ö¡ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½Í¼ï¿½ï¿½Ú·ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ÎªÄ£ï¿½å£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	/// È»ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¶¨ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½
 	/// </summary>
-    public CEffect(string szCloneName, string szMyName, float fTime) : base(szMyName)
+	public class CEffect : CSprite
 	{
-		m_szCloneName = szCloneName;
-		m_fTime = fTime;
-	}
+		private string		m_szCloneName;		// ï¿½Úµï¿½Í¼ï¿½ï¿½Ô¤ï¿½È°Ú·ÅºÃµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¡ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½
+		private float		m_fTime;			// ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½Ñ­ï¿½ï¿½Ê±ï¿½ï¿½
 
-	/// <summary>
-    /// GetCloneName£º»ñÈ¡ÓÃ×ö¿ËÂ¡µÄÌØÐ§Ãû×Ö
-	/// </summary>
-    public string GetCloneName()
-	{
-		return m_szCloneName;
-	}
+		/// <summary>
+		/// ï¿½ï¿½ï¿½ìº¯ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½ szCloneNameï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½Ú·ÅºÃµï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½ szMyNameï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½Ö¡ï¿½×¢ï¿½â£ºï¿½ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½Ð§ï¿½Í¶ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½Ã²ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		///                ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½Å¶ï¿½Î£ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â¡£ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½Î²ï¿½ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½ fTimeï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½Ñ­ï¿½ï¿½Ê±ï¿½ï¿½
+		/// </summary>
+		public CEffect(string szCloneName, string szMyName, float fTime) : base(szMyName)
+		{
+			m_szCloneName = szCloneName;
+			m_fTime = fTime;
+		}
 
-	/// <summary>
-    /// GetTime£º·µ»ØÌØÐ§Ñ­»·Ê±³¤»òÕßÉúÃüÊ±³¤
-	/// </summary>
-	public	float		GetTime()
-	{
-		return m_fTime;
-	}
+		/// <summary>
+		/// GetCloneNameï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¡ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½
+		/// </summary>
+		public string GetCloneName()
+		{
+			return m_szCloneName;
+		}
 
-	/// <summary>
-    /// PlayEffect£º²¥·ÅÒ»¸ö²»Ñ­»·µÄÌØÐ§£¬²¥·ÅÍê±ÏÖ®ºó¸ÃÌØÐ§×Ô¶¯É¾³ý
-    /// ²¥·Å·ÇÑ­»·ÌØÐ§µÄÊ±ºò£¬¿ÉÒÔÊ¹ÓÃÒ»¸öCEffectµÄ¶ÔÏóÊµÀý£¬²¥·Å¶à¸öÌØÐ§
-    /// ²ÎÊý fPosX£º²¥·ÅµÄX×ø±ê
-    /// ²ÎÊý fPosY£º²¥·ÅµÄY×ø±ê
-    /// ²ÎÊý fRotation£º²¥·ÅµÄ½Ç¶È³¯Ïò
-	/// </summary>
-	public	void		PlayEffect(  float fPosX,  float fPosY,  float fRotation)
-	{
-        CommonAPI.dPlayEffect(GetCloneName(), GetTime(), fPosX, fPosY, fRotation);
-	}
+		/// <summary>
+		/// GetTimeï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§Ñ­ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+		/// </summary>
+		public	float		GetTime()
+		{
+			return m_fTime;
+		}
 
-	/// <summary>
-    /// PlayLoopEffect£º²¥·ÅÒ»¸öÑ­»·ÌØÐ§£¬²»ÐèÒª¸ÃÌØÐ§µÄÊ±ºò£¬ÐèÒª×Ô¼ºµ÷ÓÃAPI½øÐÐÉ¾³ý
-    /// ²ÎÊý fPosX£º²¥·ÅµÄX×ø±ê
-    /// ²ÎÊý fPosY£º²¥·ÅµÄY×ø±ê
-    /// ²ÎÊý fRotation£º²¥·ÅµÄ½Ç¶È³¯Ïò
-	/// </summary>
-	public	void		PlayLoopEffect(  float fPosX,  float fPosY,  float fRotation)
-	{
-        CommonAPI.dPlayLoopEffect(GetCloneName(), GetName(), GetTime(), fPosX, fPosY, fRotation);
-	}
+		/// <summary>
+		/// PlayEffectï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½Ô¶ï¿½É¾ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½Å·ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½Ê±ï¿½ò£¬¿ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½Ò»ï¿½ï¿½CEffectï¿½Ä¶ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¶ï¿½ï¿½ï¿½ï¿½Ð§
+		/// ï¿½ï¿½ï¿½ï¿½ fPosXï¿½ï¿½ï¿½ï¿½ï¿½Åµï¿½Xï¿½ï¿½ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½ fPosYï¿½ï¿½ï¿½ï¿½ï¿½Åµï¿½Yï¿½ï¿½ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½ fRotationï¿½ï¿½ï¿½ï¿½ï¿½ÅµÄ½Ç¶È³ï¿½ï¿½ï¿½
+		/// </summary>
+		public	void		PlayEffect(  float fPosX,  float fPosY,  float fRotation)
+		{
+			CommonAPI.dPlayEffect(GetCloneName(), GetTime(), fPosX, fPosY, fRotation);
+		}
 
-	/// <summary>
-	/// DeleteEffect£ºÉ¾³ýÒ»¸öÕýÔÚ²¥·ÅµÄÌØÐ§£¬Ö»ÓÐÑ­»·ÌØÐ§²ÅÐèÒªÊÖ¶¯É¾³ý
-	/// </summary>
-	public	void		DeleteEffect()
-	{
-        CommonAPI.dDeleteEffect(GetName());
-	}
-};
+		/// <summary>
+		/// PlayLoopEffectï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Òªï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½APIï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½ fPosXï¿½ï¿½ï¿½ï¿½ï¿½Åµï¿½Xï¿½ï¿½ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½ fPosYï¿½ï¿½ï¿½ï¿½ï¿½Åµï¿½Yï¿½ï¿½ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½ fRotationï¿½ï¿½ï¿½ï¿½ï¿½ÅµÄ½Ç¶È³ï¿½ï¿½ï¿½
+		/// </summary>
+		public	void		PlayLoopEffect(  float fPosX,  float fPosY,  float fRotation)
+		{
+			CommonAPI.dPlayLoopEffect(GetCloneName(), GetName(), GetTime(), fPosX, fPosY, fRotation);
+		}
+
+		/// <summary>
+		/// DeleteEffectï¿½ï¿½É¾ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½ï¿½Åµï¿½ï¿½ï¿½Ð§ï¿½ï¿½Ö»ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½Òªï¿½Ö¶ï¿½É¾ï¿½ï¿½
+		/// </summary>
+		public	void		DeleteEffect()
+		{
+			CommonAPI.dDeleteEffect(GetName());
+		}
+	};
+}

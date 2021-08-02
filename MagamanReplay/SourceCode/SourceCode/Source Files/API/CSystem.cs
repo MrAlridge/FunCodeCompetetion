@@ -7,287 +7,290 @@ using System.Text;
 //
 ////////////////////////////////////////////////////////////////////////////////
  
-/// <summary>
-/// Àà£ºCSSystem
-/// ÏµÍ³Ïà¹Ø¹¦ÄÜµÄÀà. º¯Êýµ÷ÓÃ·½·¨ CSSystem::º¯ÊýÃû();
-/// </summary>
-public	class CSystem
+namespace GameNamespace
 {
 	/// <summary>
-	/// CursorOff£º¹Ø±ÕÊó±ê²»ÏÔÊ¾¡£´ËAPIÒþ²ØµÄÊÇÕû¸öWindowsµÄÊó±ê£¬³ý·Çµ÷ÓÃ¿ªÆôÊó±êµÄAPI dCursorOn£¬·ñÔòÊó±ê½«Ò»Ö±²»ÏÔÊ¾
+	/// ï¿½à£ºCSSystem
+	/// ÏµÍ³ï¿½ï¿½Ø¹ï¿½ï¿½Üµï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ CSSystem::ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½();
 	/// </summary>
-	public	static void		CursorOff()
+	public	class CSystem
 	{
-		CommonAPI.dCursorOff();
-	}
+		/// <summary>
+		/// CursorOffï¿½ï¿½ï¿½Ø±ï¿½ï¿½ï¿½ê²»ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½APIï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Windowsï¿½ï¿½ï¿½ï¿½ê£¬ï¿½ï¿½ï¿½Çµï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½API dCursorOnï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê½«Ò»Ö±ï¿½ï¿½ï¿½ï¿½Ê¾
+		/// </summary>
+		public	static void		CursorOff()
+		{
+			CommonAPI.dCursorOff();
+		}
 
-	/// <summary>
-	/// CursorOn£º¿ªÆôÊó±êÏÔÊ¾¡£½«API dCursorOff¹Ø±ÕµÄÊó±êÖØÐÂ¿ªÆôÏÔÊ¾
-	/// </summary>
-	public	static void		CursorOn()
-	{
-		CommonAPI.dCursorOn();
-	}
+		/// <summary>
+		/// CursorOnï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½API dCursorOffï¿½Ø±Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¿ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+		/// </summary>
+		public	static void		CursorOn()
+		{
+			CommonAPI.dCursorOn();
+		}
 
-	/// <summary>
-	/// IsCursorOn£ºµ±Ç°Êó±êÊÇ¿ªÆô»¹ÊÇ¹Ø±Õ¡£¶ÔÓ¦µÄÊÇÓÃAPI dCursorOffºÍdCursorOn¿ªÆô»òÕß¹Ø±ÕµÄ²Ù×÷
-	/// ·µ»ØÖµ£ºtrueÎª¿ªÆô×´Ì¬£¬falseÎª¹Ø±Õ×´Ì¬
-	/// </summary>
-	/// <returns></returns>
-	public	static bool		IsCursorOn()
-	{
-		return CommonAPI.dIsCursorOn() == 0 ? false : true;
-	}
+		/// <summary>
+		/// IsCursorOnï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¹Ø±Õ¡ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½API dCursorOffï¿½ï¿½dCursorOnï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¹Ø±ÕµÄ²ï¿½ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½trueÎªï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½falseÎªï¿½Ø±ï¿½×´Ì¬
+		/// </summary>
+		/// <returns></returns>
+		public	static bool		IsCursorOn()
+		{
+			return CommonAPI.dIsCursorOn() == 0 ? false : true;
+		}
 
-	/// <summary>
-	/// ShowCursor£ºÒþ²Ø/ÏÔÊ¾Êó±ê¡£´ËAPIÖ»ÊÇÒþ²Ø±¾³ÌÐò´°¿ÚÄÚµÄÊó±ê£¬ÒÆ¶¯µ½´°¿ÚÍâµÄÊ±ºò£¬Êó±ê»¹ÊÇ»áÏÔÊ¾
-	/// ²ÎÊý bShow£ºtrue ÎªÏÔÊ¾£¬false ÎªÒþ²Ø
-	/// </summary>
-	/// <param name="bShow"></param>
-	public	static void		ShowCursor(  bool bShow )
-	{
-		CommonAPI.dShowCursor( bShow ? 1 : 0 );
-	}
- 
-	/// <summary>
-	/// IsShowCursor£ºµ±Ç°Êó±êÊÇÏÔÊ¾»¹ÊÇÒþ²Ø¡£¶ÔÓ¦µÄÊÇÓÃAPI ShowCursorÒþ²Ø»òÕßÏÔÊ¾µÄ²Ù×÷
-	/// ·µ»ØÖµ£ºtrueÎª¿ªÆô×´Ì¬£¬falseÎª¹Ø±Õ×´Ì¬
-	/// </summary>
-	/// <returns></returns>
-	public	static bool		IsShowCursor()
-	{
-        return CommonAPI.dIsShowCursor() == 0 ? false : true;
-	}
-    
-	/// <summary>
-	/// SetWindowTitle£ºÉèÖÃ´°¿ÚÃû×Ö/±êÌâ
-	/// ²ÎÊý szTitle£º·Ç¿Õ×Ö·û´®
-	/// </summary>
-	/// <param name="szTitle"></param>
-	public	static void		SetWindowTitle( string szTitle )
-	{
-		CommonAPI.dSetWindowTitle( szTitle );
-	}
+		/// <summary>
+		/// ShowCursorï¿½ï¿½ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½Ê¾ï¿½ï¿½ê¡£ï¿½ï¿½APIÖ»ï¿½ï¿½ï¿½ï¿½ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ò´°¿ï¿½ï¿½Úµï¿½ï¿½ï¿½ê£¬ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ê»¹ï¿½Ç»ï¿½ï¿½ï¿½Ê¾
+		/// ï¿½ï¿½ï¿½ï¿½ bShowï¿½ï¿½true Îªï¿½ï¿½Ê¾ï¿½ï¿½false Îªï¿½ï¿½ï¿½ï¿½
+		/// </summary>
+		/// <param name="bShow"></param>
+		public	static void		ShowCursor(  bool bShow )
+		{
+			CommonAPI.dShowCursor( bShow ? 1 : 0 );
+		}
+	
+		/// <summary>
+		/// IsShowCursorï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¡ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½API ShowCursorï¿½ï¿½ï¿½Ø»ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ä²ï¿½ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½trueÎªï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½falseÎªï¿½Ø±ï¿½×´Ì¬
+		/// </summary>
+		/// <returns></returns>
+		public	static bool		IsShowCursor()
+		{
+			return CommonAPI.dIsShowCursor() == 0 ? false : true;
+		}
+		
+		/// <summary>
+		/// SetWindowTitleï¿½ï¿½ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½ szTitleï¿½ï¿½ï¿½Ç¿ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+		/// </summary>
+		/// <param name="szTitle"></param>
+		public	static void		SetWindowTitle( string szTitle )
+		{
+			CommonAPI.dSetWindowTitle( szTitle );
+		}
 
-	/// <summary>
-	/// ResizeWindow£º¸ü¸Ä´°¿Ú´óÐ¡
-	/// ²ÎÊý iWidth£º¿í¶È£¬´óÓÚ0Ð¡ÓÚµÈÓÚ1920
-	/// ²ÎÊý iHeight£º¸ß¶È£¬´óÓÚ0Ð¡ÓÚµÈÓÚ1080
-	/// </summary>
-	/// <param name="iWidth"></param>
-	/// <param name="iHeight"></param>
-	public	static void		ResizeWindow(int iWidth, int iHeight)
-	{
-		CommonAPI.dResizeWindow( iWidth, iHeight);
-	}
+		/// <summary>
+		/// ResizeWindowï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½Ú´ï¿½Ð¡
+		/// ï¿½ï¿½ï¿½ï¿½ iWidthï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ï¿½ï¿½ï¿½0Ð¡ï¿½Úµï¿½ï¿½ï¿½1920
+		/// ï¿½ï¿½ï¿½ï¿½ iHeightï¿½ï¿½ï¿½ß¶È£ï¿½ï¿½ï¿½ï¿½ï¿½0Ð¡ï¿½Úµï¿½ï¿½ï¿½1080
+		/// </summary>
+		/// <param name="iWidth"></param>
+		/// <param name="iHeight"></param>
+		public	static void		ResizeWindow(int iWidth, int iHeight)
+		{
+			CommonAPI.dResizeWindow( iWidth, iHeight);
+		}
 
-	/// <summary>
-	/// Random£º»ñÈ¡Ò»¸ö´óÓÚµÈÓÚ0µÄËæ»úÊý
-	/// ·µ»ØÖµ£ºint£¬·¶Î§0 - 2147483648
-	/// </summary>
-	/// <returns></returns>
-	public	static int		Random()
-	{
-		return CommonAPI.dRandom();
-	}
+		/// <summary>
+		/// Randomï¿½ï¿½ï¿½ï¿½È¡Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½intï¿½ï¿½ï¿½ï¿½Î§0 - 2147483648
+		/// </summary>
+		/// <returns></returns>
+		public	static int		Random()
+		{
+			return CommonAPI.dRandom();
+		}
 
-	/// <summary>
-	/// RandomRange£º»ñÈ¡Ò»¸öÎ»ÓÚ²ÎÊý1µ½²ÎÊý2Ö®¼äµÄËæ»úÊý
-	/// ·µ»ØÖµ£ºint£¬·¶Î§iMin - iMax
-	/// ²ÎÊý iMin£ºÐ¡ÓÚiMaxµÄÕûÊý
-	/// ²ÎÊý iMax£º´óÓÚiMinµÄÕûÊý
-	/// </summary>
-	/// <param name="iMin"></param>
-	/// <param name="iMax"></param>
-	/// <returns></returns>
-	public	static int		RandomRange(  int iMin,  int iMax )
-	{
-		return CommonAPI.dRandomRange( iMin, iMax );
-	}
+		/// <summary>
+		/// RandomRangeï¿½ï¿½ï¿½ï¿½È¡Ò»ï¿½ï¿½Î»ï¿½Ú²ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2Ö®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½intï¿½ï¿½ï¿½ï¿½Î§iMin - iMax
+		/// ï¿½ï¿½ï¿½ï¿½ iMinï¿½ï¿½Ð¡ï¿½ï¿½iMaxï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½ iMaxï¿½ï¿½ï¿½ï¿½ï¿½ï¿½iMinï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		/// </summary>
+		/// <param name="iMin"></param>
+		/// <param name="iMax"></param>
+		/// <returns></returns>
+		public	static int		RandomRange(  int iMin,  int iMax )
+		{
+			return CommonAPI.dRandomRange( iMin, iMax );
+		}
 
-	/// <summary>
-	/// CalLineRotation£º¼ÆËãÁ½µãÁ¬ÏßµÄÖ±ÏßµÄÐý×ª½Ç¶È
-	/// ·µ»ØÖµ£º½Ç¶È£¬·¶Î§0 - 360
-	/// ²ÎÊý fStartX£ºÆðÊ¼×ø±êX
-	/// ²ÎÊý fStartY£ºÆðÊ¼×ø±êY
-	/// ²ÎÊý fEndX£ºÖÕµã×ø±êX
-	/// ²ÎÊý fEndY£ºÖÕµã×ø±êY
-	/// </summary>
-	/// <param name="fStartX"></param>
-	/// <param name="fStartY"></param>
-	/// <param name="fEndX"></param>
-	/// <param name="fEndY"></param>
-	/// <returns></returns>
-	public	static float	CalLineRotation(  float fStartX,  float fStartY,  float fEndX,  float fEndY )
-	{
-		return CommonAPI.dCalLineRotation( fStartX, fStartY, fEndX, fEndY );
-	}
+		/// <summary>
+		/// CalLineRotationï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½Ö±ï¿½ßµï¿½ï¿½ï¿½×ªï¿½Ç¶ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½Ç¶È£ï¿½ï¿½ï¿½Î§0 - 360
+		/// ï¿½ï¿½ï¿½ï¿½ fStartXï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½X
+		/// ï¿½ï¿½ï¿½ï¿½ fStartYï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Y
+		/// ï¿½ï¿½ï¿½ï¿½ fEndXï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½X
+		/// ï¿½ï¿½ï¿½ï¿½ fEndYï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½Y
+		/// </summary>
+		/// <param name="fStartX"></param>
+		/// <param name="fStartY"></param>
+		/// <param name="fEndX"></param>
+		/// <param name="fEndY"></param>
+		/// <returns></returns>
+		public	static float	CalLineRotation(  float fStartX,  float fStartY,  float fEndX,  float fEndY )
+		{
+			return CommonAPI.dCalLineRotation( fStartX, fStartY, fEndX, fEndY );
+		}
 
-	/// <summary>
-	/// RotationToVectorX£º¼ÆËãÄ³¸ö½Ç¶È¶ÔÓ¦µÄÖ±ÏßÏòÁ¿µÄX·½Ïò
-	/// ²ÎÊý fRotation£º½Ç¶È£¬·¶Î§0 - 360
-	/// ·µ»ØÖµ £º¸ÃÖ±ÏßÏòÁ¿µÄXÖµ
-	/// </summary>
-	/// <param name="fRotation"></param>
-	/// <returns></returns>
-	public	static float	RotationToVectorX(  float fRotation )
-	{
-		return CommonAPI.dRotationToVectorX( fRotation );
-	}
+		/// <summary>
+		/// RotationToVectorXï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½Ç¶È¶ï¿½Ó¦ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½ fRotationï¿½ï¿½ï¿½Ç¶È£ï¿½ï¿½ï¿½Î§0 - 360
+		/// ï¿½ï¿½ï¿½ï¿½Öµ ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½XÖµ
+		/// </summary>
+		/// <param name="fRotation"></param>
+		/// <returns></returns>
+		public	static float	RotationToVectorX(  float fRotation )
+		{
+			return CommonAPI.dRotationToVectorX( fRotation );
+		}
 
-	/// <summary>
-	/// RotationToVectorY£º¼ÆËãÄ³¸ö½Ç¶È¶ÔÓ¦µÄÖ±ÏßÏòÁ¿µÄY·½Ïò
-	/// ²ÎÊý fRotation£º½Ç¶È£¬·¶Î§0 - 360
-	/// ·µ»ØÖµ £º¸ÃÖ±ÏßÏòÁ¿µÄYÖµ
-	/// </summary>
-	/// <param name="fRotation"></param>
-	/// <returns></returns>
-	public	static float	RotationToVectorY(  float fRotation )
-	{
-		return CommonAPI.dRotationToVectorY( fRotation );
-	}
+		/// <summary>
+		/// RotationToVectorYï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½Ç¶È¶ï¿½Ó¦ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Yï¿½ï¿½ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½ fRotationï¿½ï¿½ï¿½Ç¶È£ï¿½ï¿½ï¿½Î§0 - 360
+		/// ï¿½ï¿½ï¿½ï¿½Öµ ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½YÖµ
+		/// </summary>
+		/// <param name="fRotation"></param>
+		/// <returns></returns>
+		public	static float	RotationToVectorY(  float fRotation )
+		{
+			return CommonAPI.dRotationToVectorY( fRotation );
+		}
 
-	/// <summary>
-	/// DrawLine£ºÔÚÁ½µãÖ®¼ä»­Ò»ÌõÏß
-	/// ²ÎÊý fStartX£ºÆðÊ¼×ø±êX
-	/// ²ÎÊý fStartY£ºÆðÊ¼×ø±êY
-	/// ²ÎÊý fEndX£ºÖÕµã×ø±êX
-	/// ²ÎÊý fEndY£ºÖÕµã×ø±êY
-	/// ²ÎÊý fLineWidth£ºÏßµÄ´ÖÏ¸£¬´óÓÚµÈÓÚ1
-	/// ²ÎÊý iLayer£º¸ÄÏßËùÔÚµÄ²ã£¬Óë±à¼­Æ÷ÀïÉèÖÃµÄ¾«ÁéµÄ²ã¼¶ÊÇÍ¬Ò»¸ö¸ÅÄî¡£·¶Î§0 - 31¡£
-	/// ²ÎÊý iRed, iGreen, iBlue : ºìÂÌÀ¶ÈýÔ­É«µÄÑÕÉ«Öµ£¬·¶Î§ 0 - 255
-	/// ²ÎÊý iAlpha£ºÏßµÄÍ¸Ã÷¶È£¬·¶Î§0-255. 0ÎªÈ«Í¸Ã÷£¬255Îª²»Í¸Ã÷
-	/// </summary>
-	public	static void		DrawLine(  float fStartX,  float fStartY,  float fEndX,  float fEndY,  float fLineWidth,  int iLayer,  int iRed,  int iGreen,  int iBlue,  int iAlpha )
-	{
-		CommonAPI.dDrawLine( fStartX, fStartY, fEndX, fEndY, fLineWidth, iLayer, iRed, iGreen, iBlue, iAlpha );
-	}
+		/// <summary>
+		/// DrawLineï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ä»­Ò»ï¿½ï¿½ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½ fStartXï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½X
+		/// ï¿½ï¿½ï¿½ï¿½ fStartYï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Y
+		/// ï¿½ï¿½ï¿½ï¿½ fEndXï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½X
+		/// ï¿½ï¿½ï¿½ï¿½ fEndYï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½Y
+		/// ï¿½ï¿½ï¿½ï¿½ fLineWidthï¿½ï¿½ï¿½ßµÄ´ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½1
+		/// ï¿½ï¿½ï¿½ï¿½ iLayerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÚµÄ²ã£¬ï¿½ï¿½à¼­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÃµÄ¾ï¿½ï¿½ï¿½Ä²ã¼¶ï¿½ï¿½Í¬Ò»ï¿½ï¿½ï¿½ï¿½ï¿½î¡£ï¿½ï¿½Î§0 - 31ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½ iRed, iGreen, iBlue : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô­É«ï¿½ï¿½ï¿½ï¿½É«Öµï¿½ï¿½ï¿½ï¿½Î§ 0 - 255
+		/// ï¿½ï¿½ï¿½ï¿½ iAlphaï¿½ï¿½ï¿½ßµï¿½Í¸ï¿½ï¿½ï¿½È£ï¿½ï¿½ï¿½Î§0-255. 0ÎªÈ«Í¸ï¿½ï¿½ï¿½ï¿½255Îªï¿½ï¿½Í¸ï¿½ï¿½
+		/// </summary>
+		public	static void		DrawLine(  float fStartX,  float fStartY,  float fEndX,  float fEndY,  float fLineWidth,  int iLayer,  int iRed,  int iGreen,  int iBlue,  int iAlpha )
+		{
+			CommonAPI.dDrawLine( fStartX, fStartY, fEndX, fEndY, fLineWidth, iLayer, iRed, iGreen, iBlue, iAlpha );
+		}
 
-	/// DrawTriangle£º»­Ò»¸öÈý½ÇÐÎ
-	/// ²ÎÊý fX1,fX2,fX3£ºÈý½ÇÐÎÉÏÈý¸öµãµÄX×ø±ê
-	/// ²ÎÊý fY1,fY2,fY3£ºÈý½ÇÐÎÉÏÈý¸öµãµÄY×ø±ê
-	/// ²ÎÊý fLineWidth£ºÏßµÄ´ÖÏ¸£¬´óÓÚµÈÓÚ1
-	/// ²ÎÊý iLayer£º¸ÃÈý½ÇÐÎËùÔÚµÄ²ã£¬Óë±à¼­Æ÷ÀïÉèÖÃµÄ¾«ÁéµÄ²ã¼¶ÊÇÍ¬Ò»¸ö¸ÅÄî¡£·¶Î§0 - 31¡£
-	/// ²ÎÊý iRed, iGreen, iBlue : ºìÂÌÀ¶ÈýÔ­É«µÄÑÕÉ«Öµ£¬·¶Î§ 0 - 255
-	/// ²ÎÊý iAlpha£ºÈý½ÇÐÎµÄÍ¸Ã÷¶È£¬·¶Î§0-255. 0ÎªÈ«Í¸Ã÷£¬255Îª²»Í¸Ã÷<summary>
-	/// 
-	/// </summary>
-	public	static void		DrawTriangle(  float fX1,  float fY1,  float fX2,  float fY2,  float fX3,  float fY3,  float fLineWidth,  int iLayer,  int iRed,  int iGreen,  int iBlue,  int iAlpha )
-	{
-		CommonAPI.dDrawTriangle( fX1, fY1, fX2, fY2, fX3, fY3, fLineWidth, iLayer, iRed, iGreen, iBlue, iAlpha );
-	}
+		/// DrawTriangleï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½ fX1,fX2,fX3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½ fY1,fY2,fY3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Yï¿½ï¿½ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½ fLineWidthï¿½ï¿½ï¿½ßµÄ´ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½1
+		/// ï¿½ï¿½ï¿½ï¿½ iLayerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÚµÄ²ã£¬ï¿½ï¿½à¼­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÃµÄ¾ï¿½ï¿½ï¿½Ä²ã¼¶ï¿½ï¿½Í¬Ò»ï¿½ï¿½ï¿½ï¿½ï¿½î¡£ï¿½ï¿½Î§0 - 31ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½ iRed, iGreen, iBlue : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô­É«ï¿½ï¿½ï¿½ï¿½É«Öµï¿½ï¿½ï¿½ï¿½Î§ 0 - 255
+		/// ï¿½ï¿½ï¿½ï¿½ iAlphaï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îµï¿½Í¸ï¿½ï¿½ï¿½È£ï¿½ï¿½ï¿½Î§0-255. 0ÎªÈ«Í¸ï¿½ï¿½ï¿½ï¿½255Îªï¿½ï¿½Í¸ï¿½ï¿½<summary>
+		/// 
+		/// </summary>
+		public	static void		DrawTriangle(  float fX1,  float fY1,  float fX2,  float fY2,  float fX3,  float fY3,  float fLineWidth,  int iLayer,  int iRed,  int iGreen,  int iBlue,  int iAlpha )
+		{
+			CommonAPI.dDrawTriangle( fX1, fY1, fX2, fY2, fX3, fY3, fLineWidth, iLayer, iRed, iGreen, iBlue, iAlpha );
+		}
 
-	/// <summary>
-	/// DrawRect£º»­Ò»¸ö¾ØÐÎ
-	/// ²ÎÊý fUpperX£º×óÉÏ½Ç×ø±êX
-	/// ²ÎÊý fUpperY£º×óÉÏ½Ç×ø±êY
-	/// ²ÎÊý fLowerX£ºÓÒÏÂ½Ç×ø±êX
-	/// ²ÎÊý fLowerY£ºÓÒÏÂ½Ç×ø±êY
-	/// ²ÎÊý fLineWidth£ºÏßµÄ´ÖÏ¸£¬´óÓÚµÈÓÚ1
-	/// ²ÎÊý iLayer£º¸Ã¾ØÐÎËùÔÚµÄ²ã£¬Óë±à¼­Æ÷ÀïÉèÖÃµÄ¾«ÁéµÄ²ã¼¶ÊÇÍ¬Ò»¸ö¸ÅÄî¡£·¶Î§0 - 31¡£
-	/// ²ÎÊý iRed, iGreen, iBlue : ºìÂÌÀ¶ÈýÔ­É«µÄÑÕÉ«Öµ£¬·¶Î§ 0 - 255
-	/// ²ÎÊý iAlpha£º¾ØÐÎµÄÍ¸Ã÷¶È£¬·¶Î§0-255. 0ÎªÈ«Í¸Ã÷£¬255Îª²»Í¸Ã÷
-	/// </summary>
-	public	static void		DrawRect(  float fUpperX,  float fUpperY,  float fLowerX,  float fLowerY,  float fLineWidth,  int iLayer,  int iRed,  int iGreen,  int iBlue,  int iAlpha )
-	{
-		CommonAPI.dDrawRect( fUpperX, fUpperY, fLowerX, fLowerY, fLineWidth, iLayer, iRed, iGreen, iBlue, iAlpha );
-	}
+		/// <summary>
+		/// DrawRectï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½ fUpperXï¿½ï¿½ï¿½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ï¿½ï¿½X
+		/// ï¿½ï¿½ï¿½ï¿½ fUpperYï¿½ï¿½ï¿½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ï¿½ï¿½Y
+		/// ï¿½ï¿½ï¿½ï¿½ fLowerXï¿½ï¿½ï¿½ï¿½ï¿½Â½ï¿½ï¿½ï¿½ï¿½ï¿½X
+		/// ï¿½ï¿½ï¿½ï¿½ fLowerYï¿½ï¿½ï¿½ï¿½ï¿½Â½ï¿½ï¿½ï¿½ï¿½ï¿½Y
+		/// ï¿½ï¿½ï¿½ï¿½ fLineWidthï¿½ï¿½ï¿½ßµÄ´ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½1
+		/// ï¿½ï¿½ï¿½ï¿½ iLayerï¿½ï¿½ï¿½Ã¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÚµÄ²ã£¬ï¿½ï¿½à¼­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÃµÄ¾ï¿½ï¿½ï¿½Ä²ã¼¶ï¿½ï¿½Í¬Ò»ï¿½ï¿½ï¿½ï¿½ï¿½î¡£ï¿½ï¿½Î§0 - 31ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½ iRed, iGreen, iBlue : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô­É«ï¿½ï¿½ï¿½ï¿½É«Öµï¿½ï¿½ï¿½ï¿½Î§ 0 - 255
+		/// ï¿½ï¿½ï¿½ï¿½ iAlphaï¿½ï¿½ï¿½ï¿½ï¿½Îµï¿½Í¸ï¿½ï¿½ï¿½È£ï¿½ï¿½ï¿½Î§0-255. 0ÎªÈ«Í¸ï¿½ï¿½ï¿½ï¿½255Îªï¿½ï¿½Í¸ï¿½ï¿½
+		/// </summary>
+		public	static void		DrawRect(  float fUpperX,  float fUpperY,  float fLowerX,  float fLowerY,  float fLineWidth,  int iLayer,  int iRed,  int iGreen,  int iBlue,  int iAlpha )
+		{
+			CommonAPI.dDrawRect( fUpperX, fUpperY, fLowerX, fLowerY, fLineWidth, iLayer, iRed, iGreen, iBlue, iAlpha );
+		}
 
-	/// <summary>
-	/// DrawCircle£º»­Ò»¸öÔ²
-	/// ²ÎÊý fCenterX£ºÔ²ÐÄ×ø±êX
-	/// ²ÎÊý fCenterY£ºÔ²ÐÄ×ø±êY
-	/// ²ÎÊý fRadius£ºÔ²µÄ°ë¾¶
-	/// ²ÎÊý iSegment£ºÔ²»¡¶ÎÊý£¬·¶Î§4-72. ±ÈÈç´«Èë6£¬½«µÃµ½Ò»¸ö6±ßÐÎ£¬¶ÎÊýÔ½´óÔ½Ô²»¬£¬µ«ÊÇ»­Í¼Ð§ÂÊÔ½µÍ
-	/// ²ÎÊý fLineWidth£ºÏßµÄ´ÖÏ¸£¬´óÓÚµÈÓÚ1
-	/// ²ÎÊý iLayer£º¸ÃÔ²ËùÔÚµÄ²ã£¬Óë±à¼­Æ÷ÀïÉèÖÃµÄ¾«ÁéµÄ²ã¼¶ÊÇÍ¬Ò»¸ö¸ÅÄî¡£·¶Î§0 - 31¡£
-	/// ²ÎÊý iRed, iGreen, iBlue : ºìÂÌÀ¶ÈýÔ­É«µÄÑÕÉ«Öµ£¬·¶Î§ 0 - 255
-	/// ²ÎÊý iAlpha£ºÔ²µÄÍ¸Ã÷¶È£¬·¶Î§0-255. 0ÎªÈ«Í¸Ã÷£¬255Îª²»Í¸Ã÷
-	/// </summary>
-	public	static void		DrawCircle(  float fCenterX,  float fCenterY,  float fRadius,  int iSegment,  float fLineWidth,  int iLayer,  int iRed,  int iGreen,  int iBlue,  int iAlpha )
-	{
-		CommonAPI.dDrawCircle( fCenterX, fCenterY, fRadius, iSegment, fLineWidth, iLayer, iRed, iGreen, iBlue, iAlpha );
-	}
-    	
-	/// <summary>
-	/// GetScreenLeft£º»ñÈ¡ÊÀ½ç±ß½çÖ®×ó±ßX×ø±ê
-	/// ·µ»ØÖµ£º×ó±ß½çX×ø±ê
-	/// </summary>
-	/// <returns></returns>
-	public	static float	GetScreenLeft()
-	{
-		return CommonAPI.dGetScreenLeft();
-	}
+		/// <summary>
+		/// DrawCircleï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ô²
+		/// ï¿½ï¿½ï¿½ï¿½ fCenterXï¿½ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½X
+		/// ï¿½ï¿½ï¿½ï¿½ fCenterYï¿½ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Y
+		/// ï¿½ï¿½ï¿½ï¿½ fRadiusï¿½ï¿½Ô²ï¿½Ä°ë¾¶
+		/// ï¿½ï¿½ï¿½ï¿½ iSegmentï¿½ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î§4-72. ï¿½ï¿½ï¿½ç´«ï¿½ï¿½6ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½Ò»ï¿½ï¿½6ï¿½ï¿½ï¿½Î£ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½Ô½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç»ï¿½Í¼Ð§ï¿½ï¿½Ô½ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½ fLineWidthï¿½ï¿½ï¿½ßµÄ´ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½1
+		/// ï¿½ï¿½ï¿½ï¿½ iLayerï¿½ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½ÚµÄ²ã£¬ï¿½ï¿½à¼­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÃµÄ¾ï¿½ï¿½ï¿½Ä²ã¼¶ï¿½ï¿½Í¬Ò»ï¿½ï¿½ï¿½ï¿½ï¿½î¡£ï¿½ï¿½Î§0 - 31ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½ iRed, iGreen, iBlue : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô­É«ï¿½ï¿½ï¿½ï¿½É«Öµï¿½ï¿½ï¿½ï¿½Î§ 0 - 255
+		/// ï¿½ï¿½ï¿½ï¿½ iAlphaï¿½ï¿½Ô²ï¿½ï¿½Í¸ï¿½ï¿½ï¿½È£ï¿½ï¿½ï¿½Î§0-255. 0ÎªÈ«Í¸ï¿½ï¿½ï¿½ï¿½255Îªï¿½ï¿½Í¸ï¿½ï¿½
+		/// </summary>
+		public	static void		DrawCircle(  float fCenterX,  float fCenterY,  float fRadius,  int iSegment,  float fLineWidth,  int iLayer,  int iRed,  int iGreen,  int iBlue,  int iAlpha )
+		{
+			CommonAPI.dDrawCircle( fCenterX, fCenterY, fRadius, iSegment, fLineWidth, iLayer, iRed, iGreen, iBlue, iAlpha );
+		}
+			
+		/// <summary>
+		/// GetScreenLeftï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ß½ï¿½Ö®ï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ß½ï¿½Xï¿½ï¿½ï¿½ï¿½
+		/// </summary>
+		/// <returns></returns>
+		public	static float	GetScreenLeft()
+		{
+			return CommonAPI.dGetScreenLeft();
+		}
 
-	/// <summary>
-	/// GetScreenTop£º»ñÈ¡ÊÀ½ç±ß½çÖ®ÉÏ±ßY×ø±ê
-	/// ·µ»ØÖµ£ºÉÏ±ß½çY×ø±ê
-	/// </summary>
-	/// <returns></returns>
-	public	static float	GetScreenTop()
-	{
-		return CommonAPI.dGetScreenTop();
-	}
+		/// <summary>
+		/// GetScreenTopï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ß½ï¿½Ö®ï¿½Ï±ï¿½Yï¿½ï¿½ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½Ï±ß½ï¿½Yï¿½ï¿½ï¿½ï¿½
+		/// </summary>
+		/// <returns></returns>
+		public	static float	GetScreenTop()
+		{
+			return CommonAPI.dGetScreenTop();
+		}
 
-	/// <summary>
-	/// GetScreenRight£º»ñÈ¡ÊÀ½ç±ß½çÖ®ÓÒ±ßX×ø±ê
-	/// ·µ»ØÖµ£ºÓÒ±ß½çX×ø±ê
-	/// </summary>
-	/// <returns></returns>
-	public	static float	GetScreenRight()
-	{
-		return CommonAPI.dGetScreenRight();
-	}
+		/// <summary>
+		/// GetScreenRightï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ß½ï¿½Ö®ï¿½Ò±ï¿½Xï¿½ï¿½ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½Ò±ß½ï¿½Xï¿½ï¿½ï¿½ï¿½
+		/// </summary>
+		/// <returns></returns>
+		public	static float	GetScreenRight()
+		{
+			return CommonAPI.dGetScreenRight();
+		}
 
-	/// <summary>
-	/// GetScreenBottom£º»ñÈ¡ÊÀ½ç±ß½çÖ®ÏÂ±ßY×ø±ê
-	/// ·µ»ØÖµ£ºÏÂ±ß½çY×ø±ê
-	/// </summary>
-	/// <returns></returns>
-	public	static float	GetScreenBottom()
-	{
-		return CommonAPI.dGetScreenBottom();
-	}
+		/// <summary>
+		/// GetScreenBottomï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ß½ï¿½Ö®ï¿½Â±ï¿½Yï¿½ï¿½ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½Â±ß½ï¿½Yï¿½ï¿½ï¿½ï¿½
+		/// </summary>
+		/// <returns></returns>
+		public	static float	GetScreenBottom()
+		{
+			return CommonAPI.dGetScreenBottom();
+		}
 
-	/// <summary>
-	/// LoadMap£ºÔØÈëÐÂ³¡¾°¡£×¢Òâ£¬ÔØÈëÐÂ³¡¾°µÄÊ±ºò£¬¾É³¡¾°µÄËùÓÐ¾«Áé¶¼½«±»ÒýÇæÉ¾³ýµô£¬ËùÒÔËùÓÐÔÚ³ÌÐòÖÐ´´½¨¡¢¸´ÖÆ³öÀ´µÄ¾«Áé¶¼±ØÐëÔÚµ÷ÓÃ±¾APIÖ®Ç°ÏÈÉ¾³ýµô
-	/// ²ÎÊý szName£º³¡¾°Ãû×Ö¡£¼´ÐÂ½¨³¡¾°±£´æµÄÊ±ºòÈ¡µÄÃû×Ö£¬±ØÐë´øÐ¡Ð´µÄºó×º -- xxx.t2d¡£²»ÓÃ´øÂ·¾¶
-	/// </summary>
-	/// <param name="szName"></param>
-	public	static void		LoadMap( string szName )
-	{
-		CommonAPI.dLoadMap( szName );
-	}
+		/// <summary>
+		/// LoadMapï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â³ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½â£¬ï¿½ï¿½ï¿½ï¿½ï¿½Â³ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ò£¬¾É³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¾ï¿½ï¿½é¶¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú³ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ³ï¿½ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½é¶¼ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½Ã±ï¿½APIÖ®Ç°ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½
+		/// ï¿½ï¿½ï¿½ï¿½ szNameï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¡ï¿½ï¿½ï¿½ï¿½Â½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ö£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡Ð´ï¿½Äºï¿½×º -- xxx.t2dï¿½ï¿½ï¿½ï¿½ï¿½Ã´ï¿½Â·ï¿½ï¿½
+		/// </summary>
+		/// <param name="szName"></param>
+		public	static void		LoadMap( string szName )
+		{
+			CommonAPI.dLoadMap( szName );
+		}
 
-	//////////////////////////////////////////////////////////////////////////////////////////
-	//
-	// ÒÔÏÂAPIÎªÏµÍ³API£¬ÇëÎð×Ô¼ºµ÷ÓÃ
-	//
-	//////////////////////////////////////////////////////////////////////////////////////////
+		//////////////////////////////////////////////////////////////////////////////////////////
+		//
+		// ï¿½ï¿½ï¿½ï¿½APIÎªÏµÍ³APIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½
+		//
+		//////////////////////////////////////////////////////////////////////////////////////////
 
-	// GetTimeDelta£º»ñÈ¡Á½´Îµ÷ÓÃ±¾º¯ÊýÖ®¼äµÄÊ±¼ä²î
-	// ·µ»ØÖµ£ºfloat£¬µ¥Î» Ãë
-	//
-	public	static float	GetTimeDelta()
-	{
-		return CommonAPI.dGetTimeDelta();
-	}
-	// EngineMainLoop£ºÒýÇæÖ÷Ñ­»·º¯Êý¡£ÇëÎð×Ô¼ºµ÷ÓÃ
-	//
-	public	static bool		EngineMainLoop()
-	{
-        return CommonAPI.dEngineMainLoop() == 0 ? false : true;
-	}
-	// InitGameEngine£º³õÊ¼»¯ÒýÇæ£¬ÇëÎð×Ô¼ºµ÷ÓÃ
-	//
-	public	static bool		InitGameEngine( string szArgs )
-	{
-        return CommonAPI.dInitGameEngine2(szArgs) == 0 ? false : true;
-	}
-	// ShutdownGameEngine£º¹Ø±ÕÒýÇæ£¬ÇëÎð×Ô¼ºµ÷ÓÃ
-	//
-	public	static void		ShutdownGameEngine()
-	{
-		CommonAPI.dShutdownGameEngine();
-	}
-};
+		// GetTimeDeltaï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½Îµï¿½ï¿½Ã±ï¿½ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½
+		// ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½floatï¿½ï¿½ï¿½ï¿½Î» ï¿½ï¿½
+		//
+		public	static float	GetTimeDelta()
+		{
+			return CommonAPI.dGetTimeDelta();
+		}
+		// EngineMainLoopï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½
+		//
+		public	static bool		EngineMainLoop()
+		{
+			return CommonAPI.dEngineMainLoop() == 0 ? false : true;
+		}
+		// InitGameEngineï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½æ£¬ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½
+		//
+		public	static bool		InitGameEngine( string szArgs )
+		{
+			return CommonAPI.dInitGameEngine2(szArgs) == 0 ? false : true;
+		}
+		// ShutdownGameEngineï¿½ï¿½ï¿½Ø±ï¿½ï¿½ï¿½ï¿½æ£¬ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½
+		//
+		public	static void		ShutdownGameEngine()
+		{
+			CommonAPI.dShutdownGameEngine();
+		}
+	};
+}
